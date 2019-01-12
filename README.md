@@ -18,7 +18,7 @@
 |block|string|null: false|
 |building|string| |
 |birthday|datetime|null: false|
-|phone_number|string|null: false|
+|phone_number|string|null: false, unique_key: true|
 |payment|string|null: false|
 
 ### Association
