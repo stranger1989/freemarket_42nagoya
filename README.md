@@ -54,6 +54,7 @@
 - belongs_to :category
 - belongs_to :brand
 - belongs_to :order
+- has_many :likes
 - has_many :comments
 
 ***
