@@ -43,9 +43,9 @@
 |shipping_area|string|null: false|
 |estimated_shipping_date|datetime|null: false|
 |description|text|null: false|
-|user_id|integer|foreign_key: true|
-|category_id|integer|foreign_key: true|
-|brand_id|integer|foreign_key: true|
+|user_id|references|foreign_key: true|
+|category_id|references|foreign_key: true|
+|brand_id|references|foreign_key: true|
 |created_at|datetime|null: false|
 |updated_at|datetime|null: false|
 
@@ -61,8 +61,8 @@
 ## likesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|foreign_key: true|
-|item_id|integer|foreign_key: true|
+|user_id|references|foreign_key: true|
+|item_id|references|foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -110,8 +110,8 @@
 ## categories_brandsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|brand_id|integer|foreign_key: true|
-|category_id|integer|foreign_key: true|
+|brand_id|references|foreign_key: true|
+|category_id|references|foreign_key: true|
 
 ### Association
 - belongs_to :category
@@ -123,8 +123,8 @@
 |Column|Type|Options|
 |------|----|-------|
 |text|text|null: false|
-|user_id|integer|foreign_key: true|
-|item_id|integer|foreign_key: true|
+|user_id|references|foreign_key: true|
+|item_id|references|foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -135,8 +135,8 @@
 ## ordersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|foreign_key: true|
-|item_id|integer|foreign_key: true|
+|user_id|references|foreign_key: true|
+|item_id|references|foreign_key: true|
 
 ### Association
 - belongs_to :item
