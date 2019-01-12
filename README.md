@@ -75,7 +75,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |status|string|null: false|
-|user_id|integer| |
+|user_id|references|foreign_key: true|
 |to_user_id|integer| |
 
 ### Association
