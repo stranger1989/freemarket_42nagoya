@@ -37,7 +37,7 @@
 |image|text| |
 |price|integer|null: false|
 |order_status|string|null: false|
-|status|string|null: false|
+|item_status|string|null: false|
 |shipping_fee|string|null: false|
 |delivery_way|string|null: false|
 |shipping_area|string|null: false|
