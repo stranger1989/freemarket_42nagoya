@@ -3,7 +3,6 @@
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|id|integer|null: false, primary_key: true|
 |nickname|string|null: false|
 |profile|text| |
 |avatar|text| |
@@ -21,8 +20,6 @@
 |birthday|datetime|null: false|
 |phone_number|string|null: false|
 |payment|string|null: false|
-|created_at|datetime|null: false|
-|updated_at|datetime|null: false|
 
 ### Association
 - has_many :items
@@ -36,7 +33,6 @@
 ## itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|id|integer|null: false, primary_key: true|
 |name|string|null: false, index: true|
 |image|text| |
 |price|integer|null: false|
@@ -65,11 +61,8 @@
 ## likesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|id|integer|null: false, primary_key: true|
 |user_id|integer|foreign_key: true|
 |item_id|integer|foreign_key: true|
-|created_at|datetime|null: false|
-|updated_at|datetime|null: false|
 
 ### Association
 - belongs_to :user
@@ -80,12 +73,9 @@
 ## evaluationsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|id|integer|null: false, primary_key: true|
 |status|string|null: false|
 |user_id|integer|foreign_key: true|
 |to_user_id|integer|foreign_key: true|
-|created_at|datetime|null: false|
-|updated_at|datetime|null: false|
 
 ### Association
 - belongs_to :user
@@ -95,11 +85,8 @@
 ## categoriesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|id|integer|null: false, primary_key: true|
 |parent_id|integer|null: false|
 |name|string|null: false, index: true|
-|created_at|datetime|null: false|
-|updated_at|datetime|null: false|
 
 ### Association
 - has_many :items
@@ -111,10 +98,7 @@
 ## brandsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|id|integer|null: false, primary_key: true|
 |name|string|null: false, index: true|
-|created_at|datetime|null: false|
-|updated_at|datetime|null: false|
 
 ### Association
 - has_many :items
@@ -126,11 +110,8 @@
 ## categories_brandsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|id|integer|null: false, primary_key: true|
 |brand_id|integer|foreign_key: true|
 |category_id|integer|foreign_key: true|
-|created_at|datetime|null: false|
-|updated_at|datetime|null: false|
 
 ### Association
 - belongs_to :category
@@ -141,12 +122,9 @@
 ## commentsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|id|integer|null: false, primary_key: true|
 |text|text|null: false|
 |user_id|integer|foreign_key: true|
 |item_id|integer|foreign_key: true|
-|created_at|datetime|null: false|
-|updated_at|datetime|null: false|
 
 ### Association
 - belongs_to :user
@@ -157,11 +135,8 @@
 ## ordersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|id|integer|null: false, primary_key: true|
 |user_id|integer|foreign_key: true|
 |item_id|integer|foreign_key: true|
-|created_at|datetime|null: false|
-|updated_at|datetime|null: false|
 
 ### Association
 - belongs_to :item
@@ -172,7 +147,4 @@
 ## newsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|id|integer|null: false, primary_key: true|
 |text|text|null: false|
-|created_at|datetime|null: false|
-|updated_at|datetime|null: false|
