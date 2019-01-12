@@ -142,10 +142,3 @@
 ### Association
 - belongs_to :item
 - belongs_to :user
-
-***
-
-## newsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|text|text|null: false|
