@@ -15,7 +15,7 @@ default: &default
   pool: 5
   username: root
   password: <%= ENV['DATABASE_PASSWORD'] %>
-  # socket: /tmp/mysql.sock
+  socket: /tmp/mysql.sock
 
 development:
   <<: *default
@@ -50,6 +50,6 @@ test:
 production:
   <<: *default
   database: freemarket_42nagoya_production
-  username: freemarket_42nagoya
+  username: root
   password: <%= ENV['DATABASE_PASSWORD'] %>
   socket: /var/lib/mysql/mysql.sock
