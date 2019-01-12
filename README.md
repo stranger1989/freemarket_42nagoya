@@ -74,8 +74,8 @@
 |Column|Type|Options|
 |------|----|-------|
 |status|string|null: false|
-|user_id|integer|foreign_key: true|
-|to_user_id|integer|foreign_key: true|
+|user_id|integer| |
+|to_user_id|integer| |
 
 ### Association
 - belongs_to :user
