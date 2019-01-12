@@ -91,7 +91,7 @@
 ### Association
 - has_many :items
 - has_many :brands, through: :categories_brands
-- has_many :brands
+- has_many :categories_brands
 
 ***
 
@@ -103,7 +103,7 @@
 ### Association
 - has_many :items
 - has_many :categories, through: :categories_brands
-- has_many :categories
+- has_many :categories_brands
 
 ***
 
