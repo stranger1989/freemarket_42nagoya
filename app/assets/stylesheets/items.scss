@@ -30,7 +30,7 @@
     }
   & > a:hover {
     opacity: .8;
-    border-bottom: 1px solid $main-blue;
+    text-decoration: underline;
   }
   }
   .item {
@@ -66,7 +66,7 @@
     }
     & > a:hover {
       opacity: .8;
-      border-bottom: 1px solid $main-blue;
+      text-decoration: underline;
     }
   }
 }
@@ -97,7 +97,7 @@
 .global-footer {
   background-color: $footer;
   color: $shiro;
-  padding: 60px;
+  padding: 60px 0;
 }
 
 .footer-wrapper {
@@ -112,29 +112,47 @@
     .footer-head {
       font-size:16px;
       font-weight: bold;
-      .detail {
-
-      }
     }
-  }
-  .footer-logo {
-  display: block;
-  text-align: center;
-  margin-top: 40px;
-  }
-  .footer-logo:hover {
-    opacity: .7;
-  }
-  .copyright {
-    text-align: center;
-    font-size: 12px;
   }
 }
 
 
+.detail > li {
+  margin-top: 16px;
+  & a {
+    display: block;
+    color: $shiro;
+    font-size: 13px;
+  }
+  & a:hover {
+    opacity: 0.6;
+    text-decoration: underline;
+  }
+  .lang-nav {
+    opacity: 0.3;
+  }
+  .lang-nav:hover {
+    opacity: 0.3;
+  }
+  .lang-ja:hover {
+    opacity: 1.0;
+  }
+}
 
+.footer-logo {
+  display: block;
+  text-align: center;
+  margin-top: 40px;
+}
 
+.footer-logo:hover {
+  opacity: .7;
+}
 
+.copyright {
+  text-align: center;
+  font-size: 12px;
+}
 
 
 
