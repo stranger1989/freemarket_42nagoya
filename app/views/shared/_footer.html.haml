@@ -3,86 +3,94 @@
   .footer-wrapper
     %ul
       %li.footer-cell
-        メルカリについて
-        %ul
-          %li
-            会社概要(運営会社)
-          %li
-            プライバシーポリシー
-          %li
-            メルカリ利用規約
-          %li
-            メルカリ利用規約・有償ポイントに関する特約
-          %li
-            あんしんスマホサポート制度に関する利用規約
-          %li
-            コンプライアンスポリシー
-          %li
-            個人データの安全管理に係る基本方針
-          %li
-            特定商取引に関する表記
-          %li
-            資金決済法に基づく表示
-          %li
-            法令順守と犯罪抑止のために
-          %li
-            採用情報
-
-      %li.footer-cell
-        メルカリを見る
+        %h2.footer-head メルカリについて
         %ul.detail
           %li
-            カテゴリ一覧
+            = link_to "会社概要(運営会社)", "#"
           %li
-            ブランド一覧
+            = link_to "プライバシーポリシー", "#"
           %li
-            出品地域一覧
+            = link_to "メルカリ利用規約", "#"
           %li
-            公式ブログ
+            = link_to "メルカリ利用規約・有償ポイントに関する特約", "#"
           %li
-            公式Twitter
+            = link_to "あんしんスマホサポート制度に関する利用規約", "#"
           %li
-            公式Facebook
+            = link_to "コンプライアンスポリシー", "#"
+          %li
+            = link_to "個人データの安全管理に係る基本方針", "#"
+          %li
+            = link_to "特定商取引に関する表記", "#"
+          %li
+            = link_to "資金決済法に基づく表示", "#"
+          %li
+            = link_to "法令順守と犯罪抑止のために", "#"
+          %li
+            = link_to "採用情報", "#"
 
       %li.footer-cell
-        ヘルプ＆ガイド
+        %h2.footer-head メルカリを見る
         %ul.detail
           %li
-            メルカリガイド
+            = link_to "カテゴリ一覧", "#"
           %li
-            メルカリロゴ利用ガイドライン
+            = link_to "ブランド一覧", "#"
           %li
-            お知らせ
+            = link_to "出品地域一覧", "#"
           %li
-            楽々メルカリ便とは
+            = link_to "公式ブログ", "#"
           %li
-            ゆうゆうメルカリ便とは
+            = link_to "公式Twitter", "#"
           %li
-            大型らくらくメルカリ便とは
-          %li
-            車体取引ガイド
-          %li
-            返品・返金ポリシー
-          %li
-            メルカリあんしん・あんぜん宣言！
-          %li
-            偽ブランド品撲滅への取り組み
-          %liメルカリボックス
+            = link_to "公式Facebook", "#"
 
       %li.footer-cell
-        国
-        %ul
+        %h2.footer-head ヘルプ＆ガイド
+        %ul.detail
           %li
-            United States
+            = link_to "メルカリガイド", "#"
           %li
-            United Kingdom
+            = link_to "メルカリロゴ利用ガイドライン", "#"
           %li
-            日本
+            = link_to "お知らせ", "#"
+          %li
+            = link_to "楽々メルカリ便とは", "#"
+          %li
+            = link_to "ゆうゆうメルカリ便とは", "#"
+          %li
+            = link_to "大型らくらくメルカリ便とは", "#"
+          %li
+            = link_to "車体取引ガイド", "#"
+          %li
+            = link_to "返品・返金ポリシー", "#"
+          %li
+            = link_to "メルカリあんしん・あんぜん宣言！", "#"
+          %li
+            = link_to "偽ブランド品撲滅への取り組み", "#"
+          %li
+            = link_to "メルカリボックス", "#"
 
-    = link_to image_tag("footer-logo.svg", width: "124", height: "33", alt: "フッターロゴ"), root_path, class: "footer-logo"
+      %li.footer-cell
+        %h2.footer-head 国
+        %ul.detail
+          %li
+            = link_to "", class: "lang-nav" do
+              = image_tag("flag_us.png", width: "22", height: "22", alt: "flag-us", style: "vertical-align:bottom")
+              United States
 
-    .copyright
-      &copy; 2019 freemarket_42nagoya
+          %li
+            = link_to "", class: "lang-nav" do
+              = image_tag("flag_uk.png", width: "22", height: "22", alt: "flag-uk", style: "vertical-align:bottom")
+              United Kingdom
+          %li
+            = link_to "", class: "lang-ja" do
+              = image_tag("flag_jp.png", width: "22", height: "22", alt: "flag-jp", style: "vertical-align:bottom")
+              日本
+
+  = link_to image_tag("footer-logo.svg", width: "124", height: "33", alt: "フッターロゴ"), root_path, class: "footer-logo"
+
+  .copyright
+    &copy; 2019 freemarket_42nagoya
 
 
 
