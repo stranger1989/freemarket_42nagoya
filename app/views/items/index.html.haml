@@ -1,2 +1,127 @@
-%h1 Items#index
-%p Find me in app/views/items/index.html.haml
+= render "shared/header"
+
+/ スライド
+.slide
+  = link_to image_tag("slide1.png", width: "1440", height: "390", alt: "ヘッダーロゴ", style: "vertical-align:bottom"), root_path, class: "slide-img"
+
+
+/ 全ての商品一覧
+
+.item-list
+
+  %h2 全ての商品一覧
+
+  .items-container
+    .pickup-items
+      %h3
+        %a{href: "#"} カテゴリー
+
+      .card
+        %a{href: "#", class: "card__item"}
+          = image_tag("item-img.png", width: "213", height: "213", alt: "アイテム画像")
+          .card__item__body
+            %h3.card__item__body__item-name 商品名が入ります
+            .card__item__body__num
+              .card__item__body__num__price ￥9,999
+              .card__item__body__num__likes
+                =fa_icon("heart", text: 10)
+              %p (税込)
+
+      .card
+        %a{href: "#", class: "card__item"}
+          = image_tag("item-img.png", width: "213", height: "213", alt: "アイテム画像")
+          .card__item__body
+            %h3.card__item__body__item-name 商品名が入ります
+            .card__item__body__num
+              .card__item__body__num__price ￥9,999
+              .card__item__body__num__likes
+                =fa_icon("heart", text: 10)
+              %p (税込)
+
+      .card
+        %a{href: "#", class: "card__item"}
+          = image_tag("item-img.png", width: "213", height: "213", alt: "アイテム画像")
+          .card__item__body
+            %h3.card__item__body__item-name 商品名が入ります
+            .card__item__body__num
+              .card__item__body__num__price ￥9,999
+              .card__item__body__num__likes
+                =fa_icon("heart", text: 10)
+              %p (税込)
+
+      .card
+        %a{href: "#", class: "card__item"}
+          = image_tag("item-img.png", width: "213", height: "213", alt: "アイテム画像")
+          .card__item__body
+            %h3.card__item__body__item-name 商品名が入ります
+            .card__item__body__num
+              .card__item__body__num__price ￥9,999
+              .card__item__body__num__likes
+                =fa_icon("heart", text: 10)
+              %p (税込)
+
+        .allitem-link
+          %a{href: "#"} すべての商品を見る
+
+
+  .items-container
+    .pickup-items
+      %h3
+        %a{href: "#"} ブランド
+
+      .card
+        %a{href: "#", class: "card__item"}
+          = image_tag("item-img.png", width: "213", height: "213", alt: "アイテム画像")
+          .card__item__body
+            %h3.card__item__body__item-name 商品名が入ります
+            .card__item__body__num
+              .card__item__body__num__price ￥9,999
+              .card__item__body__num__likes
+                =fa_icon("heart", text: 10)
+              %p (税込)
+
+      .card
+        %a{href: "#", class: "card__item"}
+          = image_tag("item-img.png", width: "213", height: "213", alt: "アイテム画像")
+          .card__item__body
+            %h3.card__item__body__item-name 商品名が入ります
+            .card__item__body__num
+              .card__item__body__num__price ￥9,999
+              .card__item__body__num__likes
+                =fa_icon("heart", text: 10)
+              %p (税込)
+
+      .card
+        %a{href: "#", class: "card__item"}
+          = image_tag("item-img.png", width: "213", height: "213", alt: "アイテム画像")
+          .card__item__body
+            %h3.card__item__body__item-name 商品名が入ります
+            .card__item__body__num
+              .card__item__body__num__price ￥9,999
+              .card__item__body__num__likes
+                =fa_icon("heart", text: 10)
+              %p (税込)
+
+      .card
+        %a{href: "#", class: "card__item"}
+          = image_tag("item-img.png", width: "213", height: "213", alt: "アイテム画像")
+          .card__item__body
+            %h3.card__item__body__item-name 商品名が入ります
+            .card__item__body__num
+              .card__item__body__num__price ￥9,999
+              .card__item__body__num__likes
+                =fa_icon("heart", text: 10)
+              %p (税込)
+
+        .allitem-link
+          %a{href: "#"} すべての商品を見る
+
+/ バナー
+.app-banner
+  = link_to image_tag("app-banner.png", width: "1440", height: "260", alt: "アプリバナー", style: "vertical-align:bottom"), root_path, class: "app-banner"
+
+
+/ 出品ボタン
+
+
+= render "shared/footer"
