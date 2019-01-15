@@ -1,0 +1,25 @@
+class User < ApplicationRecord
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
+
+  def prefecture_name
+    JpPrefecture::Prefecture.find(code: prefecture_id).try(:name)
+  end
+
+  def prefecture_name=(prefecture)
+    self.prefecture_id = JpPrefecture::Prefecture.find(name: prefecture_name).code
+  end
+
+  validates :nickname, presence: true, length: { maximum: 20 }
+  validates :lastname, presence: true, length: { maximum: 20 }
+  validates :firstname, presence: true, length: { maximum: 20 }
+  validates :lastname_kana, presence: true, length: { maximum: 20 }
+  validates :firstname_kana, presence: true, length: { maximum: 20 }
+  validates :postalcode, presence: true, format: {with: /\A[0-9]{3}-[0-9]{4}\z/}
+  validates :prefecture, presence: true
+  validates :city, presence: true
+  validates :block, presence: true
+  validates :birthday, presence: true
+  validates :phone_number, presence: true, uniqueness: true, format: { with: /\A0[7-9]0-?\d{4}-?\d{4}\z/ }
+  validates :payment, presence: true
+end
