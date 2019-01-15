@@ -119,12 +119,12 @@
 
 .detail > li {
   margin-top: 16px;
-  a {
+  & a {
     display: block;
     color: $shiro;
     font-size: 13px;
   }
-  a:hover {
+  & a:hover {
     opacity: 0.6;
     text-decoration: underline;
   }
