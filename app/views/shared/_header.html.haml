@@ -1,30 +1,31 @@
-.header-container
-  .top-wrapper
-    %h1.top-wrapper__logo
-      = link_to image_tag("header-logo.svg", width: "134", height: "36", alt: "ヘッダーロゴ", style: "vertical-align:bottom"), root_path, class: "top-wrapper__logo__img"
+%header.global-header
+  .header-container
+    .top-wrapper
+      %h1.top-wrapper__logo
+        = link_to image_tag("header-logo.svg", width: "134", height: "36", alt: "ヘッダーロゴ", style: "vertical-align:bottom"), root_path, class: "top-wrapper__logo__img"
 
-    = form_tag "", class: "top-wrapper__form" do
-      = text_field_tag :keyword, "", class: "top-wrapper__form__textfield", placeholder: "キーワードから探す"
-      %label.search-btn{for: "search-icon"}
-        %i.fa.fa-search
-        = button_tag 'submit', id: "search-icon"
-
-
-  .bottom-wrapper
-    %nav.bottom-wrapper__left-nav
-      %ul.bottom-wrapper__left-nav__menu
-        %li
-          %h2
-            = link_to "カテゴリーから探す", "#", class: "bottom-wrapper__left-nav__menu--category"
-        %li
-          %h2
-            =link_to "ブランドから探す", "#", class: "bottom-wrapper__left-nav__menu--brand"
+      = form_tag "", class: "top-wrapper__form" do
+        = text_field_tag :keyword, "", class: "top-wrapper__form__textfield", placeholder: "キーワードから探す"
+        %label.search-btn{for: "search-icon"}
+          %i.fa.fa-search
+          = button_tag 'submit', id: "search-icon"
 
 
-    .bottom-wrapper__right-nav
-      %ul.bottom-wrapper__right-nav__buttons
-        %li
-          = link_to "ログイン", "#", class: "bottom-wrapper__right-nav__buttons--login-btn"
+    .bottom-wrapper
+      %nav.left-nav
+        %ul.left-nav__menu
+          %li
+            %h2
+              = link_to "カテゴリーから探す", "#", class: "left-nav__menu--category"
+          %li
+            %h2
+              =link_to "ブランドから探す", "#", class: "left-nav__menu--brand"
 
-        %li
-          = link_to "新規会員登録", "#", class: "bottom-wrapper__right-nav__buttons--signup-btn"
+
+      .right-nav
+        %ul.right-nav__buttons
+          %li
+            = link_to "ログイン", "#", class: "right-nav__buttons--login-btn"
+
+          %li
+            = link_to "新規会員登録", "#", class: "right-nav__buttons--signup-btn"

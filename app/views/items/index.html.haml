@@ -9,54 +9,54 @@
 
 .item-list
 
-  %h2 全ての商品一覧
+  %h2.item-group 全ての商品一覧
 
-  .items-container
+  .item-container
     .pickup-items
       %h3
-        %a{href: "#"} カテゴリー
+        = link_to "カテゴリー", "#"
 
-      .card
-        %a{href: "#", class: "card__item"}
-          = image_tag("item-img.png", width: "213", height: "213", alt: "アイテム画像")
-          .card__item__body
-            %h3.card__item__body__item-name 商品名が入ります
-            .card__item__body__num
-              .card__item__body__num__price ￥9,999
-              .card__item__body__num__likes
+      .item
+        = link_to "#", class: "item__img" do
+          = image_tag("item-img.png", width: "213", height: "213", alt: "アイテム画像", style: "vertical-align:bottom")
+          .item__body
+            %h3.item__name 商品名が入ります
+            .item__num
+              .item__num__price ￥9,999
+              .item__num__likes
                 =fa_icon("heart", text: 10)
               %p (税込)
 
-      .card
-        %a{href: "#", class: "card__item"}
-          = image_tag("item-img.png", width: "213", height: "213", alt: "アイテム画像")
-          .card__item__body
-            %h3.card__item__body__item-name 商品名が入ります
-            .card__item__body__num
-              .card__item__body__num__price ￥9,999
-              .card__item__body__num__likes
+      .item
+        = link_to "#", class: "item__img" do
+          = image_tag("item-img.png", width: "213", height: "213", alt: "アイテム画像", style: "vertical-align:bottom")
+          .item__body
+            %h3.item__name 商品名が入ります
+            .item__num
+              .item__num__price ￥9,999
+              .item__num__likes
                 =fa_icon("heart", text: 10)
               %p (税込)
 
-      .card
-        %a{href: "#", class: "card__item"}
-          = image_tag("item-img.png", width: "213", height: "213", alt: "アイテム画像")
-          .card__item__body
-            %h3.card__item__body__item-name 商品名が入ります
-            .card__item__body__num
-              .card__item__body__num__price ￥9,999
-              .card__item__body__num__likes
+      .item
+        = link_to "#", class: "item__img" do
+          = image_tag("item-img.png", width: "213", height: "213", alt: "アイテム画像", style: "vertical-align:bottom")
+          .item__body
+            %h3.item__name 商品名が入ります
+            .item__num
+              .item__num__price ￥9,999
+              .item__num__likes
                 =fa_icon("heart", text: 10)
               %p (税込)
 
-      .card
-        %a{href: "#", class: "card__item"}
-          = image_tag("item-img.png", width: "213", height: "213", alt: "アイテム画像")
-          .card__item__body
-            %h3.card__item__body__item-name 商品名が入ります
-            .card__item__body__num
-              .card__item__body__num__price ￥9,999
-              .card__item__body__num__likes
+      .item
+        = link_to "#", class: "item__img" do
+          = image_tag("item-img.png", width: "213", height: "213", alt: "アイテム画像", style: "vertical-align:bottom")
+          .item__body
+            %h3.item__name 商品名が入ります
+            .item__num
+              .item__num__price ￥9,999
+              .item__num__likes
                 =fa_icon("heart", text: 10)
               %p (税込)
 
@@ -64,52 +64,52 @@
           %a{href: "#"} すべての商品を見る
 
 
-  .items-container
+  .item-container
     .pickup-items
       %h3
         %a{href: "#"} ブランド
 
-      .card
-        %a{href: "#", class: "card__item"}
-          = image_tag("item-img.png", width: "213", height: "213", alt: "アイテム画像")
-          .card__item__body
-            %h3.card__item__body__item-name 商品名が入ります
-            .card__item__body__num
-              .card__item__body__num__price ￥9,999
-              .card__item__body__num__likes
+      .item
+        = link_to "#", class: "item__img" do
+          = image_tag("item-img.png", width: "213", height: "213", alt: "アイテム画像", style: "vertical-align:bottom")
+          .item__body
+            %h3.item__name 商品名が入ります
+            .item__num
+              .item__num__price ￥9,999
+              .item__num__likes
                 =fa_icon("heart", text: 10)
               %p (税込)
 
-      .card
-        %a{href: "#", class: "card__item"}
-          = image_tag("item-img.png", width: "213", height: "213", alt: "アイテム画像")
-          .card__item__body
-            %h3.card__item__body__item-name 商品名が入ります
-            .card__item__body__num
-              .card__item__body__num__price ￥9,999
-              .card__item__body__num__likes
+      .item
+        = link_to "#", class: "item__img" do
+          = image_tag("item-img.png", width: "213", height: "213", alt: "アイテム画像", style: "vertical-align:bottom")
+          .item__body
+            %h3.item__name 商品名が入ります
+            .item__num
+              .item__num__price ￥9,999
+              .item__num__likes
                 =fa_icon("heart", text: 10)
               %p (税込)
 
-      .card
-        %a{href: "#", class: "card__item"}
-          = image_tag("item-img.png", width: "213", height: "213", alt: "アイテム画像")
-          .card__item__body
-            %h3.card__item__body__item-name 商品名が入ります
-            .card__item__body__num
-              .card__item__body__num__price ￥9,999
-              .card__item__body__num__likes
+      .item
+        = link_to "#", class: "item__img" do
+          = image_tag("item-img.png", width: "213", height: "213", alt: "アイテム画像", style: "vertical-align:bottom")
+          .item__body
+            %h3.item__name 商品名が入ります
+            .item__num
+              .item__num__price ￥9,999
+              .item__num__likes
                 =fa_icon("heart", text: 10)
               %p (税込)
 
-      .card
-        %a{href: "#", class: "card__item"}
-          = image_tag("item-img.png", width: "213", height: "213", alt: "アイテム画像")
-          .card__item__body
-            %h3.card__item__body__item-name 商品名が入ります
-            .card__item__body__num
-              .card__item__body__num__price ￥9,999
-              .card__item__body__num__likes
+      .item
+        = link_to "#", class: "item__img" do
+          = image_tag("item-img.png", width: "213", height: "213", alt: "アイテム画像", style: "vertical-align:bottom")
+          .item__body
+            %h3.item__name 商品名が入ります
+            .item__num
+              .item__num__price ￥9,999
+              .item__num__likes
                 =fa_icon("heart", text: 10)
               %p (税込)
 

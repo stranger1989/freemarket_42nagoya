@@ -1,5 +1,5 @@
 // ここからヘッダー
-header {
+.global-header {
   background-color: $shiro;
 }
 
@@ -66,7 +66,7 @@ input[type="text"]:focus {
   @include clearfix();
   margin: 8px 0 0;
 
-  &__left-nav {
+  .left-nav {
     float: left;
 
     &__menu li {
@@ -98,7 +98,7 @@ input[type="text"]:focus {
     }
   }
 
-  &__right-nav {
+  .right-nav {
     float: right;
 
     &__buttons {

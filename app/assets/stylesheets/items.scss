@@ -4,12 +4,12 @@
   background-color: $bg-color;
   padding: 40px 0;
 
-  & > h2 {
+  .item-group {
     font-size: 28px;
     font-weight: bold;
     text-align: center;
   }
-  .items-container {
+  .item-container {
   width: 940px;
   margin: 0 auto;
   }
@@ -33,44 +33,24 @@
     border-bottom: 1px solid $main-blue;
   }
   }
-  .card {
+  .item {
     float:left;
     margin: 0 0 0 20px;
     width: 213px;
-    &__item {
+    &__image {
       display: block;
-      &__body {
-        height: 110px;
-        padding: 16px;
-        background-color: $shiro;
-        &__item-name {
-          color: $char-black;
-          overflow: hidden;
-          font-size: 16px;
-          font-weight: 400;
-          height: 3em;
-          line-height: 1.5;
-        }
-        &__num {
-          // margin: 8px 0 0;
-          color: $char-black;
-          @include clearfix();
-          &__price {
-            float: left;
-            font-size: 20px;
-            font-weight: 600;
-          }
-          &__likes {
-            float: right;
-            font-size: 16px;
-            font-weight: 400;
-            line-height: 1.8;
-          }
-          & > p {
-            clear: both;
-            font-size: 10px;
-          }
-        }
+    }
+    &__body {
+      height: 110px;
+      padding: 16px;
+      background-color: $shiro;
+      .item__name {
+        color: $char-black;
+        overflow: hidden;
+        font-size: 16px;
+        font-weight: 400;
+        height: 3em;
+        line-height: 1.5;
       }
     }
   }
@@ -91,30 +71,81 @@
   }
 }
 
+.item__num {
+  color: $char-black;
+  @include clearfix();
+  &__price {
+    float: left;
+    font-size: 20px;
+    font-weight: 600;
+  }
+  &__likes {
+    float: right;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.8;
+  }
+  & > p {
+    clear: both;
+    font-size: 10px;
+  }
+}
+
 
 
 // ここからフッター
 .global-footer {
   background-color: $footer;
   color: $shiro;
+  padding: 60px;
 }
 
 .footer-wrapper {
   width: 1020px;
   margin: 0 auto;
-  padding-top: 70px;
   .footer-cell {
     display: inline-block;
     vertical-align: top;
     width: 23%;
     text-align: center;
     margin: 0 8px;
+    .footer-head {
+      font-size:16px;
+      font-weight: bold;
+      .detail {
+
+      }
+    }
   }
   .footer-logo {
   display: block;
   text-align: center;
+  margin-top: 40px;
+  }
+  .footer-logo:hover {
+    opacity: .7;
   }
   .copyright {
     text-align: center;
+    font-size: 12px;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
