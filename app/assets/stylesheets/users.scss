@@ -1,3 +1,172 @@
-// Place all the styles related to the users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.single-container{
+  width: 100%;
+  min-width: 400px;
+  background-color:$bg-color;
+}
+
+.single-header{
+  width:100%;
+  text-align: center;
+  @include mq-up() {
+    height:128px;
+    a{
+      line-height:160px;
+    }
+    img{
+      width:185px;
+      height: 49px;
+    }
+  }
+  @include mq-down() {
+    height:56px;
+    line-height:80px;
+    img{
+      width:120px;
+      height: 33px;
+    }
+  }
+}
+
+.single-main{
+  width:100%;
+}
+
+.login{
+  max-width:456px;
+  height:100%;
+  margin:0 auto;
+  background-color:white;
+  &--registration{
+    max-width:700px;
+    height:100%;
+    margin:0 auto;
+    background-color:white;
+    &__form-inner{
+      @include mq-up() {
+        padding:50px 180px 0;
+      }
+      @include mq-down() {
+        padding:50px 50px 0;
+      }
+      input[type="email"],input[type="password"]{
+        @include basic-user-form();
+        width:100%;
+        height:50px;
+        margin:10px auto;
+        padding:0 10px;
+        display:block;
+      }
+    }
+  }
+  &__head-inner{
+    border-bottom: 2px solid $bg-color;
+    text-align:center;
+    @include mq-up() {
+      padding:40px 64px;
+    }
+    @include mq-down() {
+      padding:40px 32px;
+    }
+    p{
+      font-size:14px;
+    }
+    h2{
+      font-size:22px;
+      font-weight: bold;
+    }
+  }
+  &__form-inner{
+    @include mq-up() {
+      padding:20px 64px;
+    }
+    @include mq-down() {
+      padding:20px 32px;
+    }
+    input[type="email"],input[type="password"]{
+      @include basic-user-form();
+      width:100%;
+      height:50px;
+      margin:20px auto;
+      padding:0 10px;
+      display:block;
+    }
+  }
+}
+
+.single-footer{
+  width:100%;
+  padding:50px 0;
+  text-align: center;
+  font-size: .75rem;
+  a{
+    color:#000;
+  }
+  img{
+    width:80px;
+    height:65px;
+    margin:50px 0 0 0;
+  }
+  @include mq-up() {
+    li{
+      padding:0 10px;
+      display:inline-block;
+    }
+  }
+  @include mq-down() {
+    li{
+      padding:5px 0;
+    }
+  }
+}
+
+.btn-registration{
+  margin:5px 0 0 0;
+  @include button-user-form(100%,40px,$main-blue,.8rem,#FFF);
+}
+
+.btn-mailaddress{
+  @include button-user-form(100%,50px,#F3F3F3,.8rem,#000);
+  &::before{
+    content:"\f0e0";
+    position:absolute;
+    left: 15px;
+    color: #DBDBDB;
+    font-family: "Font Awesome 5 Free";
+    font-size:1.2rem;
+  }
+}
+
+.btn-facebook{
+  margin:10px 0 0 0;
+  @include button-user-form(100%,50px,$face-book,.8rem,#FFF);
+  &::before{
+    content:"\f082";
+    position:absolute;
+    left: 15px;
+    font-family: "Font Awesome 5 Brands";
+    font-size:1.2rem;
+  }
+}
+
+.btn-google{
+  margin:10px 0 50px 0;
+  @include button-user-form(100%,50px,$google,.8rem,#FFF);
+  &::before{
+    content:"\f0d5";
+    position:absolute;
+    left: 15px;
+    font-family: "Font Awesome 5 Brands";
+    font-size:1.2rem;
+  }
+}
+
+.btn-summit{
+  margin:20px 0 30px 0;
+  @include button-user-form(100%,50px,$main-red,.8rem,#FFF);
+  cursor:pointer;
+}
+
+.forget-password{
+  font-size: .9rem;
+  color:$main-blue;
+}
