@@ -5,3 +5,21 @@
     clear: both;
   }
 }
+
+$breakpoints: (
+  s: "only screen and (min-width: 375px)",
+  m: "only screen and (min-width: 768px)",
+  l: "only screen and (min-width: 1068px)",
+);
+
+
+@mixin media($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media #{map-get($breakpoints, $breakpoint)} {
+      @content;
+    }
+  }
+  @else {
+    @error "$breakpointsに#{$breakpoint}というキーはありません";
+  }
+}
