@@ -2,6 +2,11 @@
 
   .footer-wrapper
     %ul
+      %li.download-app
+        = link_to "", class: "app-icon" do
+          = image_tag("mercari_icon.png", width: "35", alt: "download-app", style: "vertical-align:bottom")
+          今すぐ無料ダウンロード！
+
       %li.footer-cell
         %h2.footer-head メルカリについて
         %ul.detail
