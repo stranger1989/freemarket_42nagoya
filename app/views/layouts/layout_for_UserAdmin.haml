@@ -1,0 +1,26 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Freemarket42nagoya
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    %link{ rel:"stylesheet", href:"https://use.fontawesome.com/releases/v5.0.13/css/all.css", integrity:"sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp", crossorigin: "anonymous"}
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+  .single-container
+    %header.single-header
+      = link_to image_tag("header-logo.svg", alt: "Mercari"), "https://www.mercari.com/jp/"
+    = yield
+    %footer.single-footer
+      %nav
+        %ul
+          %li
+            =link_to "プライバシーポリシー","https://www.google.com", class: ""
+          %li
+            =link_to "メルカリ利用規約","https://www.google.com", class: ""
+          %li
+            =link_to "特定商取引に関する表記","https://www.google.com", class: ""
+      = link_to image_tag("admin_footer_logo.svg", alt: "Mercari"), "https://www.mercari.com/jp/"
+      %p
+        %small © 2019 Mercari
