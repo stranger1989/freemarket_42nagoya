@@ -8,13 +8,13 @@
           = f.label :nickname do
             ニックネーム
             %span.required 必須
-          = f.text_field :nickname, placeholder: "例) メルカリ太郎"
+          = f.text_field :nickname, autofocus: true, placeholder: "例) メルカリ太郎"
           = devise_error_messages :nickname
         .field
           = f.label :email do
             メールアドレス
             %span.required 必須
-          = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "PC・携帯どちらでも可"
+          = f.email_field :email, autocomplete: "email", placeholder: "PC・携帯どちらでも可"
           = devise_error_messages :email
         .field
           = f.label :password do
@@ -32,7 +32,7 @@
           = f.label :phone_number do
             携帯電話の番号
             %span.required 必須
-          = f.text_field :phone_number, autofocus: true, autocomplete: "email", placeholder: "例) 09012345678"
+          = f.text_field :phone_number, autocomplete: "email", placeholder: "例) 09012345678"
           = devise_error_messages :phone_number
         .field
           = f.label :lastname do
