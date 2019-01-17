@@ -1,0 +1,37 @@
+!!!
+%html
+  %head
+    %meta{content:"text/html; charset=UTF-8", "http-equiv": "Content-Type"}/
+    %title Freemarket42nagoya
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+  %body
+  .single-container
+    %header.single-header--SignUp
+      .single-header--SignUp__SignUpimage
+        = link_to image_tag("header-logo.svg", alt: "Mercari", class: "single-header-logo"), "https://www.mercari.com/jp/", class: "single-header-link"
+      .single-header--SignUp__SignUpNav
+        %nav
+          %ol.progress-bar
+            %li.is-active
+              %span 会員情報
+            %li
+              %span 電話番号認証
+            %li
+              %span 住所入力
+            %li
+              %span 支払い方法
+            %li
+              %span 完了
+    = yield
+    %footer.single-footer
+      %nav
+        %ul
+          %li
+            =link_to "プライバシーポリシー","https://www.google.com", class: "critical_information"
+          %li
+            =link_to "メルカリ利用規約","https://www.google.com", class: "critical_information"
+          %li
+            =link_to "特定商取引に関する表記","https://www.google.com",  class: "critical_information"
+      = link_to image_tag("admin_footer_logo.svg", alt: "Mercari", class: "single-footer-logo"), "https://www.mercari.com/jp/"
+      %p
+        %small © 2019 Mercari
