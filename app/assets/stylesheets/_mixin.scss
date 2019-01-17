@@ -6,6 +6,7 @@
   }
 }
 
+
 $breakpoints: (
   s: "only screen and (min-width: 375px)",
   m: "only screen and (min-width: 768px)",
@@ -22,4 +23,25 @@ $breakpoints: (
   @else {
     @error "$breakpointsに#{$breakpoint}というキーはありません";
   }
+}
+
+// ユーザーフォームのスタイル
+@mixin basic-user-form() {
+  border:1px solid #CCCCCC;
+  border-radius: 3px;
+}
+
+// ログイン・新規登録画面のボタンスタイル
+@mixin button-user-form($width: 100%, $height: 40px, $color: #000, $font-size: 16px, $text-color: #FFF) {
+  width: $width;
+  height: $height;
+  position:relative;
+  background-color: $color;
+  display: inline-block;
+  color: rgba($text-color, .9);
+  font-size: $font-size;
+  text-align: center;
+  text-decoration:none;
+  line-height: $height;
+  outline: 0;
 }

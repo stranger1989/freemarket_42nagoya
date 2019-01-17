@@ -1,0 +1,75 @@
+// レスポンシブカラムについてのmixin
+@mixin col(
+    $column-count,
+    $column-margin  : margin(),
+    $selector       : '.item',
+    $is-list        : false,
+    $is-flex        : true
+) {
+    // リストに適用する場合
+    @if $is-list == true {
+        $selector : '> li';
+    }
+    // is Flex (default)
+    @if $is-flex == true {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: start;
+
+        $margin-size : #{$column-margin * ($column-count - 1)};
+
+        #{$selector} {
+            width: calc((100% - #{$margin-size}) / #{$column-count});
+            margin-right: calc(#{$margin-size} / #{$column-count - 1});
+            &:nth-child(#{$column-count}n){
+              margin-right:0;
+            }
+            @content;
+        }
+    } // end Flex
+    // not Flex
+    @else {
+        @include clearfix;
+        margin-left : #{-$column-margin};
+        $margin-size : #{$column-margin * $column-count};
+
+        #{$selector} {
+            float: left;
+            margin-right: -.1px;    // 小数点以下の切り捨て・切り上げ解釈違いに対応
+            margin-left:#{$column-margin};
+            width: calc((100% - #{$margin-size}) / #{$column-count});
+            @content;
+        }
+    } // end if not Flex
+}
+
+// メディアクエリについてのmixin
+// 変数の定義
+// min-width
+$breakpoint-up: (
+  'sm': 'screen and (min-width: 400px)',
+  'md': 'screen and (min-width: 768px)',
+  'lg': 'screen and (min-width: 1000px)',
+  'xl': 'screen and (min-width: 1200px)',
+) !default;
+
+// max-width
+$breakpoint-down: (
+  'sm': 'screen and (max-width: 399px)',
+  'md': 'screen and (max-width: 767px)',
+  'lg': 'screen and (max-width: 999px)',
+  'xl': 'screen and (max-width: 1199px)',
+) !default;
+
+// @mixinの定義
+@mixin mq-up($breakpoint: md) {
+  @media #{map-get($breakpoint-up, $breakpoint)} {
+    @content;
+  }
+}
+
+@mixin mq-down($breakpoint: md) {
+  @media #{map-get($breakpoint-down, $breakpoint)} {
+    @content;
+  }
+}

@@ -1,17 +1,16 @@
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "current-password"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "devise/shared/links"
+.single-main
+  .login
+    .login__head-inner
+      %p アカウントをお持ちでない方はこちら
+      =link_to "新規会員登録", user_registration_index_path, class: "btn-registration"
+    .login__form-inner
+      =link_to "Facebookでログイン","#", class: "btn-facebook"
+      =link_to "Googleでログイン", "#", class: "btn-google"
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .field
+          = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス"
+        .field
+          = f.password_field :password, autocomplete: "current-password", placeholder: "パスワード"
+        .actions
+          = f.submit "ログイン", class: "btn-summit"
+        =link_to "パスワードをお忘れの方", new_password_path(resource_name), class: "forget-password"
