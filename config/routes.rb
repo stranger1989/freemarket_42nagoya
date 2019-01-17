@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
         registrations: 'users/registrations'
       }
-  get 'items/index'
+  resources :items, only: [:index]
   root "items#index"
 
   devise_scope :user do
