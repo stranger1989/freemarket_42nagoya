@@ -12,6 +12,7 @@
     @include mq-up() {
       width:700px;
       height:128px;
+      line-height:160px;
       &__SignUpimage{
         width:185px;
         height: 49px;
@@ -21,9 +22,6 @@
         width:70%;
         margin:30px 0 0 0;
         float: right;
-      }
-      .single-header-link{
-        line-height:160px;
       }
       .single-header-logo{
         width:185px;
@@ -49,9 +47,7 @@
   }
   @include mq-up() {
     height:128px;
-    .single-header-link{
-      line-height:160px;
-    }
+    line-height:160px;
     .single-header-logo{
       width:185px;
       height: 49px;
