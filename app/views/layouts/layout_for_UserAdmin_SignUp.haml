@@ -8,7 +8,7 @@
   .single-container
     %header.single-header--SignUp
       .single-header--SignUp__SignUpimage
-        = link_to image_tag("header-logo.svg", alt: "Mercari"), "https://www.mercari.com/jp/"
+        = link_to image_tag("header-logo.svg", alt: "Mercari", class: "single-header-logo"), "https://www.mercari.com/jp/", class: "single-header-link"
       .single-header--SignUp__SignUpNav
         %nav
           %ol.progress-bar
@@ -27,11 +27,11 @@
       %nav
         %ul
           %li
-            =link_to "プライバシーポリシー","https://www.google.com", class: ""
+            =link_to "プライバシーポリシー","https://www.google.com", class: "critical_information"
           %li
-            =link_to "メルカリ利用規約","https://www.google.com", class: ""
+            =link_to "メルカリ利用規約","https://www.google.com", class: "critical_information"
           %li
-            =link_to "特定商取引に関する表記","https://www.google.com", class: ""
-      = link_to image_tag("admin_footer_logo.svg", alt: "Mercari"), "https://www.mercari.com/jp/"
+            =link_to "特定商取引に関する表記","https://www.google.com",  class: "critical_information"
+      = link_to image_tag("admin_footer_logo.svg", alt: "Mercari", class: "single-footer-logo"), "https://www.mercari.com/jp/"
       %p
         %small © 2019 Mercari

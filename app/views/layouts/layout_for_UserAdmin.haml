@@ -10,7 +10,7 @@
   %body
   .single-container
     %header.single-header
-      = link_to image_tag("header-logo.svg", alt: "Mercari"), "https://www.mercari.com/jp/"
+      = link_to image_tag("header-logo.svg", alt: "Mercari", class: "single-header-logo"), "https://www.mercari.com/jp/"
     = yield
     %footer.single-footer
       %nav
@@ -21,6 +21,6 @@
             =link_to "メルカリ利用規約","https://www.google.com", class: ""
           %li
             =link_to "特定商取引に関する表記","https://www.google.com", class: ""
-      = link_to image_tag("admin_footer_logo.svg", alt: "Mercari"), "https://www.mercari.com/jp/"
+      = link_to image_tag("admin_footer_logo.svg", alt: "Mercari", class: "single-footer-logo"), "https://www.mercari.com/jp/"
       %p
         %small © 2019 Mercari
