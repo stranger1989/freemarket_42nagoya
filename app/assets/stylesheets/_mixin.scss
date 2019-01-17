@@ -26,3 +26,13 @@
   line-height: $height;
   outline: 0;
 }
+
+// 必須・任意ボタンのスタイル
+@mixin small-require-button($color: #000, $font-size: 16px, $text-color: #FFF) {
+  padding:4px 4px;
+  background-color:$color;
+  border-radius: 2px;
+  color:$text-color;
+  font-size:$font-size;
+  font-weight: normal;
+}
