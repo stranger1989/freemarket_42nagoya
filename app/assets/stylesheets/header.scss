@@ -1,20 +1,200 @@
-// ここからヘッダー
-.global-header {
+// スマートフォン用ヘッダー
+.sp-header {
+  position: relative;
+  z-index: 1000;
+  background-color: $shiro;
+  height: 140px;
+}
+
+// PC・タブレット用ヘッダーとの切り替え
+.visible-sp {
+  @include media(m) {
+    display: none;
+  }
+}
+
+.has-search-nav {
+  height: 140px;
+}
+
+// ロゴ、ログイン・新規登録ボタン
+.top-header {
+  @include clearfix();
+  @include media(s) {
+    padding: 6px 16px 0;
+  }
+  position: relative;
+  padding: 6px 10px 0;
+
+  &__logo {
+    @include media(s) {
+      padding-top: 1px;
+      width: 135px;
+      height: 39px;
+    }
+    float: left;
+    width: 120px;
+    height: 32px;
+    opacity: 1;
+    padding-top: 3px;
+    &__link {
+      display: block;
+      color: $char-black;
+      & img {
+        @include media(s) {
+          width: 148px;
+          height: 40px;
+        }
+        width: 120px;
+        height: 32px;
+      }
+    }
+  }
+  &__user-nav {
+    @include clearfix();
+    float: right;
+    margin: 4px 0 0;
+    font-size: 14px;
+  }
+}
+
+// ボタンのスタイル
+.sp-header-btn {
+  @include media(s) {
+    padding: 0 10px;
+    line-height: 30px;
+  }
+  display: inline-block;
+  padding: 0 6px;
+  border-radius: 4px;
+  text-align: center;
+  line-height: 26px;
+}
+
+.sp-header-btn:first-child {
+    margin-right: 3px;
+}
+
+// ログインボタンのスタイル
+.login-btn {
+  background-color: $main-red;
+  border: 1px solid $main-red;
+  color: $shiro;
+}
+
+.top-header__user-nav .login-btn:hover {
+  opacity: .8;
+  text-decoration: underline;
+}
+
+// 新規登録ボタンのスタイル
+.signup-btn {
+  border: 1px solid $main-blue;
+  background-color: $shiro;
+  color: $main-blue;
+}
+
+.signup-btn:hover {
+  background-color: $main-blue;
+  color: $shiro;
+  opacity: .8;
+  text-decoration: underline;
+}
+
+// 検索フォーム
+.search-bar {
+  height: 44px;
+  margin-top: 8px;
+  position: relative;
+  &__form__textfield {
+    background: #eee;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    box-sizing: border-box;
+    height: 38px;
+    margin: 0 10px;
+    padding: 0 15px 0 10px;
+    margin-top: 2px;
+    transition: border-color ease-out .3s;
+    width: calc(100% - 20px);
+  }
+  & #search-icon {
+    display: none;
+  }
+  & .fa-search {
+    height: 36px;
+    line-height: 38px;
+    position: absolute;
+    right: 10px;
+    text-align: center;
+    top: 2px;
+    width: 36px;
+    z-index: 1;
+  }
+}
+
+// カテゴリー・ブランド
+.search-nav {
+  position: relative;
+  overflow: hidden;
+  height: 44px;
+  line-height: 42px;
+  & a {
+    font-size: 14px;
+    float: left;
+    display: inline-block;
+    padding: 0;
+    position: relative;
+    text-align: center;
+    width: 50%;
+    color: $char-black;
+  }
+  &__category:after {
+    background: #eee;
+    content: '';
+    display: block;
+    height: 34px;
+    position: absolute;
+    top: 4px;
+    right: 0;
+    width: 1px;
+    border-style: solid;
+    border-width: 0;
+  }
+  & a:hover {
+    opacity: .7;
+    text-decoration: underline;
+  }
+}
+
+
+// PC・タブレット用ヘッダー
+.pc-header {
+  position: relative;
+  z-index: 1001;
   background-color: $shiro;
 }
 
+.visible-pc {
+  @include media(m) {
+    display: block;
+  }
+  display: none;
+}
+
 .header-container {
-  width: 1020px;
+  @include media(l) {
+    width: 1020px;  
+  }
+  width: 700px;
   margin:0 auto;
   padding-top: 8px;
 }
 
 .top-wrapper {
   @include clearfix();
-
   &__logo {
     float: left;
-
     &__img {
       display: block;
     }
@@ -79,6 +259,7 @@ input[type="text"]:focus {
         color: $char-black;
         font-size: 14px;
         line-height: 38px;
+        display: block;
       }
 
       &--category:hover {
@@ -90,6 +271,7 @@ input[type="text"]:focus {
         font-size: 14px;
         line-height: 38px;
         padding-left: 16px;
+        display: block;
       }
 
       &--brand:hover {
@@ -101,22 +283,27 @@ input[type="text"]:focus {
   .right-nav {
     float: right;
 
-    &__buttons {
+    .right-nav__buttons {
       display: flex;
-      text-align: center;
 
-      &--login-btn {
-        color: $shiro;
-        background-color: $main-red;
+      & .sp-header-btn {
+        margin: 0;
+      }
+
+      & .login-btn {
         display: block;
         border-radius: 7px;
         font-size: 14px;
         margin-right: 11px;
-        line-height: 32px;
+        line-height: 30px;
         padding: 0 10px;
       }
 
-      &--signup-btn {
+      & .login-btn:hover {
+        opacity: .9;
+      }
+
+      & .pc-signup {
         color: $main-blue;
         border: 1px solid $main-blue;
         display: block;
@@ -126,10 +313,11 @@ input[type="text"]:focus {
         padding: 0 10px;
       }
 
-      &--signup-btn:hover {
+      & .pc-signup:hover {
         background-color: $main-blue;
         color: $shiro;
       }
     }
   }
 }
+
