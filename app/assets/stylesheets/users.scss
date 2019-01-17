@@ -7,6 +7,46 @@
 .single-header{
   width:100%;
   text-align: center;
+  &--SignUp{
+    margin:0 auto;
+    @include mq-up() {
+      width:700px;
+      height:128px;
+      &__SignUpimage{
+        width:185px;
+        height: 49px;
+        float: left;
+      }
+      &__SignUpNav{
+        width:70%;
+        margin:30px 0 0 0;
+        float: right;
+      }
+      a{
+        line-height:160px;
+      }
+      img{
+        width:185px;
+        height: 49px;
+      }
+    }
+    @include mq-down() {
+      width:100%;
+      height:150px;
+      line-height:80px;
+      &__SignUpimage{
+        text-align:center;
+      }
+      &__SignUpNav{
+        width:90%;
+        margin:0 auto;
+      }
+      img{
+        width:120px;
+        height: 33px;
+      }
+    }
+  }
   @include mq-up() {
     height:128px;
     a{
@@ -48,13 +88,64 @@
       @include mq-down() {
         padding:50px 50px 0;
       }
-      input[type="email"],input[type="password"]{
+      input[type="email"],input[type="password"], select {
         @include basic-user-form();
         width:100%;
         height:50px;
         margin:10px auto;
         padding:0 10px;
         display:block;
+      }
+    }
+  }
+  &--infomation{
+    max-width:700px;
+    height:100%;
+    margin:0 auto;
+    background-color:white;
+    &__form-inner{
+      @include mq-up() {
+        padding:50px 180px 0;
+      }
+      @include mq-down() {
+        padding:50px 50px 0;
+      }
+      .field{
+        &:nth-of-type(n+2){
+          margin:20px 0 0 0;
+        }
+        label{
+          font-size: 15px;
+          font-weight: 600;
+          vertical-align: middle;
+        }
+        .required{
+          @include small-require-button($main-red, 12px, $shiro);
+        }
+        .not-required{
+          @include small-require-button(#CCCCCC, 12px, $shiro);
+        }
+        input[type="text"], input[type="email"],input[type="password"], select {
+          @include basic-user-form();
+          width:100%;
+          height:50px;
+          margin:5px auto 0;
+          padding:0 10px;
+          background-color:$shiro;
+          display:block;
+        }
+        #user_birthday_1i,#user_birthday_2i,#user_birthday_3i{
+          width:23%;
+          display:inline-block;
+        }
+        .alert-danger{
+          margin:5px 0 0 0;
+          font-size: .85rem;
+          color:$main-red;
+          .classname:nth-child(1) {
+            color:red;
+          };
+        }
       }
     }
   }
@@ -169,4 +260,55 @@
 .forget-password{
   font-size: .9rem;
   color:$main-blue;
+}
+
+// プログレスバー
+.progress-bar {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem 0;
+  li{
+    flex: 2;
+    position: relative;
+    padding: 0 0 14px 0;
+    font-size: .8rem;
+    line-height: 1.5;
+    color: #888;
+    white-space: nowrap;
+    overflow: visible;
+    min-width: 0;
+    text-align: center;
+    &:before{
+      content: "";
+      display: block;
+      width: 12px;
+      height: 12px;
+      background-color: #D7D7D7;
+      border-radius: 50%;
+      position: absolute;
+      left: calc(50% - 7px);
+      bottom: -10px;
+      z-index: 3;
+    }
+    &:not(:last-child){
+      &:after{
+        content: "";
+        width: 100%;
+        display: block;
+        border-bottom: 2px solid #D7D7D7;
+        position: absolute;
+        left: calc(50% - 7px);
+        bottom: -3.5px;
+        z-index: 2;
+      }
+    }
+  }
+  .is-active{
+    color: $main-red;
+    &:before{
+      background-color: $main-red;
+    }
+  }
 }
