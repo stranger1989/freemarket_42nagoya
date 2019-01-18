@@ -5,9 +5,9 @@
       = link_to image_tag("header-logo.svg", alt: "ヘッダーロゴ", style: "vertical-align:bottom"), root_path, class: "top-header__logo__link"
 
     .top-header__user-nav
-      = link_to "ログイン", "#", class: "sp-header-btn login-btn"
+      = link_to "ログイン", new_user_session_path, class: "sp-header-btn login-btn"
 
-      = link_to "新規会員", "#", class: "sp-header-btn signup-btn"
+      = link_to "新規会員", user_registration_index_path, class: "sp-header-btn signup-btn"
 
   .search-bar
     = form_tag "", class: "search-bar__form" do
@@ -49,7 +49,7 @@
       .right-nav
         %ul.right-nav__buttons
           %li
-            = link_to "ログイン", "#", class: "sp-header-btn login-btn"
+            = link_to "ログイン", new_user_session_path, class: "sp-header-btn login-btn"
 
           %li
-            = link_to "新規会員登録", "#", class: "sp-header-btn pc-signup"
+            = link_to "新規会員登録", user_registration_index_path, class: "sp-header-btn pc-signup"
