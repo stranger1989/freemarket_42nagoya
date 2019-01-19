@@ -104,7 +104,7 @@
   }
 }
 
-.item-box:last-child {
+.item-box:nth-child(4) {
   @include media(m) {
     display: none;
   }
