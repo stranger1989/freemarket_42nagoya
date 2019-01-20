@@ -24,15 +24,4 @@
             %li
               %span 完了
     = yield
-    %footer.single-footer
-      %nav
-        %ul
-          %li
-            =link_to "プライバシーポリシー","https://www.google.com", class: "critical_information"
-          %li
-            =link_to "メルカリ利用規約","https://www.google.com", class: "critical_information"
-          %li
-            =link_to "特定商取引に関する表記","https://www.google.com",  class: "critical_information"
-      = link_to image_tag("admin_footer_logo.svg", alt: "Mercari", class: "single-footer-logo"), root_path
-      %p
-        %small © 2019 Mercari
+    = render "shared/sub-footer"
