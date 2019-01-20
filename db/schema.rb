@@ -28,20 +28,20 @@ ActiveRecord::Schema.define(version: 20190118100644) do
   end
 
   create_table "items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name",                                                  null: false
-    t.string   "image",                                                 null: false
-    t.integer  "price",                                                 null: false
-    t.string   "order_status",                          default: "出品中"
-    t.string   "item_status",                                           null: false
-    t.string   "shipping_fee",                                          null: false
-    t.string   "delivery_way",                                          null: false
-    t.string   "shipping_area",                                         null: false
-    t.string   "estimated_shipping_date",                               null: false
-    t.text     "description",             limit: 65535,                 null: false
-    t.string   "size",                                                  null: false
+    t.string   "name",                                  null: false
+    t.text     "image",                   limit: 65535
+    t.integer  "price",                                 null: false
+    t.string   "order_status",                          null: false
+    t.string   "imem_status",                           null: false
+    t.string   "shipping_fee",                          null: false
+    t.string   "delivery_way",                          null: false
+    t.string   "shipping_area",                         null: false
+    t.datetime "estimated_shipping_date",               null: false
+    t.text     "description",             limit: 65535, null: false
+    t.string   "size"
     t.integer  "user_id"
-    t.datetime "created_at",                                            null: false
-    t.datetime "updated_at",                                            null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.index ["name"], name: "index_items_on_name", using: :btree
     t.index ["user_id"], name: "index_items_on_user_id", using: :btree
   end
