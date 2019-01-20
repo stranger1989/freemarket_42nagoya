@@ -22,4 +22,6 @@ class User < ApplicationRecord
   validates :birthday, presence: true
   validates :phone_number, presence: true, uniqueness: true, format: { with: /\A0[7-9]0-?\d{4}-?\d{4}\z/ }
   validates :payment, presence: true
+
+  has_many :items
 end
