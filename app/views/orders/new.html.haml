@@ -1,0 +1,41 @@
+= render "shared/sub-header"
+.single-main
+  .order
+    .order__head-inner
+      %h2.innertitle 購入を確定しますか？
+    .order__form-inner
+      .buy-item-info
+        %h3
+          =image_tag("dami-coat.jpg", class: "buy-main-photo")
+        %p.buy-item-name niko and... コート
+        %p.buy-item-price
+          ¥ 3,300
+          %span.include-fee 送料込み
+      .buy-buttons
+        %p.btn-point ポイントはありません
+        %p.buy-item-cell 支払い金額
+        %p.item-price ¥ 3,300
+        %p.has-error-text 配送先と支払い方法の入力を完了してください。
+        %button.btn-buy 購入する
+    .order__user-info
+      .user-info-inner
+        %h3.deliver-to-title 配送先
+        %address
+          〒000-0000
+          %br
+          愛知県 〇〇〇〇〇〇〇〇〇〇〇〇
+          〇〇〇〇
+          %br
+        =link_to "#", class: "user-address-change" do
+          変更する
+          %i.fa.fa-chevron-right
+    .order__pay-method
+      .pay-method-inner
+        %h3.pay-method-title 支払い方法
+        \/
+        %br
+        =link_to "#", class: "pay-method-change" do
+          変更する
+          %i.fa.fa-chevron-right
+
+= render "shared/sub-footer"
