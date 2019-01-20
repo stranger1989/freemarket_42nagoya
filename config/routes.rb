@@ -2,9 +2,9 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
         registrations: 'users/registrations'
       }
-
+  
   root "items#index"
-  resources :items, only: [:index, :new, :create]
+  resources :items, only: [:index, :show, :new, :create]
 
   devise_scope :user do
     get "/users/sign_up/registration", to: "devise/registrations#index", as: "user_registration_index"

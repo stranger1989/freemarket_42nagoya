@@ -55,3 +55,25 @@ $breakpoints: (
   font-size:$font-size;
   font-weight: normal;
 }
+
+// いいね・不適切ボタンのスタイル
+@mixin sub-borderround-button($color: #000, $font-size: 16px, $text-color: #FFF) {
+  padding:6px 10px;
+  background-color:$color;
+  border:none;
+  border-radius: 18px;
+  color:$text-color;
+  font-size:$font-size;
+  font-weight: normal;
+}
+
+// SNSボタンのスタイル
+@mixin sns-square-button($color: #000, $font-size: 16px, $text-color: #FFF) {
+  padding: 8px 7px 10px 12px;
+  background-color:$color;
+  border:none;
+  border-radius: 5px;
+  color:$text-color;
+  font-size:$font-size;
+  font-weight: normal;
+}
