@@ -8,19 +8,6 @@
     %link{ rel:"stylesheet", href:"https://use.fontawesome.com/releases/v5.0.13/css/all.css", integrity:"sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp", crossorigin: "anonymous"}
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-  .single-container
-    %header.single-header
-      = link_to image_tag("header-logo.svg", alt: "Mercari", class: "single-header-logo"), root_path
+    = render "shared/header"
     = yield
-    %footer.single-footer
-      %nav
-        %ul
-          %li
-            =link_to "プライバシーポリシー","https://www.google.com", class: "critical_information"
-          %li
-            =link_to "メルカリ利用規約","https://www.google.com", class: "critical_information"
-          %li
-            =link_to "特定商取引に関する表記","https://www.google.com", class: "critical_information"
-      = link_to image_tag("admin_footer_logo.svg", alt: "Mercari", class: "single-footer-logo"), root_path
-      %p
-        %small © 2019 Mercari
+    = render "shared/footer"
