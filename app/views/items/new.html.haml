@@ -87,12 +87,12 @@
                 ¥
                 .l-right__form
                   = f.text_field :price, placeholder: "例) 300", class: "form-group__form-default price-form"
-            %li
-              .commissions-label
-              .commissions
-            %li
-              .profit-label
-              .profit
+            %li.commissions
+              .l-left 販売手数料(10％)
+              .l-right -
+            %li.profit
+              .l-left 販売利益
+              .l-right -
 
       .sell-content
         %p 禁止されている出品、行為は必ずご確認ください。
