@@ -1,0 +1,215 @@
+
+/ ヘッダー
+= render "shared/header"
+
+.item-list
+  .single-main
+    .item-detail
+      %h1.item-detail__name ロシアンダイヤ・ピンクサファイア・リング・11号・未使用♡即購入OK♡値下げ
+      %p.item-detail__wording 『ロシアンダイヤ・ピンクサファイア・リング・11号・未使用♡即購入OK♡値下げ』は、65回の取引実績を持つレオンさんから出品されました。リング/レディースの商品で、東京都から2~3日で発送されます。
+      .item-detail__main-contents.main-contents
+        %section.main-contents__photo
+          =image_tag("item-detail-dami.jpg", class: "item-main-photo")
+          .item-sub-photo
+        %section.main-contents__detail.main-contents__detail--large
+          %table
+            %tbody
+              %tr
+                %th 出品者
+                %td
+                  =link_to "レオン", "#"
+                  %br
+                  .item-user-eva
+                    %i.fa.fa-smile-o.smile
+                    78
+                  .item-user-eva
+                    %i.fa.fa-meh-o.meh
+                    10
+                  .item-user-eva
+                    %i.fa.fa-frown-o.frown
+                    10
+              %tr
+                %th カテゴリー
+                %td
+                  =link_to "メンズ", "#"
+                  %br
+                  =link_to "ジャケット/アウター", "#"
+                  %br
+                  =link_to "ダウンジャケット", "#"
+              %tr
+                %th ブランド
+                %td ナノ ユニバース
+              %tr
+                %th 商品のサイズ
+                %td S
+              %tr
+                %th 商品の状態
+                %td 未使用に近い
+              %tr
+                %th 配送料の負担
+                %td 送料込み(出品者負担)
+              %tr
+                %th 配送の方法
+                %td ゆうゆうメルカリ便
+              %tr
+                %th 配送元地域
+                %td
+                  =link_to "神奈川県", "#"
+              %tr
+                %th 発送日の目安
+                %td 2~3日で発送
+      .item-detail__price-box
+        %span.item-price ¥ 3,500
+        %span.item-tax (税込)
+        %span.item-shipping-fee 送料込み
+      .item-detail__item-buy-button
+        =link_to "購入画面に進む","#", class: "btn-buy"
+        %section.main-contents__detail.main-contents__detail--small
+          %table
+            %tbody
+              %tr
+                %th 出品者
+                %td
+                  =link_to "レオン", "#"
+                  %br
+                  .item-user-eva
+                    %i.fa.fa-smile-o.smile
+                    78
+                  .item-user-eva
+                    %i.fa.fa-meh-o.meh
+                    10
+                  .item-user-eva
+                    %i.fa.fa-frown-o.frown
+                    10
+              %tr
+                %th カテゴリー
+                %td
+                  =link_to "メンズ", "#"
+                  %br
+                  =link_to "ジャケット/アウター", "#"
+                  %br
+                  =link_to "ダウンジャケット", "#"
+              %tr
+                %th ブランド
+                %td ナノ ユニバース
+              %tr
+                %th 商品のサイズ
+                %td S
+              %tr
+                %th 商品の状態
+                %td 未使用に近い
+              %tr
+                %th 配送料の負担
+                %td 送料込み(出品者負担)
+              %tr
+                %th 配送の方法
+                %td ゆうゆうメルカリ便
+              %tr
+                %th 配送元地域
+                %td
+                  =link_to "神奈川県", "#"
+              %tr
+                %th 発送日の目安
+                %td 2~3日で発送
+      .item-detail__price-box.item-detail__price-box--small
+        %span.item-price ¥ 3,500
+        %span.item-tax (税込)
+        %span.item-shipping-fee 送料込み
+      .item-detail__item-buy-button.item-detail__item-buy-button--small
+        =link_to "購入画面に進む","#", class: "btn-buy"
+      .item-detail__description
+        %p.description-inner
+          ナノユニバースのグレーのニットです。
+          サイズ36
+          丈(襟の高い所から裾まで)約58センチ
+          幅(脇の下から脇の下)約48センチ
+          袖(襟の高い所から袖先まで).約65センチ
+          1回の着用です。
+          きれいな状態だと思いますが、中古品であることをご理解いただきご検討ください。
+      .item-detail__sub-buttons
+        %button.btn-tag-like
+          %i.fa.fa-heart-o
+          いいね
+        %button.btn-tag-unfitable
+          %i.fa.fa-flag-o
+          不適切な商品の報告
+        =link_to "#", class: "safty" do
+          %i.fa.fa-lock
+          あんしん・あんぜんへの取り組み
+    .comment-container
+      .comment-container__comment-view.comment-view
+        = link_to image_tag("", alt: "", class: "comment-view__user_image")
+        .comment-view__user-name Natalia
+        .comment-view__balloom
+          すみません、どんなファーでしょうか？
+          .comment-time
+            %i.fa.fa-clock-o
+            3日前
+          .comment-flag
+            %i.fa.fa-flag-o
+      %form{action: "/", method: "post"}
+        %p.comment-container__attention 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        %textarea.comment-container__textarea
+        %input{type: "submit", value: "コメントする", class: "comment-container__button"}
+
+    %nav.item-paginate
+      %ul
+        %li.item-paginate__prev
+          =link_to "#" do
+            %i.fa.fa-chevron-left
+            テラフォーマーズ 1〜19巻セット
+        %li.item-paginate__next
+          =link_to "#" do
+            ねこのかぶりもの ロコン
+            %i.fa.fa-chevron-right
+    .sns-container
+      .sns-box
+        .facebook
+          %i.fa.fa-facebook-square
+        .twitter
+          %i.fa.fa-twitter
+        .pinterest
+          %i.fa.fa-pinterest
+
+    .user-item-container
+      %h3
+        = link_to "YAYOIさんのその他の出品", "#"
+      .item
+        .item-box--user-item.item-box
+          = link_to "#" do
+            .item-box__photo
+              = image_tag "item-img.png", alt: "アイテム画像", style: "vertical-align:bottom"
+            .item-box__body
+              %h3.item-box__name 商品名が入ります
+              .item-box__num
+                .item-box__num__price ¥9,999
+                .item-box__num__likes
+                  =fa_icon("heart", text: 10)
+                %p (税込)
+        .item-box--user-item.item-box
+          = link_to "#" do
+            .item-box__photo
+              = image_tag "item-img.png", alt: "アイテム画像", style: "vertical-align:bottom"
+            .item-box__body
+              %h3.item-box__name 商品名が入ります
+              .item-box__num
+                .item-box__num__price ¥9,999
+                .item-box__num__likes
+                  =fa_icon("heart", text: 10)
+                %p (税込)
+        .item-box--user-item.item-box
+          = link_to "#" do
+            .item-box__photo
+              = image_tag "item-img.png", alt: "アイテム画像", style: "vertical-align:bottom"
+            .item-box__body
+              %h3.item-box__name 商品名が入ります
+              .item-box__num
+                .item-box__num__price ¥9,999
+                .item-box__num__likes
+                  =fa_icon("heart", text: 10)
+                %p (税込)
+/ バナー
+.app-banner
+
+/ フッター
+= render "shared/footer"
