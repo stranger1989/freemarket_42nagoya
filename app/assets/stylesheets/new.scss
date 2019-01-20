@@ -1,0 +1,171 @@
+.sell-main {
+  display: block;
+  background-color: $bg-color;
+}
+
+.item-information {
+  @include media(m) {
+    width: 700px;
+    margin: 0 auto;
+  }
+  background-color: $shiro;
+  &__form-inner {
+    border-top: 1px solid #eee;
+  }
+}
+
+.innertitle {
+  @include media(m) {
+    padding: 32px 16px;
+    font-size: 22px;
+    font-weight: bold;
+  }
+  padding: 24px 8px;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+// 必須・任意ラベル
+.required{
+  @include small-require-button($main-red, 12px, $shiro);
+}
+
+.any {
+  @include small-require-button(#CCCCCC, 12px, $shiro);
+}
+
+.sell-upload-box {
+  @include media(m) {
+    width: 620px;
+    padding: 40px;
+  }
+  padding: 40px 2.5%;
+}
+
+.item-label {
+  font-size: 15px;
+  font-weight: bold;
+  & > p {
+    font-weight: normal;
+    line-height: 1.5;
+    margin: 8px 0 0;
+  }
+}
+
+.sell-content {
+  padding: 40px;
+  border-top: 1px solid #eee;
+}
+
+.sell-sub-head {
+  @include media(m) {
+    float: left;
+  }
+  color: #888;
+  font-size: 14px;
+}
+
+.form-group {
+  margin: 40px 0 0 ;
+  &__form-default {
+    width: 100%;
+    height: 48px;
+    margin: 8px 0 0;
+    padding: 10px 16px 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background: #fff;
+    line-height: 1.5;
+    font-size: 16px;
+  }
+  & .textarea-default:focus {
+    outline: 0;
+    border-color: $main-blue;
+    transition: all ease-out .3s;
+  }
+  & .textarea-default {
+    margin: 8px 0 0;
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    min-height: 140px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background: #fff;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+}
+
+.form-group:first-child {
+  margin: 0;
+}
+
+.sell-content {
+  @include clearfix();
+  padding: 40px;
+  border-top: 1px solid #eee;
+  & > p {
+    font-size: 14px;
+  }
+}
+
+.sell-form-box {
+  @include media(m) {
+    float: right;
+    width: 400px;
+    margin: 0;
+  }
+  margin: 40px 0 0;
+}
+
+select {
+  width: 100%;
+  height: 48px;
+  padding: 0 16px;
+  margin: 8px 0 0;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.price-form {
+  text-align: right;
+}
+
+.l-left {
+  width: 50%;
+  line-height: 48px;
+  float: left;
+}
+
+.l-right {
+  width: 50%;
+  float: right;
+  &__form {
+    width: 80%;
+    margin: 0 0 0 5%;
+    display: inline-block;
+  }
+}
+
+
+.submit-btn {
+  @include button-user-form(100%,50px,$main-red,.8rem,#FFF);
+  margin: 40px 0 0;
+  cursor: pointer;
+}
+
+.return-btn {
+  @include button-user-form(45%, 50px, #aaa, .8rem, #fff);
+  display: block;
+  margin: 24px auto 0;
+}
+.return-btn:hover {
+  opacity: .6;
+  transition: all ease-out .3s;
+}
