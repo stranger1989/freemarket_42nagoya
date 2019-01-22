@@ -1,11 +1,10 @@
 class ApplicationFormBuilder < ActionView::Helpers::FormBuilder
   def pick_errors(attribute)
     return nil if @object.nil? || (messages = @object.errors.messages[attribute]).nil?
-    lis = messages.collect do |message|
+    error_list = messages.collect do |message|
       %{<li>#{message}</li>}
-    end.join
-
-    %{<ul class="errors">#{lis}</ul>}.html_safe
+    end.join()
+    %{<ul class="errors">#{error_list}</ul>}.html_safe
   end
 
   def text_area(attribute, options={})
