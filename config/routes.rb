@@ -8,7 +8,10 @@ Rails.application.routes.draw do
   resources :orders, only: [:new, :create]
 
   devise_scope :user do
-    get "/users/sign_up/registration", to: "devise/registrations#index", as: "user_registration_index"
-    get "/users/sign_up/basic_info", to: "devise/registrations#new", as: "user_registration_basic_info"
+    get "/users/sign_up/registration", to: "users/registrations#index", as: "user_registration_index"
+    get "/users/sign_up/basic-infomation", to: "users/registrations#basic_information", as: "user_registration_basic_infomation"
+    get "/users/sign_up/residence", to: "users/registrations#residence", as: "user_registration_residence"
+    get "/users/sign_up/payment", to: "users/registrations#payment", as: "user_registration_payment"
+    post '/users/sign_up/payment/finish', to: "users/registrations#finish", as: "user_registration_finish"
   end
 end
