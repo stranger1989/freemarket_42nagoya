@@ -48,7 +48,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 # payjpに顧客情報を登録したあと登録完了
   def finish
-    binding.pry
     Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
     customer = Payjp::Customer.create(
       :card  => params['payjp-token']
