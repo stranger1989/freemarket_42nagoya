@@ -1,0 +1,69 @@
+.payment{
+  max-width:700px;
+  height:100%;
+  margin:0 auto;
+  background-color:white;
+  &__head-inner{
+    border-bottom: 2px solid $bg-color;
+    text-align:center;
+    @include mq-up() {
+      padding:40px 64px;
+    }
+    @include mq-down() {
+      padding:40px 32px;
+    }
+    .innertitle{
+      font-size:22px;
+      font-weight: bold;
+    }
+  }
+  &__form-inner{
+    @include mq-up() {
+      padding:70px 180px;
+    }
+    @include mq-down() {
+      padding:70px 50px;
+    }
+    #payjp_checkout_box{
+      text-align:center;
+      input[type=button]{
+        margin:20px 0 30px 0;
+        @include button-user-form(100%,50px,$main-red,.8rem,#FFF);
+        background-image: none;
+        border:none;
+        border-radius:none;
+        line-height:30px;
+      }
+    }
+  }
+}
+
+.finish{
+  max-width:700px;
+  height:100%;
+  margin:0 auto;
+  background-color:white;
+  &__head-inner{
+    border-bottom: 2px solid $bg-color;
+    text-align:center;
+    @include mq-up() {
+      padding:40px 64px;
+    }
+    @include mq-down() {
+      padding:40px 32px;
+    }
+    .innertitle{
+      font-size:22px;
+      font-weight: bold;
+    }
+  }
+  &__form-inner{
+    text-align:center;
+    @include mq-up() {
+      padding:70px 180px;
+    }
+    @include mq-down() {
+      padding:70px 50px;
+    }
+  }
+}
