@@ -6,7 +6,7 @@
     %h2.innertitle 商品の情報を入力
 
 
-    = form_for @item, html: {class: "item-information__form-inner"}do |f|
+    = form_for @item, builder: ApplicationFormBuilder, html: {class: "item-information__form-inner"}do |f|
 
       .sell-upload-box
         = f.label :image, class: "item-label" do
@@ -21,6 +21,9 @@
             商品名
             %span.required 必須
           = f.text_field :name, placeholder: "商品名(必須40文字まで)", class: "form-group__form-default"
+          - if @item.errors.any?
+            %li.errors
+              = @item.errors.full_messages_for(:name)[0]
 
         .form-group
           = f.label :description, class: "item-label" do
@@ -34,11 +37,15 @@
         .sell-form-box
           .form-group
 
+
           .form-group
             = f.label :size, class: "item-label" do
               サイズ
               %span.required 必須
             = f.select :size, [ ["XXS以下", "XXS以下"], ["XS(SS)", "XS(SS)"], ["S", "S"], ["M", "M"], ["L", "L"], ["XL(LL)", "XL(LL)"], ["2XL(3L)",  "2XL(3L)"], ["3XL(4L)", "3XL(4L)"], ["4XL(5L)以上", "4XL(5L)以上"], ["FREE SIZE", "FREE SIZE"] ], prompt: "---"
+
+          .form-group
+
 
           .form-group
             = f.label :item_status, class: "item-label" do
@@ -87,6 +94,11 @@
                 ¥
                 .l-right__form
                   = f.text_field :price, placeholder: "例) 300", class: "form-group__form-default price-form"
+
+            - if @item.errors.any?
+              %li.errors
+                = @item.errors.full_messages_for(:price)[0]
+
             %li.commissions
               .l-left 販売手数料(10％)
               .l-right -
@@ -99,6 +111,6 @@
         %p またブランド品でシリアルナンバー等がある場合はご記載ください。偽ブランドの販売は犯罪であり処罰される可能性があります。
         %p また。出品をもちまして加盟店規約に同意したことになります。
         = f.submit "出品する", class: "submit-btn"
-        = link_to "もどる", "/", class: "return-btn"
+        = link_to "もどる", root_path, class: "return-btn"
 
 = render "shared/sub-footer"

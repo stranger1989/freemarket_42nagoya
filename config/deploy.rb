@@ -17,7 +17,7 @@ set :unicorn_config_path, -> { "#{current_path}/config/unicorn.rb" }
 set :keep_releases, 5
 
 set :default_env, {
-  :DEVISE_SECRET_KEY => ENV['DEVISE_SECRET_KEY']
+  DEVISE_SECRET_KEY: ENV['DEVISE_SECRET_KEY'],
   rbenv_root: "/usr/local/rbenv",
   path: "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH",
   AWS_ACCESS_KEY_ID: ENV["AWS_ACCESS_KEY_ID"],
