@@ -43,7 +43,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def create
-    set_default_params() if @@before_url == ""
+    @@total_signup_params = User.set_default_params() if @@before_url == ""
     total_signup_params(sign_up_params)
     build_resource(total_signup_params)
     if URI(request.referer).path == "/users"
@@ -62,28 +62,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   protected
-
-  def set_default_params
-  # 全てバリデーションが通るダミーデータを用意し、
-  # ページ遷移のたび、フォームデータに書き換えつつバリデーションを確認
-    @@total_signup_params = {
-       nickname: "testname",
-       profile: "",
-       avatar: "",
-       lastname: "手簀戸手簀戸",
-       firstname: "手簀戸手簀戸",
-       lastname_kana: "テストテスト",
-       firstname_kana: "テストテスト",
-       postalcode: "000-0000",
-       prefecture: "愛知県",
-       city: "名古屋市",
-       block: "テスト町",
-       building: "テストビル",
-       birthday: "1989-1-1",
-       phone_number: "08000000000",
-       payment: "aaaaaaa"
-    }
-  end
 
   def total_signup_params(sign_up_params={})
     @@total_signup_params = @@total_signup_params.merge(sign_up_params)
