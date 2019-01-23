@@ -5,25 +5,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   @@url = ""
 # エラー処理のため、遷移前のページ格納
   @@before_url = ""
-# 全てバリデーションが通るダミーデータを用意し、
-# ページ遷移のたび、フォームデータに書き換えつつバリデーションを確認
-  @@total_signup_params = {
-     nickname: "testname",
-     profile: "",
-     avatar: "",
-     lastname: "手簀戸手簀戸",
-     firstname: "手簀戸手簀戸",
-     lastname_kana: "テストテスト",
-     firstname_kana: "テストテスト",
-     postalcode: "000-0000",
-     prefecture: "愛知県",
-     city: "名古屋市",
-     block: "テスト町",
-     building: "テストビル",
-     birthday: "1989-1-1",
-     phone_number: "08000000000",
-     payment: "aaaaaaa"
-  }
+
 # 会員登録トップページ
   def index
   end
@@ -51,19 +33,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
       :card  => params['payjp-token']
     )
     if customer[:id]
-      @@total_signup_params = @@total_signup_params.merge({ payment: customer[:id] })
+      total_signup_params({ payment: customer[:id] })
+      build_resource(total_signup_params)
+      resource.save
+      error_message(resource)
     else
       render 'payment'
     end
-
-    build_resource(@@total_signup_params)
-    resource.save
-    error_message(resource)
   end
 
   def create
-    @@total_signup_params = @@total_signup_params.merge(sign_up_params)
-    build_resource(@@total_signup_params)
+    set_default_params() if @@before_url == ""
+    total_signup_params(sign_up_params)
+    build_resource(total_signup_params)
     if URI(request.referer).path == "/users"
       path = @@before_url
     else
@@ -80,6 +62,33 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   protected
+
+  def set_default_params
+  # 全てバリデーションが通るダミーデータを用意し、
+  # ページ遷移のたび、フォームデータに書き換えつつバリデーションを確認
+    @@total_signup_params = {
+       nickname: "testname",
+       profile: "",
+       avatar: "",
+       lastname: "手簀戸手簀戸",
+       firstname: "手簀戸手簀戸",
+       lastname_kana: "テストテスト",
+       firstname_kana: "テストテスト",
+       postalcode: "000-0000",
+       prefecture: "愛知県",
+       city: "名古屋市",
+       block: "テスト町",
+       building: "テストビル",
+       birthday: "1989-1-1",
+       phone_number: "08000000000",
+       payment: "aaaaaaa"
+    }
+  end
+
+  def total_signup_params(sign_up_params={})
+    @@total_signup_params = @@total_signup_params.merge(sign_up_params)
+    return @@total_signup_params
+  end
 
   def error_message(redirect_path)
     yield resource if block_given?
