@@ -43,10 +43,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def create
-    @@total_signup_params = User.set_default_params() if @@before_url == ""
+    @@total_signup_params = User::DEFAULT_USERPARAMS if @@before_url == ""
     total_signup_params(sign_up_params)
     build_resource(total_signup_params)
-    if request.original_url == "/users"
+    if URI(request.referer).path == "/users"
       path = @@before_url
     else
       @@before_url = Rails.application.routes.recognize_path(request.referer)[:action]
