@@ -6,7 +6,7 @@
     %h2.innertitle 商品の情報を入力
 
 
-    = form_for @item, html: {class: "item-information__form-inner"}do |f|
+    = form_for @item, builder: ApplicationFormBuilder, html: {class: "item-information__form-inner"}do |f|
 
       .sell-upload-box
         = f.label :image, class: "item-label" do
@@ -21,6 +21,9 @@
             商品名
             %span.required 必須
           = f.text_field :name, placeholder: "商品名(必須40文字まで)", class: "form-group__form-default"
+          - if @item.errors.any?
+            %li.errors
+              = @item.errors.full_messages_for(:name)[0]
 
         .form-group
           = f.label :description, class: "item-label" do
@@ -34,6 +37,7 @@
         .sell-form-box
           .form-group
 
+
           .form-group
             = f.label :size, class: "item-label" do
               サイズ
@@ -41,10 +45,13 @@
             = f.select :size, [ ["XXS以下", "XXS以下"], ["XS(SS)", "XS(SS)"], ["S", "S"], ["M", "M"], ["L", "L"], ["XL(LL)", "XL(LL)"], ["2XL(3L)",  "2XL(3L)"], ["3XL(4L)", "3XL(4L)"], ["4XL(5L)以上", "4XL(5L)以上"], ["FREE SIZE", "FREE SIZE"] ], prompt: "---"
 
           .form-group
+
+
+          .form-group
             = f.label :item_status, class: "item-label" do
               商品の状態
               %span.required 必須
-            = f.select :item_status, [["新品、未使用", "新品、未使用"],["未使用に近い", "未使用に近い"],["目立った傷や汚れなし", "目立った傷や汚れなし"],["やや傷や汚れあり", "やや傷や汚れあり"],["傷や汚れあり", "傷や汚れあり"],["全体的に状態が悪い", "全体的に状態が悪い"],], prompt: "---"
+            = f.select :item_status, [["新品、未使用", "新品、未使用"],["未使用に近い", "未使用に近い"],["目立った傷や汚れなし", "目立った傷や汚れなし"],["やや傷や汚れあり", "やや傷や汚れあり"],["傷や汚れあり", "傷や汚れあり"],["全体的に状態が悪い", "全体的に状態が悪い"]], prompt: "---"
 
       .sell-content
         %h3.sell-sub-head 配送について
@@ -87,12 +94,17 @@
                 ¥
                 .l-right__form
                   = f.text_field :price, placeholder: "例) 300", class: "form-group__form-default price-form"
-            %li
-              .commissions-label
-              .commissions
-            %li
-              .profit-label
-              .profit
+
+            - if @item.errors.any?
+              %li.errors
+                = @item.errors.full_messages_for(:price)[0]
+
+            %li.commissions
+              .l-left 販売手数料(10％)
+              .l-right -
+            %li.profit
+              .l-left 販売利益
+              .l-right -
 
       .sell-content
         %p 禁止されている出品、行為は必ずご確認ください。
