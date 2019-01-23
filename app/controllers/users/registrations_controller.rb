@@ -58,22 +58,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     build_resource(@@total_signup_params)
     resource.save
-    yield resource if block_given?
-    if resource.persisted?
-      if resource.active_for_authentication?
-        set_flash_message! :notice, :signed_up
-        sign_up(resource_name, resource)
-        respond_with resource, location: after_sign_up_path_for(resource)
-      else
-        set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
-        expire_data_after_sign_in!
-        respond_with resource, location: after_inactive_sign_up_path_for(resource)
-      end
-    else
-      clean_up_passwords resource
-      set_minimum_password_length
-      respond_with resource
-    end
+    error_message(resource)
   end
 
   def create
@@ -89,27 +74,31 @@ class Users::RegistrationsController < Devise::RegistrationsController
       if resource.valid? == true
         redirect_to action: @@url
       else
-        yield resource if block_given?
-        if resource.persisted?
-          if resource.active_for_authentication?
-            set_flash_message! :notice, :signed_up
-            sign_up(resource_name, resource)
-            respond_with resource, location: after_sign_up_path_for(resource)
-          else
-            set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
-            expire_data_after_sign_in!
-            respond_with resource, location: after_inactive_sign_up_path_for(resource)
-          end
-        else
-          clean_up_passwords resource
-          set_minimum_password_length
-          render path
-        end
+        error_message(path)
       end
     end
   end
 
   protected
+
+  def error_message(redirect_path)
+    yield resource if block_given?
+    if resource.persisted?
+      if resource.active_for_authentication?
+        set_flash_message! :notice, :signed_up
+        sign_up(resource_name, resource)
+        respond_with resource, location: after_sign_up_path_for(resource)
+      else
+        set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
+        expire_data_after_sign_in!
+        respond_with resource, location: after_inactive_sign_up_path_for(resource)
+      end
+    else
+      clean_up_passwords resource
+      set_minimum_password_length
+      render redirect_path
+    end
+  end
 
   def update_needs_confirmation?(resource, previous)
     resource.respond_to?(:pending_reconfirmation?) &&
