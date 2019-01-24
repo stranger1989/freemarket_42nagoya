@@ -3,8 +3,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   layout 'layout_for_UserAdmin_SignUp'
 # リダイレクト先のパスを格納
   @@url = ""
-# エラー処理のため、遷移前のページ格納
-  @@before_url = ""
 
 # 会員登録トップページ
   def index
@@ -15,6 +13,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     yield resource if block_given?
     respond_with resource
     @@url = "residence"
+    # エラー処理のため、遷移前のページ格納
+    @@before_url = ""
   end
 # 住所情報作成
   def residence
