@@ -10,6 +10,25 @@ class User < ApplicationRecord
     self.prefecture_id = JpPrefecture::Prefecture.find(name: prefecture_name).code
   end
 
+  # 全てバリデーションのためのダミーデータ
+  DEFAULT_USERPARAMS = {
+     nickname: "testname",
+     profile: "",
+     avatar: "",
+     lastname: "手簀戸手簀戸",
+     firstname: "手簀戸手簀戸",
+     lastname_kana: "テストテスト",
+     firstname_kana: "テストテスト",
+     postalcode: "000-0000",
+     prefecture: "愛知県",
+     city: "名古屋市",
+     block: "テスト町",
+     building: "テストビル",
+     birthday: "1989-1-1",
+     phone_number: "08000000000",
+     payment: "aaaaaaa"
+  }
+
   validates :nickname, presence: true, length: { maximum: 20 }
   validates :lastname, presence: true, length: { maximum: 20 }
   validates :firstname, presence: true, length: { maximum: 20 }
