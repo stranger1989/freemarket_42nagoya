@@ -43,7 +43,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def create
-    @@total_signup_params = User::DEFAULT_USERPARAMS if @@before_url == ""
+    session[:user_information] = User::DEFAULT_USERPARAMS if @@before_url == ""
     total_signup_params(sign_up_params)
     build_resource(total_signup_params)
     if URI(request.referer).path == "/users"
@@ -64,8 +64,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   protected
 
   def total_signup_params(sign_up_params={})
-    @@total_signup_params = @@total_signup_params.merge(sign_up_params)
-    return @@total_signup_params
+    session[:user_information] = session[:user_information].merge(sign_up_params)
+    return session[:user_information]
   end
 
   def error_message(redirect_path)
