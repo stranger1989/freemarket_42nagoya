@@ -58,6 +58,12 @@ group :development do
 
 end
 
+group :test do
+  gem 'rails-controller-testing'
+  gem 'faker'
+  gem 'database_cleaner'
+end
+
 group :production do
   gem 'unicorn'
 end

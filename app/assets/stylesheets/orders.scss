@@ -27,20 +27,20 @@
     @include mq-down() {
       padding:20px 32px;
     }
-    .buy-item-info{
+    .buy-item{
       text-align:center;
-      .buy-main-photo{
+      &__photo{
         max-height: 148px;
       }
-      .buy-item-name{
+      &__name{
         max-height: 148px;
         font-weight:bold;
       }
-      .buy-item-price{
+      &__price{
         margin:10px 0 0 0;
         font-size:28px;
         font-weight:600;
-        .include-fee{
+        &__include-fee{
           margin:0 0 0 10px;
           font-size:15px;
           font-weight:normal;
@@ -51,31 +51,37 @@
       @include clearfix();
       width: 320px;
       margin:0 auto;
-      .btn-point{
+      &__btn-point{
         margin: 15px auto;
         @include button-user-form(320px, 50px, #CCCCCC,.8rem , #000 );
         display: block;
       }
-      .buy-item-cell{
+      &__cell{
         float:left;
         font-weight: 600;
         font-size: 25px;
       }
-      .item-price{
+      &__item-price{
         float:right;
         font-weight: 600;
         font-size: 25px;
       }
-      .has-error-text{
+      &__has-error-text{
         margin:20px 0 0 0;
         color:$main-red;
         font-size:14px;
         display:inline-block;
       }
-      .btn-buy{
+      &__btn-buy{
         margin:20px 0 20px 0;
         font-weight:600;
         @include button-user-form(320px, 50px, #888,.8rem , #fff );
+      }
+      &__btn-canbuy{
+        margin:20px 0 20px 0;
+        font-weight:600;
+        @include button-user-form(320px, 50px, $main-red,.8rem , #fff );
+        cursor: pointer;
       }
     }
   }
@@ -85,34 +91,38 @@
     border-bottom: 2px solid $bg-color;
     padding: 20px 0;
     font-size:15px;
-    .deliver-to-title{
-      font-weight:600;
-    }
-    .user-info-inner{
-      width: 320px;
-      margin:0 auto;
-    }
-    .user-address-change{
-      margin: 30px 0 0 0;
-      float:right;
-      display:inline-block;
-    }
   }
   &__pay-method{
     @include clearfix();
     padding: 20px 0;
     font-size:15px;
-    .pay-method-title{
-      font-weight:600;
-    }
-    .pay-method-inner{
+  }
+  .user-info{
+    &__inner{
       width: 320px;
       margin:0 auto;
+      &__deliver-to{
+        font-weight:600;
+      }
+      &__address-change{
+        margin: 30px 0 0 0;
+        float:right;
+        display:inline-block;
+      }
     }
-    .pay-method-change{
-      margin: 30px 0 10px 0;
-      float:right;
-      display:inline-block;
+  }
+  .pay-method{
+    &__inner{
+      width: 320px;
+      margin:0 auto;
+      &__title{
+        font-weight:600;
+      }
+      &__change{
+        margin: 30px 0 10px 0;
+        float:right;
+        display:inline-block;
+      }
     }
   }
 }

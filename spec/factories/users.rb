@@ -16,7 +16,7 @@ FactoryGirl.define do
     building              "テストビル"
     birthday              "1980-1-1"
     phone_number          "080-1234-5678"
-    payment               "カード払い"
+    payment               "cus_9ac8bec0d1b14ed6c29e3cc8ccf3"
   end
 
 end

@@ -4,37 +4,43 @@
     .order__head-inner
       %h2.innertitle 購入を確定しますか？
     .order__form-inner
-      .buy-item-info
+      .buy-item
         %h3
-          =image_tag("dami-coat.jpg", class: "buy-main-photo")
-        %p.buy-item-name niko and... コート
-        %p.buy-item-price
-          ¥ 3,300
-          %span.include-fee 送料込み
+          =image_tag(@item.image.url, class: "buy-item__photo")
+        %p.buy-item__name=@item.name
+        %p.buy-item__price=converting_to_jpy(@item.price)
+        %span.buy-item__price__include-fee 送料込み
       .buy-buttons
-        %p.btn-point ポイントはありません
-        %p.buy-item-cell 支払い金額
-        %p.item-price ¥ 3,300
-        %p.has-error-text 配送先と支払い方法の入力を完了してください。
-        %button.btn-buy 購入する
-    .order__user-info
-      .user-info-inner
-        %h3.deliver-to-title 配送先
+        %p.buy-buttons__btn-point ポイントはありません
+        %p.buy-buttons__cell 支払い金額
+        %p.buy-buttons__item-price=converting_to_jpy(@item.price)
+        %p.buy-buttons__has-error-text= flash[:notice]
+        -if current_user.payment
+          = form_for [@item, @order] do |f|
+            = f.submit "購入する", class: "buy-buttons__btn-canbuy"
+        -else
+          %button.buy-buttons__btn-buy
+            購入しない
+    .order__user-info.user-info
+      .user-info__inner
+        %h3.user-info__inner__deliver-to 配送先
         %address
-          〒000-0000
+          ="〒#{current_user.postalcode}"
           %br
-          愛知県 〇〇〇〇〇〇〇〇〇〇〇〇
-          〇〇〇〇
+          =current_user.prefecture
+          =current_user.city
+          =current_user.block
+          =current_user.building
           %br
-        =link_to "#", class: "user-address-change" do
+        =link_to "#", class: ".user-info__inner__address-change" do
           変更する
           %i.fa.fa-chevron-right
-    .order__pay-method
-      .pay-method-inner
-        %h3.pay-method-title 支払い方法
+    .order__pay-method.pay-method
+      .pay-method__inner
+        %h3.pay-method__inner__title 支払い方法
         \/
         %br
-        =link_to "#", class: "pay-method-change" do
+        =link_to "#", class: "pay-method__inner__change" do
           変更する
           %i.fa.fa-chevron-right
 
