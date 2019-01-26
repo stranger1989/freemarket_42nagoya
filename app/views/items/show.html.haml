@@ -170,7 +170,7 @@
 
     .user-item-container
       %h3
-        = link_to "YAYOIさんのその他の出品", "#"
+        = link_to "#{@item.user.nickname}さんのその他の出品", "#"
       .item
         = render partial: 'shared/items-box', collection: @items, as: "item"
 / バナー
