@@ -36,7 +36,22 @@
 
         .sell-form-box
           .form-group
+            = f.label :category_id, class: "item-label" do
+              カテゴリー
+              %span.required 必須
 
+            =f.collection_select :category_id, Category.roots, :id, :name, { prompt: "---" }, {class: "select-default root_category"}
+
+          %div
+            - Category.roots.each do |root_category|
+              %template{id: "child_of#{ root_category.id }"}
+                =f.collection_select :category_id, root_category.children, :id, :name, { prompt: "---" }, {class: "select-default child_categories"}
+
+          %div
+            - Category.roots.each do |root_category|
+              - Category.children_of(root_category).each do |child_category|
+                %template{id: "child_of#{ child_category.id }"}
+                  = f.collection_select :category_id, child_category.children, :id, :name, { prompt: "---" }, {class: "select-default grand-child_categories"}
 
           .form-group
             = f.label :size, class: "item-label" do
@@ -45,7 +60,10 @@
             = f.select :size, [ ["XXS以下", "XXS以下"], ["XS(SS)", "XS(SS)"], ["S", "S"], ["M", "M"], ["L", "L"], ["XL(LL)", "XL(LL)"], ["2XL(3L)",  "2XL(3L)"], ["3XL(4L)", "3XL(4L)"], ["4XL(5L)以上", "4XL(5L)以上"], ["FREE SIZE", "FREE SIZE"] ], prompt: "---"
 
           .form-group
-
+            = f.label :brand_id, class: "item-label" do
+              ブランド
+              %span.any 任意
+            = f.text_field :brand_id, placeholder: "例) シャネル", class: "form-group__form-default"
 
           .form-group
             = f.label :item_status, class: "item-label" do
