@@ -1,0 +1,11 @@
+.item-box.item-box--user-item
+  = link_to item_path(item.id) do
+    .item-box__photo
+      = image_tag item.image.url, alt: "アイテム画像", style: "vertical-align:bottom"
+    .item-box__body
+      %h3.item-box__name=item.name
+      .item-box__num
+        .item-box__num__price=converting_to_jpy(item.price)
+        .item-box__num__likes
+          =fa_icon("heart", text: 10)
+        %p (税込)
