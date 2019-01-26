@@ -14,7 +14,7 @@
         %p.btn-point ポイントはありません
         %p.buy-item-cell 支払い金額
         %p.item-price=converting_to_jpy(@item.price)
-        %p.has-error-text 配送先と支払い方法の入力を完了してください。
+        %p.has-error-text= flash[:notice]
         -if current_user.payment
           = form_for [@item, @order] do |f|
             = f.submit "購入する", class: "btn-canbuy"
