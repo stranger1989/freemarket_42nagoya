@@ -1,4 +1,4 @@
-$(function() {
+$(document).on('turbolinks:load', function() {
   // 販売手数料・販売利益の表示
   $(".price-form").on("keyup", function() {
     var price = $(this).val();
@@ -12,5 +12,5 @@ $(function() {
       $(".commissions .l-right").text("-");
       $(".profit .l-right").text("-");
     }
-  })
+  });
 });
