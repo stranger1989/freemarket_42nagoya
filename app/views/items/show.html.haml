@@ -172,8 +172,7 @@
       %h3
         = link_to "YAYOIさんのその他の出品", "#"
       .item
-        - @items.each do |item|
-          = render partial: 'shared/items-box', locals: { item: item }
+        = render partial: 'shared/items-box', collection: @items, as: "item"
 / バナー
 .app-banner
 

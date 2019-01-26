@@ -17,8 +17,7 @@
       = link_to "カテゴリー", "#"
 
     .item
-      - @items.each do |item|
-        = render partial: 'shared/items-box', locals: { item: item }
+      = render partial: 'shared/items-box', collection: @items, as: "item"
 
     .allitem-link
       %a{href: "#"} すべての商品を見る
