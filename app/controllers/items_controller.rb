@@ -1,6 +1,4 @@
 class ItemsController < ApplicationController
-  before_action :set_all_items, only: [:index, :show]
-  before_action :set_item, only: [:show]
   before_action :authenticate_user!, only: [:create]
 
   def index
