@@ -14,6 +14,8 @@ FactoryGirl.define do
     sequence(:estimated_shipping_date){ ["1〜2日で発送","2〜3日で発送","4〜7日で発送"].sample }
     sequence(:price){ [*300..10000].sample }
     association :user, factory: :user
+    category
+    brand
     created_at                  { Faker::Time.between(2.days.ago, Time.now, :all) }
     updated_at                  { Faker::Time.between(2.days.ago, Time.now, :all) }
   end

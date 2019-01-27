@@ -12,9 +12,15 @@ class Item < ApplicationRecord
   validates :estimated_shipping_date, presence: { message: '選択してください' }
   validates :price, presence: {message: "300以上9999999以下で入力してください"}, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, allow_blank: true, message: "300以上9999999以下で入力してください"}
 
+  validates :category_id, presence: { message: '選択してください' }
+
   mount_uploader :image, ImageUploader
 
   belongs_to :user
+  belongs_to :brand
+  belongs_to :category
+
   has_one :order
+
 
 end
