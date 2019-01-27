@@ -60,12 +60,6 @@
             = f.select :size, [ ["XXS以下", "XXS以下"], ["XS(SS)", "XS(SS)"], ["S", "S"], ["M", "M"], ["L", "L"], ["XL(LL)", "XL(LL)"], ["2XL(3L)",  "2XL(3L)"], ["3XL(4L)", "3XL(4L)"], ["4XL(5L)以上", "4XL(5L)以上"], ["FREE SIZE", "FREE SIZE"] ], prompt: "---"
 
           .form-group
-            = f.label :brand_id, class: "item-label" do
-              ブランド
-              %span.any 任意
-            = f.text_field :brand_id, placeholder: "例) シャネル", class: "form-group__form-default"
-
-          .form-group
             = f.label :item_status, class: "item-label" do
               商品の状態
               %span.required 必須

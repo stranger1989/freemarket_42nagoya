@@ -1,0 +1,86 @@
+= render "shared/header"
+.single-container
+  .order-double
+    .order-double__sub
+      .order-double__sub__title 取引情報
+      .order-double__sub__detail
+        %table
+          %tbody
+            %tr
+              %th 商品
+              %td
+                =image_tag(@item.image.url, class: "order-double__sub__photo")
+                =link_to @item.name, "#", class: "order-double__sub__item-name"
+            %tr
+              %th 送料
+              %td=@item.shipping_fee
+            %tr
+              %th 購入日時
+              %td=@order.created_at.strftime('%Y年%m月%d日 %H:%M')
+            %tr
+              %th 商品ID
+              %td=@item.id
+            %tr
+              %th お届け先
+              %td
+                %address
+                  ="〒#{current_user.postalcode}"
+                  %br
+                  =current_user.prefecture
+                  =current_user.city
+                  =current_user.block
+                  =current_user.building
+      .order-double__sub
+        .order-double__sub__title 出品者情報
+        =link_to "#", class: "order-double__sub__userdetail userdetail" do
+          = image_tag("", alt: "", class: "userdetail__userphoto")
+          .userdetail__username=@item.user.nickname
+          .userdetail__arrow
+            %i.fa.fa-angle-right
+    .order-double__main
+      .order-double__main__title 取引画面
+      .order-double__main__finishdisplay.finishdisplay
+        %p.finishdisplay__alert
+          %span.finishdisplay__checkmark
+            %i.fa.fa-check
+          取引が完了しました
+        %p.finishdisplay__thanks このたびはメルカリのご利用ありがとうございました
+      .order-double__main__finishmessage 取引完了後、2週間経過または最新のメッセージから2週間経過したため、取引メッセージを非公開にしました。
+    .order-double__sub--small.order-double__sub
+      .order-double__sub__title 取引情報
+      .order-double__sub__detail
+        %table
+          %tbody
+            %tr
+              %th 商品
+              %td
+                =image_tag(@item.image.url, class: "order-double__sub__photo")
+                =link_to @item.name, "#", class: "order-double__sub__item-name"
+            %tr
+              %th 送料
+              %td=@item.shipping_fee
+            %tr
+              %th 購入日時
+              %td=@order.created_at.strftime('%Y年%m月%d日 %H:%M')
+            %tr
+              %th 商品ID
+              %td=@item.id
+            %tr
+              %th お届け先
+              %td
+                %address
+                  ="〒#{current_user.postalcode}"
+                  %br
+                  =current_user.prefecture
+                  =current_user.city
+                  =current_user.block
+                  =current_user.building
+      .order-double__sub--small.order-double__sub
+        .order-double__sub__title 出品者情報
+        =link_to "#", class: "order-double__sub__userdetail userdetail" do
+          = image_tag("", alt: "", class: "userdetail__userphoto")
+          .userdetail__username=@item.user.nickname
+          .userdetail__arrow
+            %i.fa.fa-angle-right
+
+= render "shared/footer"

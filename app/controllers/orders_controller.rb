@@ -1,5 +1,8 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: [:index, :new, :create]
+
+  def index
+  end
 
   def new
     @item = Item.find(params[:item_id])
@@ -21,18 +24,18 @@ class OrdersController < ApplicationController
         )
       end
       @item.update(order_status:'売却済')
-      redirect_to root_path
+      @order = Order.find_by(item_id: params[:item_id])
     # クレジット決済がうまくいかなかった時
     rescue Payjp::InvalidRequestError => e
       Rails.logger.debug e.json_body[:error][:message]
-      flash[:notice] = "クレジットカードの決済に失敗しました"
+      flash[:notice_payment] = "クレジットカードの決済に失敗しました"
       @order = Order.new()
       render action: :new
     # paramsの受け渡しが上手くいかなかった時
     rescue => e
       Rails.logger.debug e.message
       @order = Order.new()
-      flash[:notice] = "通信に失敗しました"
+      flash[:notice_payment] = "通信に失敗しました"
       render action: :new
     end
   end
