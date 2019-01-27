@@ -1,7 +1,8 @@
 class ItemsController < ApplicationController
-
+  before_action :authenticate_user!, only: [:create]
 
   def index
+    @items = Item.where("order_status = '出品中'")
   end
 
   def new
@@ -19,6 +20,8 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @items = Item.where("order_status = '出品中'")
+    @item = Item.find(params[:id])
   end
 
   private

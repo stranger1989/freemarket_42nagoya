@@ -5,11 +5,11 @@
 .item-list
   .single-main
     .item-detail
-      %h1.item-detail__name ロシアンダイヤ・ピンクサファイア・リング・11号・未使用♡即購入OK♡値下げ
+      %h1.item-detail__name=@item.name
       %p.item-detail__wording 『ロシアンダイヤ・ピンクサファイア・リング・11号・未使用♡即購入OK♡値下げ』は、65回の取引実績を持つレオンさんから出品されました。リング/レディースの商品で、東京都から2~3日で発送されます。
       .item-detail__main-contents.main-contents
         %section.main-contents__photo
-          =image_tag("item-detail-dami.jpg", class: "item-main-photo")
+          =image_tag(@item.image.url, class: "item-main-photo")
           .item-sub-photo
         %section.main-contents__detail.main-contents__detail--large
           %table
@@ -17,7 +17,7 @@
               %tr
                 %th 出品者
                 %td
-                  =link_to "レオン", "#"
+                  =link_to @item.user.nickname, "#"
                   %br
                   .item-user-eva
                     %i.fa.fa-smile-o.smile
@@ -44,33 +44,37 @@
                 %td S
               %tr
                 %th 商品の状態
-                %td 未使用に近い
+                %td
+                  =@item.item_status
               %tr
                 %th 配送料の負担
-                %td 送料込み(出品者負担)
+                %td
+                  =@item.shipping_fee
               %tr
                 %th 配送の方法
-                %td ゆうゆうメルカリ便
+                %td
+                  =@item.delivery_way
               %tr
                 %th 配送元地域
                 %td
-                  =link_to "神奈川県", "#"
+                  =link_to @item.user.prefecture, "#"
               %tr
                 %th 発送日の目安
-                %td 2~3日で発送
+                %td
+                  =@item.estimated_shipping_date
       .item-detail__price-box
-        %span.item-price ¥ 3,500
+        %span.item-price=converting_to_jpy(@item.price)
         %span.item-tax (税込)
         %span.item-shipping-fee 送料込み
       .item-detail__item-buy-button
-        =link_to "購入画面に進む","#", class: "btn-buy"
+        =link_to "購入画面に進む", new_item_order_url(@item.id), class: "btn-buy"
         %section.main-contents__detail.main-contents__detail--small
           %table
             %tbody
               %tr
                 %th 出品者
                 %td
-                  =link_to "レオン", "#"
+                  =link_to @item.user.nickname, "#"
                   %br
                   .item-user-eva
                     %i.fa.fa-smile-o.smile
@@ -107,25 +111,18 @@
               %tr
                 %th 配送元地域
                 %td
-                  =link_to "神奈川県", "#"
+                  =link_to @item.user.prefecture, "#"
               %tr
                 %th 発送日の目安
                 %td 2~3日で発送
       .item-detail__price-box.item-detail__price-box--small
-        %span.item-price ¥ 3,500
+        %span.item-price=converting_to_jpy(@item.price)
         %span.item-tax (税込)
         %span.item-shipping-fee 送料込み
       .item-detail__item-buy-button.item-detail__item-buy-button--small
-        =link_to "購入画面に進む","#", class: "btn-buy"
+        =link_to "購入画面に進む", new_item_order_url(@item.id), class: "btn-buy"
       .item-detail__description
-        %p.description-inner
-          ナノユニバースのグレーのニットです。
-          サイズ36
-          丈(襟の高い所から裾まで)約58センチ
-          幅(脇の下から脇の下)約48センチ
-          袖(襟の高い所から袖先まで).約65センチ
-          1回の着用です。
-          きれいな状態だと思いますが、中古品であることをご理解いただきご検討ください。
+        %p.description-inner=@item.description
       .item-detail__sub-buttons
         %button.btn-tag-like
           %i.fa.fa-heart-o
@@ -173,41 +170,9 @@
 
     .user-item-container
       %h3
-        = link_to "YAYOIさんのその他の出品", "#"
+        = link_to "#{@item.user.nickname}さんのその他の出品", "#"
       .item
-        .item-box--user-item.item-box
-          = link_to "#" do
-            .item-box__photo
-              = image_tag "item-img.png", alt: "アイテム画像", style: "vertical-align:bottom"
-            .item-box__body
-              %h3.item-box__name 商品名が入ります
-              .item-box__num
-                .item-box__num__price ¥9,999
-                .item-box__num__likes
-                  =fa_icon("heart", text: 10)
-                %p (税込)
-        .item-box--user-item.item-box
-          = link_to "#" do
-            .item-box__photo
-              = image_tag "item-img.png", alt: "アイテム画像", style: "vertical-align:bottom"
-            .item-box__body
-              %h3.item-box__name 商品名が入ります
-              .item-box__num
-                .item-box__num__price ¥9,999
-                .item-box__num__likes
-                  =fa_icon("heart", text: 10)
-                %p (税込)
-        .item-box--user-item.item-box
-          = link_to "#" do
-            .item-box__photo
-              = image_tag "item-img.png", alt: "アイテム画像", style: "vertical-align:bottom"
-            .item-box__body
-              %h3.item-box__name 商品名が入ります
-              .item-box__num
-                .item-box__num__price ¥9,999
-                .item-box__num__likes
-                  =fa_icon("heart", text: 10)
-                %p (税込)
+        = render partial: 'shared/items-box', collection: @items, as: "item"
 / バナー
 .app-banner
 

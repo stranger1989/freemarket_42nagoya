@@ -1,0 +1,32 @@
+.single-main
+  .login--information
+    .login__head-inner
+      %h2.innertitle 会員情報入力
+    .login--information__form-inner
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        .field
+          = f.label :nickname, class: "user-registration-label" do
+            ニックネーム
+            %span.required 必須
+          = f.text_field :nickname, autofocus: true, placeholder: "例) メルカリ太郎"
+          = devise_error_messages :nickname
+        .field
+          = f.label :email, class: "user-registration-label" do
+            メールアドレス
+            %span.required 必須
+          = f.email_field :email, autocomplete: "email", placeholder: "PC・携帯どちらでも可"
+          = devise_error_messages :email
+        .field
+          = f.label :password, class: "user-registration-label" do
+            パスワード
+            %span.required 必須
+          = f.password_field :password, autocomplete: "new-password", placeholder: "6文字以上"
+          = devise_error_messages :password
+        .field
+          = f.label :password_confirmation, class: "user-registration-label" do
+            パスワード（確認）
+            %span.required 必須
+          = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "6文字以上"
+          = devise_error_messages :password_confirmation
+        .actions
+          = f.submit "次へ進む", class: "btn-summit"

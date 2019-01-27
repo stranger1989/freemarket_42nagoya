@@ -1,0 +1,7 @@
+.single-main
+  .payment
+    .payment__head-inner
+      %h2.innertitle 支払い方法
+    .payment__form-inner
+      = form_tag(action: :finish, method: :post) do
+        %script{ type: "text/javascript", src: "https://checkout.pay.jp/", class: "payjp-button", data: { text: "カード番号の登録", key: "pk_test_0f9b5ca040a9d932eca11a30" } }

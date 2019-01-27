@@ -101,6 +101,39 @@
   text-decoration: underline;
 }
 
+// ログアウトボタンのスタイル
+.logout-btn {
+  padding:0 0 0 16px;
+  color: $char-black;
+  font-size:14px;
+  line-height: 38px;
+  display: block;
+  &:hover{
+    color: $main-blue;
+  }
+}
+
+// マイページボタンのスタイル
+.mypage-btn {
+  color: $char-black;
+  font-size:14px;
+  line-height: 38px;
+  display: block;
+  &:hover{
+    color: $main-blue;
+  }
+  &--small{
+    width: 32px;
+    height: 32px;
+    margin:0 5px 0 0;
+    border-radius: 50%;
+    vertical-align: top;
+    &:hover{
+      opacity:.8;
+    }
+  }
+}
+
 // 検索フォーム
 .search-bar {
   height: 44px;
@@ -184,7 +217,7 @@
 
 .header-container {
   @include media(l) {
-    width: 1020px;  
+    width: 1020px;
   }
   width: 700px;
   margin:0 auto;

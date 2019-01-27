@@ -17,53 +17,7 @@
       = link_to "カテゴリー", "#"
 
     .item
-      .item-box
-        = link_to "#" do
-          .item-box__photo
-            = image_tag "item-img.png", alt: "アイテム画像", style: "vertical-align:bottom"
-          .item-box__body
-            %h3.item-box__name 商品名が入ります
-            .item-box__num
-              .item-box__num__price ¥9,999
-              .item-box__num__likes
-                =fa_icon("heart", text: 10)
-              %p (税込)
-
-      .item-box
-        = link_to "#" do
-          .item-box__photo
-            = image_tag "item-img.png", alt: "アイテム画像", style: "vertical-align:bottom"
-          .item-box__body
-            %h3.item-box__name 商品名が入ります
-            .item-box__num
-              .item-box__num__price ¥9,999
-              .item-box__num__likes
-                =fa_icon("heart", text: 10)
-              %p (税込)
-
-      .item-box
-        = link_to "#" do
-          .item-box__photo
-            = image_tag "item-img.png", alt: "アイテム画像", style: "vertical-align:bottom"
-          .item-box__body
-            %h3.item-box__name 商品名が入ります
-            .item-box__num
-              .item-box__num__price ¥9,999
-              .item-box__num__likes
-                =fa_icon("heart", text: 10)
-              %p (税込)
-
-      .item-box
-        = link_to "#" do
-          .item-box__photo
-            = image_tag "item-img.png", alt: "アイテム画像", style: "vertical-align:bottom"
-          .item-box__body
-            %h3.item-box__name 商品名が入ります
-            .item-box__num
-              .item-box__num__price ¥9,999
-              .item-box__num__likes
-                =fa_icon("heart", text: 10)
-              %p (税込)
+      = render partial: 'shared/items-box', collection: @items, as: "item"
 
     .allitem-link
       %a{href: "#"} すべての商品を見る

@@ -58,6 +58,12 @@ group :development do
 
 end
 
+group :test do
+  gem 'rails-controller-testing'
+  gem 'faker'
+  gem 'database_cleaner'
+end
+
 group :production do
   gem 'unicorn'
 end
@@ -73,4 +79,6 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog-aws'
 gem 'jp_prefecture'
+gem 'payjp'
 gem 'ancestry'
+gem 'jquery-turbolinks'
