@@ -1,0 +1,130 @@
+.order-double{
+  @include clearfix();
+  width:1020px;
+  margin: 0 auto;
+  padding:20px 0;
+  // サブメニュー
+  &__sub{
+  @include mq-up() {
+    display:block;
+    width: 280px;
+    float:left;
+  }
+  @include mq-down() {
+    display:none;
+  }
+    &__title{
+      margin: 0 0 10px 0;
+      font-size: 18px;
+      font-weight: 600;
+    }
+    &__detail{
+      background-color:$shiro;
+      margin: 0 0 50px 0;
+      table{
+        width:100%;
+      }
+      tr:nth-child(even){
+        background-color:#FAFAFA;
+      }
+      th{
+        padding: 15px 10px;
+        width:40%;
+        vertical-align: top;
+      }
+      td{
+        padding: 15px 0;
+        width:60%;
+        vertical-align: top;
+        a{
+          text-decoration: underline;
+        }
+      }
+    }
+    &__userdetail{
+      height:100px;
+      margin:0 0 50px 0;
+      line-height: 100px;
+      background-color:$shiro;
+      display:block;
+      .userdetail{
+        &__userphoto{
+          width: 40px;
+          height: 40px;
+          margin:30px 0 0 10px;
+          border-radius: 50%;
+          float:left;
+          background-color:lightgray;
+        }
+        &__username{
+          margin:0 0 0 10px;
+          float:left;
+          color:#000;
+        }
+        &__arrow{
+          margin: 0 10px 0 0;
+          font-size: 25px;
+          color: #000;
+          text-align:right;
+        }
+      }
+    }
+    &__photo{
+      width:100px;
+    }
+    &__item-name{
+      display:block;
+    }
+  // スマホ画面の時、表示を下にもっていく
+    &--small{
+    @include mq-up() {
+      display:none;
+    }
+    @include mq-down() {
+      width: 100vw;
+      display:block;
+    }
+    }
+  }
+  // メインメニュー
+  &__main{
+  @include mq-up() {
+    width: 700px;
+    float:right;
+  }
+  @include mq-down() {
+    width: 100vw;
+    margin:0 0 50px 0;
+  }
+  padding: 20px 0;
+  background-color:$shiro;
+    &__title{
+      margin:0 0 20px 0;
+      font-size: 25px;
+      font-weight: 600;
+      text-align: center;
+    }
+    &__finishdisplay{
+      height:150px;
+      padding: 30px 0 0 0;
+      background-color:#FDF5E6;
+      text-align: center;
+    }
+    .finishdisplay{
+      &__checkmark{
+        font-size:50px;
+      }
+      &__alert{
+        color:$google;
+        font-size:22px;
+        font-weight:600;
+      }
+      &__thanks{
+        font-size:15px;
+      }
+    }
+    &__finishmessage{
+      padding: 50px 50px 30px 50px;
+    }
+  }
+}
