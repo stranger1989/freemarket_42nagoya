@@ -14,6 +14,8 @@ FactoryGirl.define do
     estimated_shipping_date     "1〜2日で発送"
     price                       "300"
     user
+    category
+    brand
     created_at                  "2019-01-21T00:00:00Z"
     updated_at                  "2019-01-21T00:00:00Z"
   end

@@ -115,6 +115,12 @@ describe Item do
       expect(item).to be_valid
     end
 
+    it "カテゴリーが選択されていない場合は出品できない" do
+      item = build(:item, category_id: nil)
+      item.valid?
+      expect(item.errors[:category_id]).to include("選択してください")
+    end
+
   end
 
 end
