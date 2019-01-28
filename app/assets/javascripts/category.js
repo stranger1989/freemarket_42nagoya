@@ -18,6 +18,19 @@ $(document).on('turbolinks:load', function() {
     $(this).parent().append(template.html());
   });
 
+// 小カテゴリで選択されたものが靴だった場合、サイズの内容を変更
+  $(document).on('change', '.grand-child_categories', function() {
+    var val = $('.grand-child_categories').val();
+    console.log(val)
+    if(val >= 219 && val <= 228 || val >= 382 && val <= 389){
+      $('#sml-size').hide();
+      $('#shoes-size').show();
+    } else {
+      $('#sml-size').show();
+      $('#shoes-size').hide();
+    }
+  });
+
 });
 
 
