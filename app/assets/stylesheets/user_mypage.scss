@@ -1,0 +1,300 @@
+
+.main-container {
+  background-color: $bg-color;
+}
+
+.mypage-container {
+  @include clearfix();
+  @include media(m) {
+    width: 700px;
+  }
+  @include media(l) {
+    width: 1020px;
+    margin: 0 auto;
+    padding: 40px 0;
+  }
+  margin: 0 auto;
+  padding: 24px 0;
+  background-color: $bg-color;
+}
+
+.main-column {
+  @include media(m) {
+    float: none;
+    width: 700px;
+  }
+  @include media(l) {
+    float: right;
+  }
+  width: 100%;
+}
+
+.side-bar {
+  @include media(m) {
+    width: 700px;
+  }
+  @include media(l) {
+    float: left;
+    width: 280px;
+    margin: 0 40px 0 0 ;
+  }
+  margin: 40px auto 0;
+}
+
+.user-icon {
+  @include media(m) {
+    height: 200px;
+  }
+  position: relative;
+  height: 155px;
+  padding: 20px;
+  text-align: center;
+}
+
+.side-nav__head {
+  @include media(m) {
+    margin: 40px 0 0;
+  }
+  margin: 40px 4% 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.side-nav__list {
+  & > li {
+    border-top: 1px solid #eee;
+  }
+  & > li:first-child {
+    border: 0;
+  }
+  & > li > .location {
+    background-color: #eee;
+    font-weight: bold;
+  }
+  &__content {
+    display: block;
+    min-height: 48px;
+    padding: 16px;
+    background-color: $shiro;
+    color: $char-black;
+    font-size: 13px;
+  }
+  &__content:hover {
+    background-color: rgba(255,255,255,0.5);
+  }
+}
+
+.user-icon {
+  @include media(m) {
+    height: 200px;
+  }
+  position: relative;
+  height: 155px;
+  padding: 20px;
+  background-image: image-url("mypage-bg.jpg");
+  background-size: cover;
+  text-align: center;
+
+  & > a {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translate(0, -50%);
+    color: $char-black;
+  }
+  & > a:hover {
+    opacity: .8;
+  }
+
+  &__image {
+    overflow: hidden;
+    width: 60px;
+    height: 60px;
+    margin: 0 auto;
+    border-radius: 50%;
+  }
+
+  .user-name {
+    margin: 8px 0 0;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  .user-number {
+    margin: 8px 0 0;
+    &__evaluation {
+      display: inline-block;
+      font-size: 14px;
+      font-weight: bold;
+    }
+    & > div:first-child {
+      margin: 0 16px 0 0;
+    }
+    &__item-number {
+      display: inline-block;
+      font-size: 14px;
+      font-weight: bold;
+    }
+  }
+}
+
+.mypage-tab-container {
+  background-color: $shiro;
+  margin: 0;
+  .mypage-tabs {
+    border: 0;
+    font-size: 0;
+    background-color: #eee;
+    margin: 0;
+    & > li {
+      width: 50%;
+      display: inline-block;
+      text-align: center;
+      vertical-align: top;
+      & > h3 > a {
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 72px;
+        color: $char-black;
+        display: block;
+        position: relative;
+      }
+      & > h3 > a:hover {
+        opacity: .8;
+      }
+    }
+  }
+  .mypage-news-list {
+    display: block;
+    & > li {
+      position: relative;
+      border-bottom: 1px solid #eee
+    }
+    & > li:last-child {
+      border: 0;
+      padding: 16px;
+      & > a {
+        display: block;
+        height: 56px;
+        margin: 0 auto;
+        background: #eee;
+        color: $char-black;
+        line-height: 56px;
+        text-align: center;
+      }
+      & > a:hover {
+        opacity: .6;
+      }
+    }
+    & > .mypage-news:hover {
+      background-color:rgba(245,245,245,0.7);
+    }
+    & > .mypage-news > a {
+      display: block;
+      min-height: 80px;
+      padding: 16px;
+      color: $char-black;
+      .news-logo {
+        position: relative;
+        overflow: hidden;
+        float: left;
+        width: 48px;
+        height: 48px;
+        & > img {
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          z-index: 1;
+          width: 100%;
+        }
+      }
+      .news-body {
+        margin: 0 40px 0 68px;
+        &__text {
+          overflow: hidden;
+          display: inline-block;
+          line-height: 1.5;
+          text-overflow: ellipsis;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
+
+.tab-content > ul {
+  display: none;
+}
+
+.item-info-tab-content > ul {
+  display: none;
+}
+
+.active {
+  border-top: 2px solid #ea352d;
+  background-color: $shiro;
+}
+
+ .item-info-tabs {
+  border: 0;
+  font-size: 0;
+  background-color: #eee;
+  margin: 0;
+  & > li {
+    width: 50%;
+    display: inline-block;
+    text-align: center;
+    vertical-align: top;
+    & > h3 > a {
+      font-size: 16px;
+      font-weight: bold;
+      line-height: 72px;
+      color: $char-black;
+      display: block;
+      position: relative;
+    }
+    & > h3 > a:hover {
+      opacity: .8;
+    }
+  }
+ }
+
+.mypage-item-not-found {
+  border: 0;
+  padding: 160px 0 60px;
+  background: image-url("gray-logo.png");
+  background-repeat: no-repeat;
+  background-position: center 40px;
+  background-size: 110px 110px;
+  text-align: center;
+  font-size: 16px;
+  color: #ccc;
+}
+
+.purchased-item-information {
+  margin: 40px 0 0;
+  .mypage-tab-head {
+    @include media(m) {
+      padding: 0 16px;
+    }
+    padding: 0 4%;
+    background-color: $form-color;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 72px;
+  }
+}
+
+.app-banner {
+  @include media(m) {
+    height: 260px;
+    background: image-url("app-banner.png");
+    background-size: cover;
+    background-position: center;
+  }
+  background: $shiro;
+}

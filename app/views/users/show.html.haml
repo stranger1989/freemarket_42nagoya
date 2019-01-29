@@ -1,0 +1,129 @@
+= render 'shared/header'
+
+.main-container
+  .mypage-container
+    .main-column
+      .user-icon
+        = link_to "#" do
+          =image_tag("mypage_logo.png", alt: "user-icon", class: "user-icon__image", style: "vertical-align:bottom")
+          %h2.user-name
+            = current_user.nickname
+          .user-number
+            .user-number__evaluation 評価 0
+            .user-number__item-number 出品数 0
+
+      .mypage-tab-container
+        %ul.mypage-tabs
+          %li
+            %h3
+              =link_to "お知らせ", "#panel1"
+          %li
+            %h3
+              =link_to "やることリスト", "#panel2"
+        .tab-content
+          %ul#panel1.panel.mypage-news-list
+            %li.mypage-news
+              = link_to "#" do
+                .news-logo
+                  = image_tag("mercari_profile.png", alt: "mercari-profile-logo")
+                .news-body
+                  .news-body__text 【期間限定のお得情報】対象カテゴリーが売れたら”必ず”ポイントがもらえるキャンペーン開催中
+
+            %li.mypage-news
+              = link_to "#" do
+                .news-logo
+                  = image_tag("mercari_profile.png", alt: "mercari-profile-logo")
+                .news-body
+                  .news-body__text 明日、600ポイントの有効期限が切れます
+
+            %li.mypage-news
+              = link_to "#" do
+                .news-logo
+                  = image_tag("mercari_profile.png", alt: "mercari-profile-logo")
+                .news-body
+                  .news-body__text 有効期限が近づいているポイントがあります
+
+            %li
+              = link_to "一覧を見る", "#", class: "mypage-news__detail__button"
+
+          %ul#panel2.panel.mypage-todo
+            %li.mypage-item-not-found 現在やることリストはありません
+
+      .mypage-tab-container.purchased-item-information
+        %h2.mypage-tab-head 購入した商品
+        %ul.item-info-tabs
+          %li
+            %h3
+              =link_to "取引中", "#panel3"
+          %li
+            %h3
+              =link_to "過去の取引", "#panel4"
+        .item-info-tab-content
+          %ul#panel3.panel.trading-now
+            %li.mypage-item-not-found 取引中の商品がありません
+          %ul#panel4.panel.past-transaction
+            %li.mypage-item-not-found 過去に取引した商品がありません
+
+
+    .side-bar
+      .side-nav
+        %ul.side-nav__list
+          %li
+            = link_to "マイページ", "#", class: "side-nav__list__content location"
+          %li
+            = link_to "お知らせ", "#", class: "side-nav__list__content"
+          %li
+            = link_to "やることリスト", "#", class: "side-nav__list__content"
+          %li
+            = link_to "いいね！一覧", "#", class: "side-nav__list__content"
+          %li
+            = link_to "出品する", "#", class: "side-nav__list__content"
+          %li
+            = link_to "出品した商品-出品中", "#", class: "side-nav__list__content"
+          %li
+            = link_to "出品した商品-取引中", "#", class: "side-nav__list__content"
+          %li
+            = link_to "出品した商品-売却済み", "#", class: "side-nav__list__content"
+          %li
+            = link_to "出品した商品-取引中", "#", class: "side-nav__list__content"
+          %li
+            = link_to "出品した商品-過去の取引", "#", class: "side-nav__list__content"
+          %li
+            = link_to "ニュース一覧", "#", class: "side-nav__list__content"
+          %li
+            = link_to "評価一覧", "#", class: "side-nav__list__content"
+          %li
+            = link_to "ガイド", "#", class: "side-nav__list__content"
+          %li
+            = link_to "お問い合わせ", "#", class: "side-nav__list__content"
+
+
+        %h3.side-nav__head 売上・ポイント
+        %ul.side-nav__list
+          %li
+            = link_to "売上・振込申請", "#", class: "side-nav__list__content"
+          %li
+            = link_to "ポイント", "#", class: "side-nav__list__content"
+
+        %h3.side-nav__head 設定
+        %ul.side-nav__list
+          %li
+            = link_to "プロフィール", "#", class: "side-nav__list__content"
+          %li
+            = link_to "住所変更", "#", class: "side-nav__list__content"
+          %li
+            = link_to "支払い方法", "#", class: "side-nav__list__content"
+          %li
+            = link_to "メール/パスワード", "#", class: "side-nav__list__content"
+          %li
+            = link_to "本人情報", "#", class: "side-nav__list__content"
+          %li
+            = link_to "電話番号の確認", "#", class: "side-nav__list__content"
+          %li
+            = link_to "ログアウト", "#", class: "side-nav__list__content"
+
+.app-banner
+
+= render 'shared/footer'
+
+= render 'shared/sell_btn'

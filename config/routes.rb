@@ -15,4 +15,7 @@ Rails.application.routes.draw do
     get "/users/sign_up/payment", to: "users/registrations#payment", as: "user_registration_payment"
     post '/users/sign_up/payment/finish', to: "users/registrations#finish", as: "user_registration_finish"
   end
+
+  resources :users, only: [:show]
+
 end
