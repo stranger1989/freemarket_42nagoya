@@ -12,7 +12,7 @@ url = "https://www.mercari.com/jp/category/"
 #取得するhtml用charset
 charset = nil
 
-html = open(url) do |page|
+html = open(url, 'User-Agent' => 'ruby') do |page|
   #charsetを取得
   charset = page.charset
   #htmlの読み込み
