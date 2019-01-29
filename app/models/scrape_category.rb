@@ -13,10 +13,9 @@ url = "https://www.mercari.com/jp/category/"
 charset = nil
 
 # User-Agentの設定
-# opt = {}
-# opt['User-Agent'] = 'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html) Safari/537.36'
+user_agent = "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html) Safari/537.36"
 
-html = open(url, "user-agent" => mrcr42) do |page|
+html = open(url, "User-Agent" => user_agent) do |page|
   #charsetを取得
   charset = page.charset
   #htmlの読み込み
