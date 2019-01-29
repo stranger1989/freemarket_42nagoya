@@ -46,6 +46,8 @@ group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
   gem 'pry-rails'
+  gem 'guard'
+  gem 'guard-rspec', require: false
 end
 
 group :development do
