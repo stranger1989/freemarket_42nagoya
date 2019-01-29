@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :omniauthable
 
   def prefecture_name
     JpPrefecture::Prefecture.find(code: prefecture_id).try(:name)
@@ -10,9 +10,29 @@ class User < ApplicationRecord
     self.prefecture_id = JpPrefecture::Prefecture.find(name: prefecture_name).code
   end
 
+  def self.find_for_oauth(auth)
+    # 複数のsnsが使えるように別テーブルでsns情報を管理
+    snscredential = SnsCredential.where(uid: auth.uid, provider: auth.provider).first
+
+    unless snscredential
+      snscredential = SnsCredential.create(
+        uid:      auth.uid,
+        provider: auth.provider,
+        email:    auth.info.email,
+        name:  auth.info.name,
+        password: Devise.friendly_token[0, 20],
+        token:    auth.credentials.token,
+        image:  auth.info.image
+      )
+    end
+    snscredential
+  end
+
   # 全てバリデーションのためのダミーデータ
   DEFAULT_USERPARAMS = {
      nickname: "testname",
+     email: "test@yahoo.co.jp",
+     password: "00000000",
      profile: "",
      avatar: "",
      lastname: "手簀戸手簀戸",
@@ -44,4 +64,5 @@ class User < ApplicationRecord
 
   has_many :items
   has_many :orders
+  has_many :sns_credentials
 end
