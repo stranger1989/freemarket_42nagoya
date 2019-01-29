@@ -1,13 +1,13 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   prepend_before_action :require_no_authentication, only: [ :create]
   layout 'layout_for_UserAdmin_SignUp'
-# リダイレクト先のパスを格納
+  # リダイレクト先のパスを格納
   @@url = ""
 
-# 会員登録トップページ
+  # 会員登録トップページ
   def index
   end
-# 基本情報作成
+  # 基本情報作成
   def basic_information
     build_resource
     yield resource if block_given?
@@ -16,28 +16,49 @@ class Users::RegistrationsController < Devise::RegistrationsController
     # エラー処理のため、遷移前のページ格納
     @@before_url = ""
   end
-# 住所情報作成
+  # SNSログイン用基本情報作成
+  def sns_basic_information
+    build_resource
+    yield resource if block_given?
+    respond_with resource
+    @@url = "residence"
+    # エラー処理のため、遷移前のページ格納
+    @@before_url = ""
+  end
+  # 住所情報作成
   def residence
     build_resource
     yield resource if block_given?
     respond_with resource
     @@url = "payment"
   end
-# payjpの情報受け渡し、フォームはpayjpにて作成
+  # payjpの情報受け渡し、フォームはpayjpにて作成
   def payment
+    flash[:notice_registration] = ""
   end
-# payjpに顧客情報を登録したあと登録完了
+  # payjpに顧客情報を登録したあと登録完了
   def finish
-    Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
-    customer = Payjp::Customer.create(
-      :card  => params['payjp-token']
-    )
-    if customer[:id]
-      total_signup_params({ payment: customer[:id] })
-      build_resource(total_signup_params)
-      resource.save
+    begin
+      User.transaction do
+        Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+        customer = Payjp::Customer.create(
+          :card  => params['payjp-token']
+        )
+        total_signup_params({ payment: customer[:id] })
+        build_resource(total_signup_params)
+        resource.save!
+      end
+      # もしSNSログインの場合、現在登録したユーザーをsnscredentialに登録
+      SnsCredential.where(uid: session[:sns_information]).update(user_id: resource.id) if session[:sns_information]
       error_message(resource)
-    else
+    # クレジット登録がうまくいかなかった時
+    rescue Payjp::InvalidRequestError => e
+      Rails.logger.debug e.json_body[:error][:message]
+      flash[:notice_registration] = "クレジットカードの登録に失敗しました"
+    # paramsの受け渡しが上手くいかなかった時
+    rescue => e
+      Rails.logger.debug e.message
+      flash[:notice_registration] = "通信に失敗しました"
       render 'payment'
     end
   end

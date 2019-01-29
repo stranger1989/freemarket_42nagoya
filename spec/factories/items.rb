@@ -15,7 +15,6 @@ FactoryGirl.define do
     sequence(:price){ [*300..10000].sample }
     association :user, factory: :user
     category
-    brand
     created_at                  { Faker::Time.between(2.days.ago, Time.now, :all) }
     updated_at                  { Faker::Time.between(2.days.ago, Time.now, :all) }
   end

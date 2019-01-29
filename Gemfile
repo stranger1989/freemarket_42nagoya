@@ -46,6 +46,8 @@ group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
   gem 'pry-rails'
+  gem 'guard'
+  gem 'guard-rspec', require: false
 end
 
 group :development do
@@ -82,3 +84,5 @@ gem 'jp_prefecture'
 gem 'payjp'
 gem 'ancestry'
 gem 'jquery-turbolinks'
+gem 'omniauth'
+gem 'omniauth-facebook'

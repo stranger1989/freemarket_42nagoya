@@ -4,5 +4,6 @@
       %h2.innertitle 新規会員登録
     .login--registration__form-inner
       =link_to "メールアドレスで登録", user_registration_basic_infomation_path, class: "btn-mailaddress"
-      =link_to "Facebookで登録","#", class: "btn-facebook"
+      =link_to "Facebookで登録", user_facebook_omniauth_authorize_path, class: "btn-facebook"
+      =flash[:notice_facebook_registration]
       =link_to "Googleで登録", "#", class: "btn-google"
