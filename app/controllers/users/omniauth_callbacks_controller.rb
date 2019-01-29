@@ -9,7 +9,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def callback_from(provider)
     provider = provider.to_s
-
     # request.env['omniauth.auth']はユーザ情報
     @user = User.find_for_oauth(request.env['omniauth.auth'])
     # facebookユーザー認証が通った場合
@@ -26,7 +25,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     # facebookユーザー認証が通らなかった場合
     else
       session["devise.#{provider}_data"] = request.env['omniauth.auth']
-      redirect_to new_user_registration_url
+      redirect_to user_registration_index_url
+      flash[:notice_facebook_registration] = "facebookの認証に失敗しました"
     end
   end
 
