@@ -53,11 +53,17 @@
                 %template{id: "child_of#{ child_category.id }"}
                   = f.collection_select :category_id, child_category.children, :id, :name, { prompt: "---" }, {class: "select-default grand-child_categories"}
 
-          .form-group
+          .form-group#sml-size
             = f.label :size, class: "item-label" do
               サイズ
-              %span.required 必須
+              %span.any 任意
             = f.select :size, [ ["XXS以下", "XXS以下"], ["XS(SS)", "XS(SS)"], ["S", "S"], ["M", "M"], ["L", "L"], ["XL(LL)", "XL(LL)"], ["2XL(3L)",  "2XL(3L)"], ["3XL(4L)", "3XL(4L)"], ["4XL(5L)以上", "4XL(5L)以上"], ["FREE SIZE", "FREE SIZE"] ], prompt: "---"
+
+          .form-group#shoes-size
+            = f.label :size, class: "item-label" do
+              サイズ
+              %span.any 任意
+            = f.select :size, [ ["20cm以下", "20cm以下"], ["20.5cm", "20.5cm"], ["21cm", "21cm"], ["21.5cm", "21.5cm"], ["22cm", "22cm"], ["22.5cm", "22.5cm"], ["23cm", "23cm"], ["23.5cm", "23.5cm"], ["24cm", "24cm"], ["24.5cm", "24.5cm"], ["25cm", "25cm"], ["25.5cm", "25.5cm"], ["26cm", "26cm"], ["26.5cm", "26.5cm"], ["27cm", "27cm"], ["27.5cm", "27.5cm"], ["28cm", "28cm"], ["29cm", "29cm"],["30cm", "30cm"], ["31cm以上", "31cm以上"] ], prompt: "---"
 
           .form-group
             = f.label :item_status, class: "item-label" do
