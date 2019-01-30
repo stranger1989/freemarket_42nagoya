@@ -5,8 +5,10 @@
 .item-list
   .single-main
     .item-detail
-      %h1.item-detail__name=@item.name
-      %p.item-detail__wording 『ロシアンダイヤ・ピンクサファイア・リング・11号・未使用♡即購入OK♡値下げ』は、65回の取引実績を持つレオンさんから出品されました。リング/レディースの商品で、東京都から2~3日で発送されます。
+      %h1.item-detail__name
+        =@item.name
+      %p.item-detail__wording
+        =@item.description
       .item-detail__main-contents.main-contents
         .main-contents__PhotoAndDetail
           %section.main-contents__photo
@@ -42,7 +44,8 @@
                   %td ナノ ユニバース
                 %tr
                   %th 商品のサイズ
-                  %td S
+                  %td
+                    = @item.size
                 %tr
                   %th 商品の状態
                   %td
@@ -99,23 +102,28 @@
                 %td ナノ ユニバース
               %tr
                 %th 商品のサイズ
-                %td S
+                %td
+                  =@item.size
               %tr
                 %th 商品の状態
-                %td 未使用に近い
+                %td
+                  = @item.item_status
               %tr
                 %th 配送料の負担
-                %td 送料込み(出品者負担)
+                %td
+                  = @item.shipping_fee
               %tr
                 %th 配送の方法
-                %td ゆうゆうメルカリ便
+                %td
+                  = @item.delivery_way
               %tr
                 %th 配送元地域
                 %td
                   =link_to @item.user.prefecture, "#"
               %tr
                 %th 発送日の目安
-                %td 2~3日で発送
+                %td
+                  = @item.estimated_shipping_date
       .item-detail__price-box.item-detail__price-box--small
         %span.item-price=converting_to_jpy(@item.price)
         %span.item-tax (税込)
