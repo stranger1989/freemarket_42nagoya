@@ -5,7 +5,7 @@ class Item < ApplicationRecord
   validates :description, presence: true, length: {maximum: 1000, allow_blank:true, message: "1000文字以下で入力してください"}
   validates :order_status, presence: { message: '選択してください' }
   validates :item_status, presence: { message: '選択してください' }
-  validates :size, presence: { message: '選択してください' }
+  validates :size
   validates :shipping_fee, presence: { message: '選択してください' }
   validates :delivery_way, presence: { message: '選択してください' }
   validates :shipping_area, presence: { message: '選択してください' }
