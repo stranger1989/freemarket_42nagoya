@@ -64,6 +64,7 @@ group :test do
   gem 'rails-controller-testing'
   gem 'faker'
   gem 'database_cleaner'
+  gem 'capybara'
 end
 
 group :production do
@@ -86,3 +87,4 @@ gem 'ancestry'
 gem 'jquery-turbolinks'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
