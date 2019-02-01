@@ -10,13 +10,52 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.new(item_params)
-    if @item.save
-      redirect_to root_path
-    else
+    begin
+      Item.transaction do
+      # ブランドをデータベースから検索
+        search_brand_id = ""
+        brand_id = item_params[:brand_id]
+        category_id = item_params[:category_id]
+
+        if brand_id.present?
+          search_brand = Brand.where("name LIKE(?)", brand_id)
+          search_brand_id = search_brand[0].id if search_brand != []
+        end
+
+        if search_brand_id.present?
+          # もしブランドがデータベース内に見つかった時
+          # カテゴリと紐付いているブランドが同一か確認
+          session[:final_params] = add_brand(item_params, search_brand_id)
+          search_category_id = CategoryBrand.where("brand_id LIKE(?) and category_id LIKE(?)", session[:final_params][:brand_id], category_id)
+          # カテゴリブランドが紐付いていない時、中間テーブルに登録
+          CategoryBrand.create!(brand_id: session[:final_params][:brand_id], category_id: category_id) if search_category_id.empty?
+        else
+          # もしブランドがデータベースになかった時
+          if brand_id.present?
+            @brand_id = Brand.create!(name: brand_id).id
+            CategoryBrand.create!(brand_id: @brand_id, category_id: category_id)
+          else
+            @brand_id = nil
+          end
+          session[:final_params] = add_brand(item_params, @brand_id)
+        end
+      end
+      # brand-categoryの受け渡しがうまくいったら、アイテムを生成
+        @item = Item.new(session[:final_params])
+        session[:final_params] = nil
+        if @item.save
+          redirect_to root_path
+        else
+          render :new
+        end
+    rescue => e
+      # brand-categoryの受け渡しが一つでも上手くいかなかった時
+      # 全てロールバックさせる
+      Rails.logger.debug e.message
+      flash[:notice_brand_registration] = "ブランドの登録に失敗しました"
+      @item = Item.new(item_params)
       render :new
     end
-
   end
 
   def show
@@ -25,8 +64,13 @@ class ItemsController < ApplicationController
   end
 
   private
+
   def item_params
-    params.require(:item).permit(:name, :image, :price, :order_status, :item_status, :shipping_fee, :delivery_way, :shipping_area, :estimated_shipping_date, :description, :size, :category_id).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :image, :price, :order_status, :item_status, :shipping_fee, :delivery_way, :shipping_area, :estimated_shipping_date, :description, :size, :category_id, :brand_id).merge(user_id: current_user.id)
+  end
+
+  def add_brand(params_no_brand, brand_id)
+    params_no_brand.merge(brand_id: brand_id)
   end
 
 end
