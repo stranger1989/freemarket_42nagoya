@@ -1,6 +1,6 @@
 require 'csv'
 
 CSV.foreach('db/brand.csv', headers: true) do |row|
-  cate = Brand.new(name: row[0])
-  cate.save(validate: false)
+  brand = Brand.new(name: row[0])
+  brand.save(validate: false)
 end
