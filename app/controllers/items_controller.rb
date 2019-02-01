@@ -38,11 +38,10 @@ class ItemsController < ApplicationController
       end
       # brand-categoryの受け渡しがうまくいったら、アイテムを生成
         @item = Item.new(session[:final_params])
+        session[:final_params] = nil
         if @item.save
-          session[:final_params] = nil
           redirect_to root_path
         else
-          session[:final_params] = nil
           render :new
         end
     rescue => e
