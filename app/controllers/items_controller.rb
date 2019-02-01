@@ -12,28 +12,32 @@ class ItemsController < ApplicationController
   def create
     begin
       Item.transaction do
-        if item_params[:brand_id] == ""
-          # ブランドに何も入力されていないとき、ブランドなしで登録
-          session[:final_params] = item_params
-        else
-        # ブランドに文字列が入力されている時
-        # ブランドをデータベースから検索
-          search_brand_id = ""
-          search_brand = Brand.where("name LIKE(?)", item_params[:brand_id])
+      # ブランドをデータベースから検索
+        search_brand_id = ""
+        brand_id = item_params[:brand_id]
+        category_id = item_params[:category_id]
+
+        if brand_id.present?
+          search_brand = Brand.where("name LIKE(?)", brand_id)
           search_brand_id = search_brand[0].id if search_brand != []
-          if search_brand_id != ""
-            # もしブランドがデータベース内に見つかった時
-            # カテゴリと紐付いているブランドが同一か確認
-            session[:final_params] = add_brand(item_params, search_brand_id)
-            search_category_id = CategoryBrand.where("brand_id LIKE(?) and category_id LIKE(?)", session[:final_params][:brand_id], item_params[:category_id])
-            # カテゴリブランドが紐付いていない時、中間テーブルに登録
-            CategoryBrand.create!(brand_id: session[:final_params][:brand_id], category_id: item_params[:category_id]) if search_category_id.empty?
+        end
+
+        if search_brand_id.present?
+          # もしブランドがデータベース内に見つかった時
+          # カテゴリと紐付いているブランドが同一か確認
+          session[:final_params] = add_brand(item_params, search_brand_id)
+          search_category_id = CategoryBrand.where("brand_id LIKE(?) and category_id LIKE(?)", session[:final_params][:brand_id], category_id)
+          # カテゴリブランドが紐付いていない時、中間テーブルに登録
+          CategoryBrand.create!(brand_id: session[:final_params][:brand_id], category_id: category_id) if search_category_id.empty?
+        else
+          # もしブランドがデータベースになかった時
+          if brand_id.present?
+            @brand_id = Brand.create!(name: brand_id).id
+            CategoryBrand.create!(brand_id: @brand_id, category_id: category_id)
           else
-            # もしブランドがデータベースになかった時
-            @brand = Brand.create!(name: item_params[:brand_id])
-            CategoryBrand.create!(brand_id: @brand.id, category_id: item_params[:category_id])
-            session[:final_params] = add_brand(item_params, @brand.id)
+            @brand_id = nil
           end
+          session[:final_params] = add_brand(item_params, @brand_id)
         end
       end
       # brand-categoryの受け渡しがうまくいったら、アイテムを生成
