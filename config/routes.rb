@@ -5,7 +5,7 @@ Rails.application.routes.draw do
       }
 
   root "items#index"
-  resources :items, only: [:index, :show, :new, :create] do
+  resources :items, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
     resources :orders, only: [:new, :create]
   end
 
@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     post '/users/sign_up/payment/finish', to: "users/registrations#finish", as: "user_registration_finish"
   end
 
-  resources :users, only: [:show]
+  resource :users, only: [:show, :update]
 
+  get 'user/:name', controller: 'user', action: 'edit'
 end

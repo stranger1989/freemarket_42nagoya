@@ -29,5 +29,12 @@ $(document).on('turbolinks:load',function() {
   });
   // 取引中を最初から表示
   $('.item-info-tabs a[href^="#panel"]:eq(0)').trigger('click');
+
+
+  // サイドバーの現在地にCSSを当てる
+  var url = window.location.pathname;
+  $('.side-nav__list > li > a[href="'+url+'"]').addClass('location');
+
+
 });
 
