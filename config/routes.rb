@@ -20,5 +20,5 @@ Rails.application.routes.draw do
 
   resource :users, only: [:show, :update]
 
-  get 'user/:name', controller: 'user', action: 'edit'
+  get 'users/:name', controller: 'users', action: 'edit'
 end
