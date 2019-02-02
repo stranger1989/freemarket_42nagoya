@@ -231,6 +231,42 @@
   background: $shiro;
 }
 
+/* ラベル部分 左上に表示 */
+.soldout::before {
+  @include mq-down() {
+    border-bottom: 4.5em solid transparent;
+    border-left: 4.5em solid #ea352d;
+  }
+  @include mq-up() {
+    border-bottom: 6.5em solid transparent;
+    border-left: 6.5em solid #ea352d;
+  }
+  content: "";
+  top: 0;
+  left: 0;
+  position: absolute;
+  z-index: 100;
+}
+.soldout::after {
+  @include mq-down() {
+    font-size: 18px;
+    top: 15px;
+    left: 4px;
+  }
+  @include mq-up() {
+    font-size: 27px;
+    top: 19px;
+    left: 4px;
+  }
+  content: "SOLD";
+  display: block;
+  position: absolute;
+
+  transform: rotate(-45deg);
+  color: #fff; /* 文字色はここで変更 */
+  z-index: 101;
+}
+
 
 
 

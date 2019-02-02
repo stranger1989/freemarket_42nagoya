@@ -2,7 +2,10 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:create]
 
   def index
-    @items = Item.where("order_status = '出品中'")
+    @pickup_category_items_1 = display_category("1")
+    @pickup_category_items_2 = display_category("2")
+    @pickup_brand_items_1 = display_brand("シャネル")
+    @pickup_brand_items_2 = display_brand("ナイキ")
   end
 
   def new
@@ -71,6 +74,14 @@ class ItemsController < ApplicationController
 
   def add_brand(params_no_brand, brand_id)
     params_no_brand.merge(brand_id: brand_id)
+  end
+
+  def display_category(category_parent_id)
+    Item.joins(:category).where("categories.ancestry LIKE ?", "#{category_parent_id}%").order("created_at DESC").page(params[:page]).per(4)
+  end
+
+  def display_brand(brand_name)
+    Item.joins(:brand).where("brands.name LIKE ?", "%#{brand_name}%").order("created_at DESC").page(params[:page]).per(4)
   end
 
 end
