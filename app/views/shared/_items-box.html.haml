@@ -1,7 +1,11 @@
 .item-box.item-box--user-item
   = link_to item_path(item.id) do
-    .item-box__photo
-      = image_tag item.image.url, alt: "アイテム画像", style: "vertical-align:bottom"
+    - if item.order_status == "売却済"
+      .item-box__photo.soldout
+        = image_tag item.image.url, alt: "アイテム画像", style: "vertical-align:bottom"
+    - else
+      .item-box__photo
+        = image_tag item.image.url, alt: "アイテム画像", style: "vertical-align:bottom"
     .item-box__body
       %h3.item-box__name=item.name
       .item-box__num
