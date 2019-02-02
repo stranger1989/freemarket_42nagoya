@@ -18,18 +18,16 @@ Rails.application.routes.draw do
     post '/users/sign_up/payment/finish', to: "users/registrations#finish", as: "user_registration_finish"
   end
 
-  resource :users, only: [:show, :edit, :update, :destroy] do
+  resource :users, only: [:show, :edit, :update] do
     member do
       get :listing
       get :in_progress
       get :completed
-      get :profile
       get :deliver_address
-      get :card
+      get :credit_card
       get :email_password
       get :identification
       get :sms_confirmation
     end
   end
-
 end
