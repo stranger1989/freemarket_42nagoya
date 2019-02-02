@@ -19,19 +19,16 @@ Rails.application.routes.draw do
   end
 
   resource :users, only: [:show] do
-    namespace :listings do
-        get :listing
-        get :in_progress
-        get :completed
-    end
     member do
+      get :listing
+      get :in_progress
+      get :completed
       get :profile
       get :deliver_address
       get :card
       get :email_password
       get :identification
       get :sms_confirmation
-      get :logout
     end
   end
 
