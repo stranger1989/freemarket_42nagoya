@@ -70,8 +70,12 @@
         %span.item-price=converting_to_jpy(@item.price)
         %span.item-tax (税込)
         %span.item-shipping-fee 送料込み
-      .item-detail__item-buy-button
-        =link_to "購入画面に進む", new_item_order_url(@item.id), class: "btn-buy"
+      - if @item.order_status == "売却済"
+        .item-detail__item-buy-button
+          %p.btn-sold 売り切れました
+      - else
+        .item-detail__item-buy-button
+          =link_to "購入画面に進む", new_item_order_url(@item.id), class: "btn-buy"
         %section.main-contents__detail.main-contents__detail--small
           %table
             %tbody
@@ -128,8 +132,12 @@
         %span.item-price=converting_to_jpy(@item.price)
         %span.item-tax (税込)
         %span.item-shipping-fee 送料込み
-      .item-detail__item-buy-button.item-detail__item-buy-button--small
-        =link_to "購入画面に進む", new_item_order_url(@item.id), class: "btn-buy"
+      - if @item.order_status == "売却済"
+        .item-detail__item-buy-button.item-detail__item-buy-button--small
+          %p.btn-sold 売り切れました
+      - else
+        .item-detail__item-buy-button.item-detail__item-buy-button--small
+          =link_to "購入画面に進む", new_item_order_url(@item.id), class: "btn-buy"
       .item-detail__description
         %p.description-inner=@item.description
       .item-detail__sub-buttons
@@ -156,7 +164,10 @@
       %form{action: "/", method: "post"}
         %p.comment-container__attention 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
         %textarea.comment-container__textarea
-        %input{type: "submit", value: "コメントする", class: "comment-container__button"}
+        - if @item.order_status == "売却済"
+          %p.comment-container__button--sold 売り切れのためコメントできません
+        - else
+          %input{type: "submit", value: "コメントする", class: "comment-container__button"}
 
     %nav.item-paginate
       %ul
