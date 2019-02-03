@@ -1,0 +1,133 @@
+= render "shared/sub-header"
+
+.sell-main
+  .item-information
+    %h2.innertitle 商品の情報を入力
+
+
+    = form_for @item, builder: ApplicationFormBuilder, html: {class: "item-information__form-inner"}do |f|
+
+      .sell-upload-box
+        = f.label :image, class: "item-label" do
+          出品画像
+          %span.required 必須
+          %p 最大10枚までアップロードできます
+        = f.file_field :image, class: "sell-dropbox-container"
+
+      .sell-content
+        .form-group
+          = f.label :name, class: "item-label" do
+            商品名
+            %span.required 必須
+          = f.text_field :name, placeholder: "商品名(必須40文字まで)", class: "form-group__form-default"
+          - if @item.errors.any?
+            %li.errors
+              = @item.errors.full_messages_for(:name)[0]
+
+        .form-group
+          = f.label :description, class: "item-label" do
+            商品の説明
+            %span.required 必須
+          = f.text_area :description, placeholder: "商品の説明(必須1,000文字以内) (色、素材、重さ、定価、注意点など) 例)2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。合わせやすいのでおすすめです。", class: "form-group__form-default textarea-default"
+
+      .sell-content
+        %h3.sell-sub-head 商品の詳細
+
+        .sell-form-box
+          .form-group
+            = f.label :category_id, class: "item-label" do
+              カテゴリー
+              %span.required 必須
+
+            =f.collection_select :category_id, Category.roots, :id, :name, { prompt: "---" }, {class: "select-default root_category"}
+
+          %div
+            - Category.roots.each do |root_category|
+              %template{id: "child_of#{ root_category.id }"}
+                =f.collection_select :category_id, root_category.children, :id, :name, { prompt: "---" }, {class: "select-default child_categories"}
+
+          %div
+            - Category.roots.each do |root_category|
+              - Category.children_of(root_category).each do |child_category|
+                %template{id: "child_of#{ child_category.id }"}
+                  = f.collection_select :category_id, child_category.children, :id, :name, { prompt: "---" }, {class: "select-default grand-child_categories"}
+
+          .form-group#sml-size
+            = f.label :size, class: "item-label" do
+              サイズ
+              %span.any 任意
+            = f.select :size, [ ["XXS以下", "XXS以下"], ["XS(SS)", "XS(SS)"], ["S", "S"], ["M", "M"], ["L", "L"], ["XL(LL)", "XL(LL)"], ["2XL(3L)",  "2XL(3L)"], ["3XL(4L)", "3XL(4L)"], ["4XL(5L)以上", "4XL(5L)以上"], ["FREE SIZE", "FREE SIZE"] ], prompt: "---"
+
+          / .form-group#shoes-size
+          /   = f.label :size, class: "item-label" do
+          /     サイズ
+          /     %span.any 任意
+          /   = f.select :size, [ ["20cm以下", "20cm以下"], ["20.5cm", "20.5cm"], ["21cm", "21cm"], ["21.5cm", "21.5cm"], ["22cm", "22cm"], ["22.5cm", "22.5cm"], ["23cm", "23cm"], ["23.5cm", "23.5cm"], ["24cm", "24cm"], ["24.5cm", "24.5cm"], ["25cm", "25cm"], ["25.5cm", "25.5cm"], ["26cm", "26cm"], ["26.5cm", "26.5cm"], ["27cm", "27cm"], ["27.5cm", "27.5cm"], ["28cm", "28cm"], ["29cm", "29cm"],["30cm", "30cm"], ["31cm以上", "31cm以上"] ], prompt: "---"
+
+          .form-group
+            = f.label :item_status, class: "item-label" do
+              商品の状態
+              %span.required 必須
+            = f.select :item_status, [["新品、未使用", "新品、未使用"],["未使用に近い", "未使用に近い"],["目立った傷や汚れなし", "目立った傷や汚れなし"],["やや傷や汚れあり", "やや傷や汚れあり"],["傷や汚れあり", "傷や汚れあり"],["全体的に状態が悪い", "全体的に状態が悪い"]], prompt: "---"
+
+      .sell-content
+        %h3.sell-sub-head 配送について
+
+        .sell-form-box
+          .form-group
+            = f.label :shipping_fee, class: "item-label" do
+              配送量の負担
+              %span.required 必須
+            = f.select :shipping_fee, [["送料込み(出品者負担)", "送料込み(出品者負担)"],["着払い(購入者負担)", "着払い(購入者負担)"]], prompt: "---"
+
+          .form-group
+            = f.label :delivery_way, class: "item-label" do
+              配送の方法
+              %span.required 必須
+            = f.select :delivery_way, [["未定", "未定"],["らくらくメルカリ便", "らくらくメルカリ便"],["ゆうメール", "ゆうメール"],["レターパック", "レターパック"],["普通郵便(定形、定形外)", "普通郵便(定形、定形外)"],["クロネコヤマト", "クロネコヤマト"],["ゆうパック", "ゆうパック"],["クリックポスト", "クリックポスト"],["ゆうパケット", "ゆうパケット"]], prompt: "---"
+
+          .form-group
+            = f.label :shipping_area, class: "item-label" do
+              発送元の地域
+              %span.required 必須
+            = f.collection_select :shipping_area, JpPrefecture::Prefecture.all, :name, :name, include_blank: true, prompt: "---"
+
+          .form-group
+            = f.label :estimated_shipping_date, class: "item-label" do
+              発送までの日数
+              %span.required 必須
+            = f.select :estimated_shipping_date, [["1〜2日で発送", "1〜2日で発送"], ["2〜3日で発送", "2〜3日で発送"], ["4〜7日で発送","4〜7日で発送"]],  prompt: "---"
+
+      .sell-content
+        %h3.sell-sub-head 販売価格(300〜9,999,999)
+
+        .sell-form-box
+          %ul.sell-price
+            %li
+              = f.label :price, class: "item-label l-left" do
+                価格
+                %span.required 必須
+              .l-right
+                ¥
+                .l-right__form
+                  = f.text_field :price, placeholder: "例) 300", class: "form-group__form-default price-form"
+
+            - if @item.errors.any?
+              %li.errors
+                = @item.errors.full_messages_for(:price)[0]
+
+            %li.commissions
+              .l-left 販売手数料(10％)
+              .l-right -
+            %li.profit
+              .l-left 販売利益
+              .l-right -
+
+      .sell-content
+        %p 禁止されている出品、行為は必ずご確認ください。
+        %p またブランド品でシリアルナンバー等がある場合はご記載ください。偽ブランドの販売は犯罪であり処罰される可能性があります。
+        %p また。出品をもちまして加盟店規約に同意したことになります。
+        = f.submit "変更する", class: "submit-btn"
+        = link_to "キャンセル", root_path, class: "return-btn"
+
+= render "shared/sub-footer"
