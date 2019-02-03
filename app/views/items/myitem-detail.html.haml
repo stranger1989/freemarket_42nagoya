@@ -1,0 +1,155 @@
+= render "shared/header"
+
+.main-container
+  .mypage-container
+    .main-column
+      .item-detail
+        %h1.item-detail__name
+          =@item.name
+        %p.item-detail__wording
+        .item-detail__main-contents.main-contents
+          .main-contents__PhotoAndDetail
+            %section.main-contents__photo
+              =image_tag(@item.image.url, class: "item-main-photo")
+              .item-sub-photo
+            %section.main-contents__detail.main-contents__detail--large
+              %table
+                %tbody
+                  %tr
+                    %th 出品者
+                    %td
+                      =link_to @item.user.nickname, "#"
+                      %br
+                      .item-user-eva
+                        %i.fa.fa-smile-o.smile
+                        78
+                      .item-user-eva
+                        %i.fa.fa-meh-o.meh
+                        10
+                      .item-user-eva
+                        %i.fa.fa-frown-o.frown
+                        10
+                  %tr
+                    %th カテゴリー
+                    %td
+                      =link_to @item.category.ancestors[0].name, "#"
+                      %br
+                      =link_to @item.category.ancestors[1].name, "#"
+                      %br
+                      =link_to @item.category.name, "#"
+                  %tr
+                    %th ブランド
+                    %td ナノ ユニバース
+                  %tr
+                    %th 商品のサイズ
+                    %td
+                      = @item.size
+                  %tr
+                    %th 商品の状態
+                    %td
+                      =@item.item_status
+                  %tr
+                    %th 配送料の負担
+                    %td
+                      =@item.shipping_fee
+                  %tr
+                    %th 配送の方法
+                    %td
+                      =@item.delivery_way
+                  %tr
+                    %th 配送元地域
+                    %td
+                      =link_to @item.user.prefecture, "#"
+                  %tr
+                    %th 発送日の目安
+                    %td
+                      =@item.estimated_shipping_date
+
+          %section.main-contents__detail.main-contents__detail--small
+            %table
+              %tbody
+                %tr
+                  %th 出品者
+                  %td
+                    =link_to @item.user.nickname, "#"
+                    %br
+                    .item-user-eva
+                      %i.fa.fa-smile-o.smile
+                      78
+                    .item-user-eva
+                      %i.fa.fa-meh-o.meh
+                      10
+                    .item-user-eva
+                      %i.fa.fa-frown-o.frown
+                      10
+                %tr
+                  %th カテゴリー
+                  %td
+                    =link_to @item.category.ancestors[0].name, "#"
+                    %br
+                    =link_to @item.category.ancestors[1].name, "#"
+                    %br
+                    =link_to @item.category.name, "#"
+                %tr
+                  %th ブランド
+                  %td ナノ ユニバース
+                %tr
+                  %th 商品のサイズ
+                  %td
+                    =@item.size
+                %tr
+                  %th 商品の状態
+                  %td
+                    = @item.item_status
+                %tr
+                  %th 配送料の負担
+                  %td
+                    = @item.shipping_fee
+                %tr
+                  %th 配送の方法
+                  %td
+                    = @item.delivery_way
+                %tr
+                  %th 配送元地域
+                  %td
+                    =link_to @item.user.prefecture, "#"
+                %tr
+                  %th 発送日の目安
+                  %td
+                    = @item.estimated_shipping_date
+        .item-detail__price-box
+          %span.item-price=converting_to_jpy(@item.price)
+          %span.item-tax (税込)
+          %span.item-shipping-fee 送料込み
+        .item-detail__description
+          %p.description-inner=@item.description
+
+      .button-container
+        .item-detail__myitem-button
+          = link_to "商品の編集", "/items/#{@item.id}/edit", class: "btn-edit"
+          %div or
+          = link_to "この商品を削除する", "/items/#{@item.id}", method: :delete, class: "btn-delete"
+
+      .comment-container
+        .comment-container__comment-view.comment-view
+          = link_to image_tag("mypage_logo.png", alt: "", class: "comment-view__user_image")
+          .comment-view__user-name Natalia
+          .comment-view__balloom
+            すみません、どんなファーでしょうか？
+            .comment-time
+              %i.fa.fa-clock-o
+              3日前
+            .comment-flag
+              %i.fa.fa-flag-o
+        %form{action: "/", method: "post"}
+          %p.comment-container__attention 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+          %textarea.comment-container__textarea
+          %input{type: "submit", value: "コメントする", class: "comment-container__button"}
+
+    = render 'shared/side-bar'
+
+/ バナー
+.app-banner
+
+/ フッター
+= render "shared/footer"
