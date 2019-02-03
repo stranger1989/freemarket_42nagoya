@@ -4,25 +4,24 @@
   padding: 24px 40px 40px 40px;
   background-color: #fff;
   text-align: center;
+  .btn-edit {
+    @include button-user-form(100%, 50px, $main-red, 14px, #fff);
+    display: block;
+    margin: 15px auto 15px;
+    &:hover {
+      opacity: .6;
+      transition: all ease-out .3s;
+    }
+  }
+  .btn-delete{
+    @include button-user-form(100%, 50px, #aaa, 14px, #fff);
+    display: block;
+    margin: 15px auto 0;
+    &:hover {
+      opacity: .6;
+      transition: all ease-out .3s;
+    }
+  }
 }
 
-.btn-edit {
-  @include button-user-form(100%, 50px, $main-red, 14px, #fff);
-  display: block;
-  margin: 15px auto 15px;
-}
-.btn-edit:hover {
-  opacity: .6;
-  transition: all ease-out .3s;
-}
 
-
-.btn-delete{
-  @include button-user-form(100%, 50px, #aaa, 14px, #fff);
-  display: block;
-  margin: 15px auto 0;
-}
-.btn-delete:hover {
-  opacity: .6;
-  transition: all ease-out .3s;
-}
