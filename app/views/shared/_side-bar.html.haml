@@ -10,13 +10,13 @@
       %li
         = link_to "いいね！一覧", "#", class: "side-nav__list__content"
       %li
-        = link_to "出品する", "#", class: "side-nav__list__content"
+        = link_to "出品する", "/items/new", class: "side-nav__list__content"
       %li
-        = link_to "出品した商品-出品中", "#", class: "side-nav__list__content"
+        = link_to "出品した商品-出品中", {controller: "users", action: "edit", name: "listing"}, class: "side-nav__list__content"
       %li
-        = link_to "出品した商品-取引中", "#", class: "side-nav__list__content"
+        = link_to "出品した商品-取引中", {controller: "users", action: "edit", name: "in_progress"}, class: "side-nav__list__content"
       %li
-        = link_to "出品した商品-売却済み", "#", class: "side-nav__list__content"
+        = link_to "出品した商品-売却済み", {controller: "users", action: "edit", name: "completed"}, class: "side-nav__list__content"
       %li
         = link_to "出品した商品-取引中", "#", class: "side-nav__list__content"
       %li
