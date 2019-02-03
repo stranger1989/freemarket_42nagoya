@@ -5,9 +5,12 @@ Rails.application.routes.draw do
       }
 
   root "items#index"
-  resources :items, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
+  resources :items, only: [:index, :show, :new, :create, :update, :destroy] do
     resources :orders, only: [:new, :create]
+    get '/:name', controller: 'items', action: 'edit'
   end
+
+
 
   devise_scope :user do
     get "/users/sign_up/registration", to: "users/registrations#index", as: "user_registration_index"
@@ -20,5 +23,5 @@ Rails.application.routes.draw do
 
   resource :users, only: [:show, :update]
 
-  get 'user/:name', controller: 'user', action: 'edit'
+  get 'users/:name', controller: 'users', action: 'edit'
 end
