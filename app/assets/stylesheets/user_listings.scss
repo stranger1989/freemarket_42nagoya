@@ -39,7 +39,7 @@
       min-height: 80px;
       padding: 16px;
       color: $char-black;
-      .mypage-item__img {
+      &__img {
         overflow: hidden;
         float: left;
         width: 48px;
