@@ -128,7 +128,7 @@
         .item-detail__myitem-button
           = link_to "商品の編集", "/items/#{@item.id}/edit", class: "btn-edit"
           %div or
-          = link_to "この商品を削除する", "/items/#{@item.id}", method: :delete, class: "btn-delete"
+          = link_to "この商品を削除する", "/items/#{@item.id}", method: :delete, class: "btn-delete", data: { confirm: '削除しますか？' }
 
       .comment-container
         .comment-container__comment-view.comment-view
