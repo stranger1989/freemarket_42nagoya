@@ -1,0 +1,31 @@
+= render "shared/header"
+
+.main-container
+  .mypage-container
+    .main-column
+      %h2.listings__head 出品した商品
+      .mypage-tab-container
+        %ul.listings__tabs
+          %li.active
+            %h3
+              =link_to "出品中", {controller: "users", action: "edit", name: "listing"}
+          %li
+            %h3
+              =link_to "取引中", {controller: "users", action: "edit", name: "in_progress"}
+          %li
+            %h3
+              =link_to "売却済み", {controller: "users", action: "edit", name: "completed"}
+        - if user.items.present?
+          = render partial: "shared/mypage-items", collection: user.items, as: "item"
+        - else
+          %ul
+            %li.mypage-item-not-found 出品中の商品がありません
+
+    = render 'shared/side-bar'
+
+.app-banner
+
+= render 'shared/footer'
+
+= render 'shared/sell_btn'
+
