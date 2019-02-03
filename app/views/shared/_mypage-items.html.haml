@@ -1,0 +1,9 @@
+%ul.mypage-item-list
+  %li.mypage-item
+    = link_to edit_item_path(item.id), class: "mypage-item__link" do
+      .mypage-item__img
+        = image_tag(item.image.url, alt: "mypage-item-img")
+      .mypage-item__body
+        .mypage-item__body__text=item.name
+        .mypage-item__body__status
+          .status-label 出品中
