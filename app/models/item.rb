@@ -18,7 +18,7 @@ class Item < ApplicationRecord
   belongs_to :user
   belongs_to :category
 
-  has_one :order
+  has_one :order, dependent: :destroy
 
 
 end
