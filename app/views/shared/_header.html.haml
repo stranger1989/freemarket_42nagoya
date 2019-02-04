@@ -6,14 +6,14 @@
 
     .top-header__user-nav
       -if user_signed_in?
-        = link_to image_tag("mypage_logo.png", alt: "マイページロゴ", class: "mypage-btn--small"), user_path(current_user.id)
+        = link_to image_tag("mypage_logo.png", alt: "マイページロゴ", class: "mypage-btn--small"), users_path
       -else
         = link_to "ログイン", new_user_session_path, class: "sp-header-btn login-btn"
 
         = link_to "新規会員", user_registration_index_path, class: "sp-header-btn signup-btn"
 
   .search-bar
-    = search_form_for(@q, url: items_search_path, html: { class: "search-bar__form" }) do |f|
+    = search_form_for(@q, url: search_items_path, html: { class: "search-bar__form" }) do |f|
 
       = f.label :name_or_description_cont, for: "search-icon" do
         %i.fa.fa-search
@@ -31,7 +31,7 @@
     .top-wrapper
       %h1.top-wrapper__logo
         = link_to image_tag("header-logo.svg", width: "134", height: "36", alt: "ヘッダーロゴ", style: "vertical-align:bottom"), root_path, class: "top-wrapper__logo__img"
-      = search_form_for(@q, url: items_search_path, html: { class: "top-wrapper__form" }) do |f|
+      = search_form_for(@q, url: search_items_path, html: { class: "top-wrapper__form" }) do |f|
         = f.label :name_or_description_cont, for: "search-icon" do
           %i.fa.fa-search
         = f.search_field :name_or_description_cont, class: "top-wrapper__form__textfield", placeholder: "キーワードから探す"
@@ -51,7 +51,7 @@
         %ul.right-nav__buttons
           -if user_signed_in?
             %li
-              = link_to user_path(current_user.id), class: "mypage-btn" do
+              = link_to users_path, class: "mypage-btn" do
                 =image_tag("mypage_logo.png", alt: "マイページロゴ", class: "mypage-btn--small")
                 マイページ
 

@@ -15,11 +15,11 @@
 
     .side-bar
       .side-nav
-        = form_tag items_search_path, method: :get do
+        = form_tag search_items_path, method: :get do
           = select_tag 'page[name]', options_for_select([["並び替え", "default"], ["価格の安い順", "price_asc"], ["価格の高い順", "price_desc"], ["出品の古い順", "sell_asc"], ["出品の新しい順", "sell_desc"]], class: 'order_sort')
         .search-conditionbox
           %h2.search-conditionbox__detail 詳細検索
-          = search_form_for(@q, url: items_search_path) do |f|
+          = search_form_for(@q, url: search_items_path) do |f|
             = f.label :name_or_description_cont, class: "search-conditionbox__addition" do
               %i.fa.fa-plus
               キーワードを追加する
