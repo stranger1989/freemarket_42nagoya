@@ -17,7 +17,7 @@ class ApplicationFormBuilder < ActionView::Helpers::FormBuilder
     super + pick_errors(attribute)
   end
 
-  def select(attribute, options = {}, html_options = {})
+  def enum_select(attribute, options = {}, html_options = {})
     super + pick_errors(attribute)
   end
 
