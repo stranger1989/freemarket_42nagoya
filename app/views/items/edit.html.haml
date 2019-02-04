@@ -56,19 +56,13 @@
             = f.label :size, class: "item-label" do
               サイズ
               %span.any 任意
-            = f.select :size, [ ["XXS以下", "XXS以下"], ["XS(SS)", "XS(SS)"], ["S", "S"], ["M", "M"], ["L", "L"], ["XL(LL)", "XL(LL)"], ["2XL(3L)",  "2XL(3L)"], ["3XL(4L)", "3XL(4L)"], ["4XL(5L)以上", "4XL(5L)以上"], ["FREE SIZE", "FREE SIZE"] ], prompt: "---"
-
-          / .form-group#shoes-size
-          /   = f.label :size, class: "item-label" do
-          /     サイズ
-          /     %span.any 任意
-          /   = f.select :size, [ ["20cm以下", "20cm以下"], ["20.5cm", "20.5cm"], ["21cm", "21cm"], ["21.5cm", "21.5cm"], ["22cm", "22cm"], ["22.5cm", "22.5cm"], ["23cm", "23cm"], ["23.5cm", "23.5cm"], ["24cm", "24cm"], ["24.5cm", "24.5cm"], ["25cm", "25cm"], ["25.5cm", "25.5cm"], ["26cm", "26cm"], ["26.5cm", "26.5cm"], ["27cm", "27cm"], ["27.5cm", "27.5cm"], ["28cm", "28cm"], ["29cm", "29cm"],["30cm", "30cm"], ["31cm以上", "31cm以上"] ], prompt: "---"
+            = f.enum_select :size, prompt: "---", class: "select-default"
 
           .form-group
             = f.label :item_status, class: "item-label" do
               商品の状態
               %span.required 必須
-            = f.select :item_status, [["新品、未使用", "新品、未使用"],["未使用に近い", "未使用に近い"],["目立った傷や汚れなし", "目立った傷や汚れなし"],["やや傷や汚れあり", "やや傷や汚れあり"],["傷や汚れあり", "傷や汚れあり"],["全体的に状態が悪い", "全体的に状態が悪い"]], prompt: "---"
+            = f.enum_select :item_status, prompt: "---"
 
       .sell-content
         %h3.sell-sub-head 配送について
@@ -78,13 +72,13 @@
             = f.label :shipping_fee, class: "item-label" do
               配送量の負担
               %span.required 必須
-            = f.select :shipping_fee, [["送料込み(出品者負担)", "送料込み(出品者負担)"],["着払い(購入者負担)", "着払い(購入者負担)"]], prompt: "---"
+            = f.enum_select :shipping_fee, prompt: "---"
 
           .form-group
             = f.label :delivery_way, class: "item-label" do
               配送の方法
               %span.required 必須
-            = f.select :delivery_way, [["未定", "未定"],["らくらくメルカリ便", "らくらくメルカリ便"],["ゆうメール", "ゆうメール"],["レターパック", "レターパック"],["普通郵便(定形、定形外)", "普通郵便(定形、定形外)"],["クロネコヤマト", "クロネコヤマト"],["ゆうパック", "ゆうパック"],["クリックポスト", "クリックポスト"],["ゆうパケット", "ゆうパケット"]], prompt: "---"
+            = f.enum_select :delivery_way, prompt: "---"
 
           .form-group
             = f.label :shipping_area, class: "item-label" do
@@ -96,7 +90,7 @@
             = f.label :estimated_shipping_date, class: "item-label" do
               発送までの日数
               %span.required 必須
-            = f.select :estimated_shipping_date, [["1〜2日で発送", "1〜2日で発送"], ["2〜3日で発送", "2〜3日で発送"], ["4〜7日で発送","4〜7日で発送"]],  prompt: "---"
+            = f.enum_select :estimated_shipping_date,  prompt: "---"
 
       .sell-content
         %h3.sell-sub-head 販売価格(300〜9,999,999)
