@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       }
 
   root "items#index"
+  get '/items/search', to: "items#search"
   resources :items, only: [:index, :show, :new, :create] do
     resources :orders, only: [:new, :create]
   end
@@ -19,5 +20,4 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:show]
-
 end
