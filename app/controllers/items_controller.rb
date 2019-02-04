@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new]
   before_action :set_item, only: [:show, :update, :destroy]
+  before_action :set_edit_item, only: [:edit]
 
   def index
     @items = Item.where("order_status = '出品中'")
@@ -24,7 +25,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:item_id])
     render "items/#{params[:name]}"
   end
 
@@ -50,6 +50,10 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def set_edit_item
+    @item = Item.find(params[:item_id])
   end
 
 end
