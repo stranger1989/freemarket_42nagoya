@@ -132,11 +132,4 @@
         = f.submit "出品する", class: "submit-btn", id: "modal-open"
         = link_to "もどる", root_path, class: "return-btn"
 
-.modal-content#modal-newitem
-  %h3.modal-content__head 出品が完了しました
-  .modal-content__body
-    あなたが出品した商品は「出品した商品一覧」からいつでも見ることができます。
-    = link_to "続けて出品する", new_item_path, class: "submit-btn"
-    = link_to "商品ページへ行ってシェアする", "#", class: "share-link"
-
 = render "shared/sub-footer"
