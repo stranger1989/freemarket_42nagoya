@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_search_val, only: [:show]
+  before_action :set_search_val, only: [:show, :edit]
   def show
   end
 
