@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new]
   before_action :set_item, only: [:show, :update, :destroy]
   before_action :set_edit_item, only: [:edit]
-  before_action :set_search_val, only: [:index, :show, :create, :search]
+  before_action :set_search_val, only: [:index, :show, :edit, :create, :update, :destroy, :search]
 
   def index
     @pickup_category_items_1 = display_category("1")
