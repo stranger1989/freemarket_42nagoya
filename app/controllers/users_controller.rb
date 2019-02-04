@@ -3,6 +3,10 @@ class UsersController < ApplicationController
   def show
   end
 
+  def edit
+    render "users/#{params[:name]}", locals: {user: current_user }
+  end
+
   private
   def set_search_val
     @q = Item.ransack(params[:q])
