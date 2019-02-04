@@ -1,0 +1,84 @@
+= render 'shared/header'
+
+.main-container
+  .mypage-container
+    .main-column
+      - if @count == 0
+        %h2.search-result 検索結果 0件
+        %p.no-result 該当する商品が見つかりません。商品は毎日増えていますので、これからの出品に期待してください。
+      - else
+        %h2.search-result= "検索結果 1-#{ @count } 件"
+      .item-list.item-list--search
+        .item-container.search-item-container
+          .item
+            = render partial: 'shared/items-box', collection: @items, as: "item"
+
+    .side-bar
+      .side-nav
+        = form_tag items_search_path, method: :get do
+          = select_tag 'page[name]', options_for_select([["並び替え", "default"], ["価格の安い順", "price_asc"], ["価格の高い順", "price_desc"], ["出品の古い順", "sell_asc"], ["出品の新しい順", "sell_desc"]], class: 'order_sort')
+        .search-conditionbox
+          %h2.search-conditionbox__detail 詳細検索
+          = search_form_for(@q, url: items_search_path) do |f|
+            = f.label :name_or_description_cont, class: "search-conditionbox__addition" do
+              %i.fa.fa-plus
+              キーワードを追加する
+            = f.search_field :name_or_description_cont, placeholder: "例） 値下げ"
+
+            = f.label :category_id_eq, class: "search-conditionbox__addition" do
+              %i.fa.fa-list
+              カテゴリーを選択する
+            = f.collection_select :category_id_eq, @categories, :id, :name, include_blank: 'すべて'
+
+            = f.label :brand_id_cont, class: "search-conditionbox__addition" do
+              %i.fa.fa-tag
+              ブランド名から探す
+            = f.search_field :brand_id_cont, placeholder: "例） シャネル"
+
+            = f.label :size_cont, class: "search-conditionbox__addition" do
+              %i.fa.fa-square
+              サイズを指定する
+            = f.search_field :size_cont, placeholder: "例） すべて"
+
+            = f.label :price_cont, class: "search-conditionbox__addition" do
+              %i.fa.fa-money
+              価格
+            = f.search_field :name_or_description_cont, placeholder: "選択してください"
+
+            = f.label :order_status, class: "search-conditionbox__addition" do
+              %i.fa.fa-star
+              商品の状態
+            .checkbox__container
+              - %w(すべて 新品、未使用 未使用に近い 目立った傷や汚れなし やや傷や汚れあり 傷や汚れあり 全体的に状態が悪い).each.with_index do |order_status,i|
+                .checkbox__default
+                  %label
+                    = check_box_tag 'search[order_status][]', order_status,false,class: "checkbox-default__input_#{i}"
+                    %p.checkbox-default__label= order_status
+
+            = f.label :delivery_way, class: "search-conditionbox__addition" do
+              %i.fa.fa-truck
+              配送料の負担
+            .checkbox__container
+              - %w(すべて 着払い(購入者負担) 送料込み(出品者負担)).each.with_index do |delivery_way,i|
+                .checkbox__default
+                  %label
+                    = check_box_tag 'search[delivery_way][]', delivery_way,false,class: "checkbox-default__input_#{i}"
+                    %p.checkbox-default__label= delivery_way
+
+            = f.label :order_status, class: "search-conditionbox__addition" do
+              %i.fa.fa-shopping-cart
+              販売状況
+            .checkbox__container
+              - %w(すべて 出品中 売却済).each.with_index do |order_status,i|
+                .checkbox__default
+                  %label
+                    = check_box_tag 'search[order_status][]', order_status,false,class: "checkbox-default__input_#{i}"
+                    %p.checkbox-default__label= order_status
+            .send-field
+              = tag :input, type: 'reset', value: 'クリア', class: "search-conditionbox__clear-btn"
+              = tag :input, type: 'submit', value: '完了', class: "search-conditionbox__finish-btn"
+.app-banner
+
+= render 'shared/footer'
+
+= render 'shared/sell_btn'
