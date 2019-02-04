@@ -1,0 +1,130 @@
+.search-result{
+  font-size: 22px;
+  margin: 0 0 10px 0;
+}
+
+.no-result{
+  font-size: 14px;
+}
+
+.item-list{
+  &--search{
+    padding: 0 !important;
+  }
+}
+
+.search-item-container {
+  @include mq-up() {
+  width: 700px;
+  .item {
+    .item-box{
+      margin:0 0 20px 0;
+      &__photo{
+        overflow: hidden;
+        position: relative;
+        width: 100% !important;
+        height: 0;
+        padding: 0 0 100%;
+        & > img {
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          z-index: 1;
+        }
+      }
+    }
+    @include col(4,20px,'.item-box--search');
+    }
+  }
+  @include mq-down() {
+  min-width: 375px;
+  width:100%;
+    .item {
+      .item-box{
+      margin:0 0 20px 0;
+      }
+      @include col(2,20px,'.item-box--search');
+    }
+  }
+  @include media(m) {
+    .item {
+      .item-box{
+      display: block;
+      }
+    }
+  }
+}
+
+.item--search{
+  .item-box--search{
+      margin: 0 0 20px 0 !important;
+  }
+}
+
+#page_name{
+  margin:0 0 40px 0;
+  background-color: $shiro;
+}
+
+.search-conditionbox{
+  padding: 20px;
+  background-color:$shiro;
+  &__detail{
+    margin: 0 0 15px 0;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  &__addition{
+    margin: 0 0 5px 0;
+    font-size: 14px;
+    font-weight: 600;
+    display: block;
+  }
+  input[type="search"], select{
+    width:100%;
+    height:50px;
+    margin: 5px 0 30px 0;
+    padding: 10px;
+    @include basic-user-form()
+  }
+  .checkbox{
+    &__container{
+      @include clearfix();
+      margin: 0 0 30px 0;
+    }
+    &__default{
+      width:50%;
+      font-size:14px;
+      float: left;
+      input[type="checkbox"]{
+        width: 20px;
+        height: 20px;
+        margin: 0 5px 10px 0;
+        float:left;
+        display: block;
+        line-height: 30px;
+      }
+      &__label{
+        width: 100px;
+        float:left;
+        display: block;
+        vertical-align:middle
+      }
+    }
+  }
+  .send-field{
+    @include clearfix();
+  }
+  &__clear-btn{
+    float:left;
+    @include button-user-form(45%,50px, #AAAAAA, .9rem,#fff);
+    cursor: pointer;
+  }
+  &__finish-btn{
+    float:right;
+    @include button-user-form(45%,50px, $main-red, .9rem,#fff);
+    cursor: pointer;
+  }
+}

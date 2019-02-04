@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   root "items#index"
   resources :items, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
     resources :orders, only: [:new, :create]
+      get 'search', on: :collection
   end
 
   devise_scope :user do

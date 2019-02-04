@@ -1,11 +1,17 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new]
+  before_action :set_search_val, only: [:index, :show, :create, :search]
 
   def index
     @pickup_category_items_1 = display_category("1")
     @pickup_category_items_2 = display_category("2")
     @pickup_brand_items_1 = display_brand("シャネル")
     @pickup_brand_items_2 = display_brand("ナイキ")
+  end
+
+  def search
+    @q = Item.search(search_params)
+    set_serchitems_and_count(@q)
   end
 
   def new
@@ -82,6 +88,21 @@ class ItemsController < ApplicationController
 
   def display_brand(brand_name)
     Item.joins(:brand).where("brands.name LIKE ?", "%#{brand_name}%").order("created_at DESC").page(params[:page]).per(4)
+  end
+
+  def set_search_val
+    @q = Item.ransack(params[:q])
+    set_serchitems_and_count(@q)
+  end
+
+  def search_params
+    params.require(:q).permit(:name_or_description_cont)
+  end
+
+  def set_serchitems_and_count(search_query)
+    @categories = Category.all
+    @items = search_query.result.includes(:category, :brand).page(params[:page]).per(48)
+    @count = @items.total_count
   end
 
 end
