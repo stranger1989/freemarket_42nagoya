@@ -5,10 +5,13 @@ Rails.application.routes.draw do
       }
 
   root "items#index"
-  resources :items, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
+  resources :items, only: [:index, :show, :new, :create, :update, :destroy] do
     resources :orders, only: [:new, :create]
-      get 'search', on: :collection
+    get '/:name', controller: 'items', action: 'edit'
+    get 'search', on: :collection
   end
+
+
 
   devise_scope :user do
     get "/users/sign_up/registration", to: "users/registrations#index", as: "user_registration_index"

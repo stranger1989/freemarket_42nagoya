@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new]
+  before_action :set_item, only: [:show, :update, :destroy]
+  before_action :set_edit_item, only: [:edit]
   before_action :set_search_val, only: [:index, :show, :create, :search]
 
   def index
@@ -69,7 +71,25 @@ class ItemsController < ApplicationController
 
   def show
     @items = Item.where("order_status = '出品中'")
-    @item = Item.find(params[:id])
+  end
+
+  def edit
+    render "items/#{params[:name]}"
+  end
+
+  def update
+    if @item.user.id == current_user.id
+      if @item.update(item_params)
+        render "items/myitem-detail"
+      else
+        render "items/edit"
+      end
+    end
+  end
+
+  def destroy
+    @item.destroy if @item.user_id == current_user.id
+    redirect_to action: :index
   end
 
   private
@@ -103,6 +123,14 @@ class ItemsController < ApplicationController
     @categories = Category.all
     @items = search_query.result.includes(:category, :brand).page(params[:page]).per(48)
     @count = @items.total_count
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
+
+  def set_edit_item
+    @item = Item.find(params[:item_id])
   end
 
 end

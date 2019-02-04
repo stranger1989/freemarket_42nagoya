@@ -96,6 +96,11 @@ GEM
     diff-lcs (1.3)
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
+    enum_help (0.0.17)
+      activesupport (>= 3.0.0)
+    enum_select_rails (0.2.0)
+      enum_help
+      rails
     erb2haml (0.1.5)
       html2haml
     erubis (2.7.0)
@@ -396,6 +401,8 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   database_cleaner
   devise
+  enum_help
+  enum_select_rails
   erb2haml
   factory_girl_rails (~> 4.4.1)
   faker
