@@ -44,6 +44,7 @@ $breakpoints: (
   text-decoration:none;
   line-height: $height;
   outline: 0;
+  -webkit-appearance: none;
 }
 
 // 必須・任意ボタンのスタイル

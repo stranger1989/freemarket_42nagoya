@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :items, only: [:index, :show, :new, :create, :update, :destroy] do
     resources :orders, only: [:new, :create]
     get '/:name', controller: 'items', action: 'edit'
+    get 'search', on: :collection
   end
 
 

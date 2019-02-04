@@ -90,4 +90,5 @@ gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'enum_select_rails'
 gem 'enum_help'
-
+gem 'kaminari'
+gem 'ransack'
