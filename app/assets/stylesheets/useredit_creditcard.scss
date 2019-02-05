@@ -1,0 +1,45 @@
+.main-column{
+  &__creditbox{
+    width: 70%;
+    margin: 50px auto 50px;
+    &__listtitle{
+      margin:0 0 10px 0;
+      text-align:left;
+      font-size: 15px;
+      font-weight: bold;
+    }
+    &__brand{
+      width: 50px;
+      margin: 0 0 5px 0;
+      display: block;
+    }
+    &__name{
+      margin: 0 0 5px 0;
+      display: block;
+    }
+    &__exp{
+      display: inline-block;
+    }
+    &__submit{
+      float: right;
+      padding: 3px 5px;
+      border: 1px solid $main-red;
+      border-radius: 2px;
+      font-size: 14px;
+      color: $main-red;
+      cursor: pointer;
+    }
+    #payjp_checkout_box{
+      @include clearfix();
+      text-align:center;
+      input[type=button]{
+        margin:20px 0 30px 0;
+        @include button-user-form(100%,50px,$main-red,.8rem,#FFF);
+        background-image: none;
+        border:none;
+        border-radius:none;
+        line-height:30px;
+      }
+    }
+  }
+}
