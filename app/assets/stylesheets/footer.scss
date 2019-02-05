@@ -57,25 +57,28 @@
 }
 
 
-.detail > li {
-  margin-top: 16px;
-  & a {
-    display: block;
-    color: $shiro;
-    font-size: 13px;
-  }
-  & a:hover {
-    opacity: .6;
-    text-decoration: underline;
-  }
-  .lang-nav {
-    opacity: .3;
-  }
-  .lang-nav:hover {
-    opacity: .3;
-  }
-  .lang-ja:hover {
-    opacity: 1;
+.detail {
+  display: block !important;
+  & > li {
+    margin-top: 16px;
+    & a {
+      display: block;
+      color: $shiro;
+      font-size: 13px;
+    }
+    & a:hover {
+      opacity: .6;
+      text-decoration: underline;
+    }
+    .lang-nav {
+      opacity: .3;
+    }
+    .lang-nav:hover {
+      opacity: .3;
+    }
+    .lang-ja:hover {
+      opacity: 1;
+    }
   }
 }
 
