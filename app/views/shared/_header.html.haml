@@ -40,12 +40,34 @@
       %nav.left-nav
         %ul.left-nav__menu
           %li
-            %h2
-              = link_to "カテゴリーから探す", "#", class: "left-nav__menu--category"
+            = link_to "カテゴリから探す", "#", class: "left-nav__menu--category"
+            %ul.left-nav__menu--root-category
+              - Category.roots.each do |root|
+                %li
+                  = link_to "#{root.name}", "#"
+                  %ul.child-category
+                    - Category.children_of(root).each do |child|
+                      %li
+                        = link_to "#{child.name}", "#"
+                        %ul.grandchild-category
+                          - Category.children_of(child).each do |grandchild|
+                            %li
+                              = link_to "#{grandchild.name}", "#"
           %li
-            %h2
-              =link_to "ブランドから探す", "#", class: "left-nav__menu--brand"
-
+            = link_to "ブランドから探す", "#", class: "left-nav__menu--brand"
+            %ul.pickup-brand
+              %li
+                = link_to "シャネル", "#"
+              %li
+                = link_to "ナイキ", "#"
+              %li
+                = link_to "ルイ ヴィトン", "#"
+              %li
+                = link_to "シュプリーム", "#"
+              %li
+                = link_to "アディダス", "#"
+              %li
+                = link_to "ブランド一覧", "#"
 
       .right-nav
         %ul.right-nav__buttons
