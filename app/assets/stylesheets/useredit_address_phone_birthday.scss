@@ -1,0 +1,31 @@
+.main-column{
+  &__form{
+    input[type="text"], input[type="email"],input[type="password"], select {
+      @include basic-user-form();
+      width:100%;
+      height:50px;
+      margin:5px auto 0;
+      padding:0 10px;
+      background-color:$shiro;
+      display:block;
+    }
+    #user_birthday_1i,#user_birthday_2i,#user_birthday_3i{
+      width:23%;
+      display:inline-block;
+    }
+    .field{
+      width: 80%;
+      margin:30px auto;
+      .required{
+        @include small-require-button($main-red, 12px, $shiro);
+      }
+      .not-required{
+        @include small-require-button(#CCCCCC, 12px, $shiro);
+      }
+    }
+  }
+  &__formlabel{
+    font-size: 15px;
+    font-weight: bold;
+  }
+}
