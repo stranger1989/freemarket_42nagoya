@@ -59,6 +59,13 @@
             = f.enum_select :size, prompt: "---", class: "select-default"
 
           .form-group
+            = f.label :brand_id, class: "item-label" do
+              ブランド
+              %span.any 任意
+            = f.text_field :brand_id, placeholder: "例) シャネル", value: "#{@item.brand.name}", class: "form-group__form-default"
+            =flash[:notice_brand_registration]
+
+          .form-group
             = f.label :item_status, class: "item-label" do
               商品の状態
               %span.required 必須
