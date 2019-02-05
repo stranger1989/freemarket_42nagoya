@@ -20,9 +20,11 @@ Rails.application.routes.draw do
     get "/users/sign_up/residence", to: "users/registrations#residence", as: "user_registration_residence"
     get "/users/sign_up/payment", to: "users/registrations#payment", as: "user_registration_payment"
     post '/users/sign_up/payment/finish', to: "users/registrations#finish", as: "user_registration_finish"
+    patch 'users/:name', controller: 'users/registrations', action: 'update'
   end
 
   resource :users, only: [:show, :update]
 
   get 'users/:name', controller: 'users', action: 'edit'
+  get 'users/:name', controller: 'users/registrations', action: 'edit'
 end
