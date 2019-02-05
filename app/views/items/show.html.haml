@@ -7,8 +7,6 @@
     .item-detail
       %h1.item-detail__name
         =@item.name
-      %p.item-detail__wording
-        =@item.description
       .item-detail__main-contents.main-contents
         .main-contents__PhotoAndDetail
           %section.main-contents__photo
@@ -41,7 +39,8 @@
                     =link_to @item.category.name, "#"
                 %tr
                   %th ブランド
-                  %td ナノ ユニバース
+                  %td
+                    =link_to @item.brand.name, "#"
                 %tr
                   %th 商品のサイズ
                   %td

@@ -39,7 +39,8 @@
                       =link_to @item.category.name, "#"
                   %tr
                     %th ブランド
-                    %td ナノ ユニバース
+                    %td
+                      =link_to @item.brand.name, "#"
                   %tr
                     %th 商品のサイズ
                     %td
@@ -92,7 +93,8 @@
                     =link_to @item.category.name, "#"
                 %tr
                   %th ブランド
-                  %td ナノ ユニバース
+                  %td
+                    =link_to @item.brand.name, "#"
                 %tr
                   %th 商品のサイズ
                   %td
