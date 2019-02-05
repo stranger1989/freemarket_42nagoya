@@ -78,3 +78,37 @@ $breakpoints: (
   font-size:$font-size;
   font-weight: normal;
 }
+
+@mixin dropdown-menu {
+  display: block;
+  padding: 0 16px;
+  line-height: 44px;
+  font-size: 14px;
+  color: $char-black;
+  &:hover {
+    color: $shiro;
+    background-color: $main-red;
+  }
+}
+
+@mixin child-dropdown-menu ($width: 224px){
+  position: absolute;
+  top: 0;
+  left: 224px;
+  bottom: 0;
+  background-color: $shiro;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.24);
+  & > li {
+    width: $width;
+  }
+  & > li > a {
+    color: $char-black;
+    font-size: 14px;
+    display: block;
+    position: relative;
+    padding: 2.5px 16px;
+    &:hover {
+      background-color: rgba(0,0,0,0.12);
+    }
+  }
+}
