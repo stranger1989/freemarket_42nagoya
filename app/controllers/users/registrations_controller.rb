@@ -1,5 +1,6 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-  prepend_before_action :require_no_authentication, only: [ :create]
+  prepend_before_action :require_no_authentication, only: [:create, :edit]
+  protect_from_forgery except: [:update]
   layout 'layout_for_UserAdmin_SignUp'
   # リダイレクト先のパスを格納
   @@url = ""
@@ -82,6 +83,34 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def update
+    session[:user_update] = account_update_params
+    self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
+    prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
+    if params[:"payjp-token"].present?
+      Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+      customer = Payjp::Customer.create(
+        :card  => params['payjp-token']
+      )
+      update_payjp({ payment: customer[:id] })
+    end
+    if resource.update_without_current_password(session[:user_update])
+      yield resource if block_given?
+      if is_flashing_format?
+        flash_key = update_needs_confirmation?(resource, prev_unconfirmed_email) ?
+          :update_needs_confirmation : :updated
+        set_flash_message :notice, flash_key
+      end
+      sign_in resource_name, resource, bypass: true
+      flash[:success_update] = "変更しました"
+      redirect_to action: "edit", name: File.basename(URI.parse(request.referer).path)
+    else
+      clean_up_passwords resource
+      flash[:fail_update] = "変更に失敗しました"
+      redirect_to action: "edit", name: File.basename(URI.parse(request.referer).path)
+    end
+  end
+
   protected
 
   def total_signup_params(sign_up_params={})
@@ -106,6 +135,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
       set_minimum_password_length
       render redirect_path
     end
+  end
+
+  def update_resource(resource, params)
+    resource.update_without_current_password(params)
+  end
+
+  def update_payjp(payjp_params={})
+    session[:user_update] = session[:user_update].merge(payjp_params)
+    return session[:user_update]
   end
 
 end

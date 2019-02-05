@@ -31,6 +31,22 @@ class ApplicationController < ActionController::Base
              :birthday,
              :phone_number,
              :payment])
+    devise_parameter_sanitizer.permit(:account_update,
+      keys: [:nickname,
+             :profile,
+             :avatar,
+             :lastname,
+             :firstname,
+             :lastname_kana,
+             :firstname_kana,
+             :postalcode,
+             :prefecture,
+             :city,
+             :block,
+             :building,
+             :birthday,
+             :phone_number,
+             :payment])
   end
 
   def production?
