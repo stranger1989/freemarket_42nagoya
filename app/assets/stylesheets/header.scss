@@ -200,7 +200,6 @@
   }
 }
 
-
 // PC・タブレット用ヘッダー
 .pc-header {
   position: relative;
@@ -278,41 +277,6 @@ input[type="text"]:focus {
 .bottom-wrapper {
   @include clearfix();
   margin: 8px 0 0;
-
-  .left-nav {
-    float: left;
-
-    &__menu li {
-      display: inline-block;
-      position: relative;
-    }
-
-    &__menu {
-      &--category {
-        color: $char-black;
-        font-size: 14px;
-        line-height: 38px;
-        display: block;
-      }
-
-      &--category:hover {
-        color: $main-blue;
-      }
-
-      &--brand {
-        color: $char-black;
-        font-size: 14px;
-        line-height: 38px;
-        padding-left: 16px;
-        display: block;
-      }
-
-      &--brand:hover {
-        color: $main-blue;
-      }
-    }
-  }
-
   .right-nav {
     float: right;
 
@@ -354,3 +318,77 @@ input[type="text"]:focus {
   }
 }
 
+// カテゴリー・ブランド ドロップダウンメニュー
+.left-nav {
+  float: left;
+
+  &__menu {
+    & > li {
+      position: relative;
+      display: inline-block;
+      padding: 0 0 0 16px;
+      vertical-align: center;
+    }
+    & li:first-child {
+      padding: 0;
+    }
+
+    & > li > a {
+      color: $char-black;
+      font-size: 14px;
+      display: block;
+      position: relative;
+      height: 38px;
+      line-height: 32px;
+      &:hover {
+        color: $main-blue;
+      }
+    }
+
+    & > li > ul {
+      @include media(l) {
+        left: 0
+      }
+      width: auto;
+      position: absolute;
+      top: 38px;
+      left: -34px;
+      z-index: 1000;
+      background-color: $shiro;
+      box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.24);
+    }
+
+    &--root-category > li {
+      width: 224px;
+    }
+
+    &--root-category > li > a {
+      @include dropdown-menu();
+    }
+
+    .child-category {
+      @include child-dropdown-menu();
+    }
+
+    .grandchild-category {
+      @include child-dropdown-menu(320px);
+    }
+
+    .pickup-brand {
+      & > li {
+        width: 224px;
+      }
+      & > li > a {
+        @include dropdown-menu();
+      }
+    }
+  }
+}
+
+// カーソルがhoverした時にメニューを表示させる
+ul ul {
+  display: none;
+}
+ul li:hover > ul {
+  display: block;
+}
