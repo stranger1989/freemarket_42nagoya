@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :new, :create]
+  before_action :set_search_val, only: [:index, :new, :create]
 
   def index
   end
@@ -44,4 +45,20 @@ class OrdersController < ApplicationController
   def order_params
     params.permit(:item_id).merge(user_id:current_user.id)
   end
+
+  def set_search_val
+    @q = Item.ransack(params[:q])
+    set_searchitems_and_count(@q)
+  end
+
+  def search_params
+    params.require(:q).permit(:name_or_description_cont)
+  end
+
+  def set_searchitems_and_count(search_query)
+    @categories = Category.all
+    @items = search_query.result.includes(:category, :brand).page(params[:page]).per(48)
+    @count = @items.total_count
+  end
+
 end
