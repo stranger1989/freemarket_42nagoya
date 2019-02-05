@@ -41,16 +41,12 @@
     %h3.side-nav__head 設定
     %ul.side-nav__list
       %li
-        = link_to "プロフィール", "#", class: "side-nav__list__content"
+        = link_to "プロフィール", {controller: "users/registrations", action: "edit", name: "profile"}, class: "side-nav__list__content"
       %li
-        = link_to "住所変更", "#", class: "side-nav__list__content"
+        = link_to "本人情報", {controller: "users/registrations", action: "edit", name: "deliver_address"}, class: "side-nav__list__content"
       %li
-        = link_to "支払い方法", "#", class: "side-nav__list__content"
+        = link_to "支払い方法", {controller: "users/registrations", action: "edit", name: "creditcard"}, class: "side-nav__list__content"
       %li
-        = link_to "メール/パスワード", "#", class: "side-nav__list__content"
+        = link_to "メール/パスワード", {controller: "users/registrations", action: "edit", name: "email_password"}, class: "side-nav__list__content"
       %li
-        = link_to "本人情報", "#", class: "side-nav__list__content"
-      %li
-        = link_to "電話番号の確認", "#", class: "side-nav__list__content"
-      %li
-        = link_to "ログアウト", "#", class: "side-nav__list__content"
+        = link_to "電話番号の確認", {controller: "users", action: "edit", name: "sms_confirmation"}, class: "side-nav__list__content"
