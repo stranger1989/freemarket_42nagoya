@@ -1,5 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-  prepend_before_action :require_no_authentication, only: [:create, :edit]
+  prepend_before_action :require_no_authentication, only: [:create]
   protect_from_forgery except: [:update]
   layout 'layout_for_UserAdmin_SignUp'
   # リダイレクト先のパスを格納
