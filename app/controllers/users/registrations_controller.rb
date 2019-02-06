@@ -84,23 +84,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def update
-    session[:user_update] = account_update_params
     self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
     prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
-    if params[:"payjp-token"].present?
-      Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
-      customer = Payjp::Customer.create(
-        :card  => params['payjp-token']
-      )
-      update_payjp({ payment: customer[:id] })
-    end
-    if resource.update_without_current_password(session[:user_update])
-      yield resource if block_given?
-      if is_flashing_format?
-        flash_key = update_needs_confirmation?(resource, prev_unconfirmed_email) ?
-          :update_needs_confirmation : :updated
-        set_flash_message :notice, flash_key
-      end
+    session[:user_update] = UsersRegistrations::PostService.update_creditcard!(account_update_params, params)
+    if UsersRegistrations::PostService.update_success_or_fail!(resource, session[:user_update])
       sign_in resource_name, resource, bypass: true
       flash[:success_update] = "変更しました"
       redirect_to action: "edit", name: File.basename(URI.parse(request.referer).path)
@@ -139,11 +126,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def update_resource(resource, params)
     resource.update_without_current_password(params)
-  end
-
-  def update_payjp(payjp_params={})
-    session[:user_update] = session[:user_update].merge(payjp_params)
-    return session[:user_update]
   end
 
 end
