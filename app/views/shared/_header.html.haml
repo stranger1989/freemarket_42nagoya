@@ -7,6 +7,7 @@
     .top-header__user-nav
       -if user_signed_in?
         = link_to image_tag("mypage_logo.png", alt: "マイページロゴ", class: "mypage-btn--small"), users_path
+        = link_to "ログアウト", destroy_user_session_path, class: "logout-btn", method: :delete
       -else
         = link_to "ログイン", new_user_session_path, class: "sp-header-btn login-btn"
 
@@ -24,6 +25,7 @@
     = link_to "カテゴリから探す", "#", class: "search-nav__category"
 
     = link_to "ブランドから探す", "#", class: "search-nav__brand"
+
 
 //PC・タブレット用ヘッダー
 %header.pc-header.visible-pc
@@ -76,6 +78,22 @@
               = link_to users_path, class: "mypage-btn" do
                 =image_tag("mypage_logo.png", alt: "マイページロゴ", class: "mypage-btn--small")
                 マイページ
+              %ul.mypage-dropdown
+                %li
+                  .toppage-user-icon
+                    = link_to users_path do
+                      =image_tag("mypage_logo.png", alt: "user-icon", class: "user-icon__image", style: "vertical-align:bottom")
+                      %h2.user-name
+                        = current_user.nickname
+                      .user-number
+                        .user-number__evaluation 評価 0
+                        .user-number__item-number 出品数 0
+                %li
+                  = link_to "出品した商品-出品中", {controller: "users", action: "edit", name: "listing"}, class: "side-nav__list__content"
+                %li
+                  = link_to "出品した商品-取引中", {controller: "users", action: "edit", name: "in_progress"}, class: "side-nav__list__content"
+                %li
+                  = link_to "出品した商品-売却済み", {controller: "users", action: "edit", name: "completed"}, class: "side-nav__list__content"
 
             %li
               = link_to "ログアウト", destroy_user_session_path, class: "logout-btn", method: :delete
