@@ -1,0 +1,77 @@
+.main-column{
+  &--user-info{
+    background-color:$shiro;
+    height: 100%;
+  }
+  &__title{
+    padding: 10px 0;
+    text-align: center;
+    font-size: 24px;
+    border-bottom: 1px solid #F5F5F5;
+    &__title{
+      font-weight: bold;
+    }
+  }
+  &__confirm{
+    padding: 50px 0;
+    font-size: 15px;
+    text-align:center;
+  }
+}
+
+.user-icon{
+  &--user-info{
+    @include mq-up() {
+      padding: 100px 0 0 0;
+    }
+    @include mq-down() {
+      padding: 70px 0 0 0;
+    }
+  }
+  &__nickname{
+    margin: 0 0 5px 5px;
+    padding: 10px;
+    width: 200px;
+    height: 50px;
+    @include basic-user-form();
+  }
+  &__profile{
+    width: 95%;
+    height:220px;
+    margin: 50px auto 0;
+    padding: 10px;
+    border: .5px solid #CCC;
+    display: block;
+  }
+}
+
+.btn-summit-edituser{
+  margin: 20px auto 50px;
+  @include button-user-form(80%,50px,$main-red,.8rem,#FFF);
+  display:block;
+  cursor:pointer;
+}
+
+.success_update{
+  position: fixed;
+  left:0; top: 50px;
+  width: 100vw;
+  padding: 20px 0;
+  text-align:center;
+  background-color:#DFF0D8;
+  color:#478847;
+  z-index: 10000;
+}
+
+.fail_update{
+  position: fixed;
+  left:0; top: 50px;
+  width: 100vw;
+  padding: 20px 0;
+  text-align:center;
+  background-color:#FFF0F5;
+  color:#800000;
+  z-index: 10000;
+}
+
+

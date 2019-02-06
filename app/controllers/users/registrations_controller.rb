@@ -1,5 +1,6 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-  prepend_before_action :require_no_authentication, only: [ :create]
+  prepend_before_action :require_no_authentication, only: [:create]
+  protect_from_forgery except: [:update]
   layout 'layout_for_UserAdmin_SignUp'
   # リダイレクト先のパスを格納
   @@url = ""
@@ -82,6 +83,24 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def update
+    # 一部ロジックはserviceに記載
+    self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
+    prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
+    # クレジットカードのアップデートの場合payjpを修正
+    session[:user_update] = UsersRegistrations::PostService.update_creditcard!(account_update_params, params)
+    # アップデートの成功の可否
+    if UsersRegistrations::PostService.update_success_or_fail!(resource, session[:user_update])
+      sign_in resource_name, resource, bypass: true
+      flash[:success_update] = "変更しました"
+      redirect_to action: "edit", name: File.basename(URI.parse(request.referer).path)
+    else
+      clean_up_passwords resource
+      flash[:fail_update] = "変更に失敗しました"
+      redirect_to action: "edit", name: File.basename(URI.parse(request.referer).path)
+    end
+  end
+
   protected
 
   def total_signup_params(sign_up_params={})
@@ -106,6 +125,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
       set_minimum_password_length
       render redirect_path
     end
+  end
+
+  def update_resource(resource, params)
+    resource.update_without_current_password(params)
   end
 
 end

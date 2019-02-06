@@ -35,6 +35,8 @@ $(document).on('turbolinks:load',function() {
   var url = window.location.pathname;
   $('.side-nav__list > li > a[href="'+url+'"]').addClass('location');
 
-
+  // エラーメッセージを一定時間経過後消す
+  setTimeout("$('.success_update').fadeOut('slow')", 800);
+  setTimeout("$('.fail_update').fadeOut('slow')", 800);
 });
 

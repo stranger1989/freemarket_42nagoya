@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
     render "users/#{params[:name]}", locals: {user: current_user }
   end
 
