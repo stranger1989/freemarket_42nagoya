@@ -5,8 +5,9 @@ $(document).on('turbolinks:load',function() {
     var price = $(this).val();
 
     if (price >= 300 && price < 10000000) {
-      var commissions = Math.floor(price * 0.1);
-      var profit = price - commissions;
+      var commissions = Math.floor(price * 0.1).toLocaleString();
+      var calc_commissions = Math.floor(price * 0.1);
+      var profit = (price - calc_commissions).toLocaleString();
       $(".commissions .l-right").text("¥" + commissions);
       $(".profit .l-right").text("¥" + profit);
     } else {
