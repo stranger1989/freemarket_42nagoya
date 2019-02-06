@@ -55,6 +55,13 @@
     float: right;
     margin: 4px 0 0;
     font-size: 14px;
+    & > a {
+      float: left;
+    }
+    & > a:first-child {
+      margin-right: 10px;
+      padding-top: 5px;
+    }
   }
 }
 
@@ -103,13 +110,17 @@
 
 // ログアウトボタンのスタイル
 .logout-btn {
-  padding:0 0 0 16px;
-  color: $char-black;
+  padding:0 16px;
+  color: $main-blue;
   font-size:14px;
   line-height: 38px;
   display: block;
+  border: 1px solid $main-blue;
+  border-radius: 2px;
+  box-sizing: border-box;
   &:hover{
-    color: $main-blue;
+    color: $shiro;
+    background-color: $main-blue;
   }
 }
 
@@ -283,6 +294,39 @@ input[type="text"]:focus {
     .right-nav__buttons {
       display: flex;
 
+      & > li {
+        position: relative;
+        display: inline-block;
+        padding: 0 0 0 16px;
+        vertical-align: center;
+      }
+
+      & > li > ul {
+        @include media(l) {
+        }
+        width: auto;
+        position: absolute;
+        top: 40px;
+        left: -80px;
+        z-index: 1000;
+        background-color: $shiro;
+        box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.24);
+      }
+
+      .mypage-dropdown > li {
+        width: 320px;
+        border-bottom: 1px solid #eee;
+      }
+
+      .mypage-dropdown > li > a {
+        @include dropdown-menu($char-black, rgba(238,238,238,0.5));
+        font-size: 13px;
+      }
+
+      .toppage-user-icon {
+        @include mypage-user-icon();
+      }
+
       & .sp-header-btn {
         margin: 0;
       }
@@ -327,7 +371,6 @@ input[type="text"]:focus {
       position: relative;
       display: inline-block;
       padding: 0 0 0 16px;
-      vertical-align: center;
     }
     & li:first-child {
       padding: 0;
@@ -339,7 +382,7 @@ input[type="text"]:focus {
       display: block;
       position: relative;
       height: 38px;
-      line-height: 32px;
+      line-height: 38px;
       &:hover {
         color: $main-blue;
       }
@@ -351,7 +394,7 @@ input[type="text"]:focus {
       }
       width: auto;
       position: absolute;
-      top: 38px;
+      top: 40px;
       left: -34px;
       z-index: 1000;
       background-color: $shiro;

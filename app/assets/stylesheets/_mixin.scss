@@ -79,15 +79,15 @@ $breakpoints: (
   font-weight: normal;
 }
 
-@mixin dropdown-menu {
+@mixin dropdown-menu ($hover-char-color: $shiro, $hover-bg-color: $main-red){
   display: block;
   padding: 0 16px;
   line-height: 44px;
   font-size: 14px;
   color: $char-black;
   &:hover {
-    color: $shiro;
-    background-color: $main-red;
+    color: $hover-char-color;
+    background-color: $hover-bg-color;
   }
 }
 
@@ -109,6 +109,63 @@ $breakpoints: (
     padding: 2.5px 16px;
     &:hover {
       background-color: rgba(0,0,0,0.12);
+    }
+  }
+}
+
+@mixin mypage-user-icon ($bg-size: 320px 95px) {
+  @include media(m) {
+    height: 200px;
+  }
+  position: relative;
+  height: 155px;
+  padding: 20px;
+  background-image: image-url("mypage-bg.jpg");
+  background-size: $bg-size;
+  background-repeat: no-repeat;
+  text-align: center;
+
+  & > a {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translate(0, -50%);
+    color: $char-black;
+  }
+  & > a:hover {
+    opacity: .8;
+  }
+
+  &__image {
+    overflow: hidden;
+    width: 60px;
+    height: 60px;
+    margin: 0 auto;
+    border-radius: 50%;
+  }
+
+  .user-name {
+    margin: 8px 0 0;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  .user-number {
+    margin: 8px 0 0;
+    &__evaluation {
+      display: inline-block;
+      font-size: 14px;
+      font-weight: bold;
+    }
+    & > div:first-child {
+      margin: 0 16px 0 0;
+    }
+    &__item-number {
+      display: inline-block;
+      font-size: 14px;
+      font-weight: bold;
     }
   }
 }
