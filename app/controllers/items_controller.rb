@@ -79,7 +79,6 @@ class ItemsController < ApplicationController
   end
 
   def update
-
     begin
       Item.transaction do
       # ブランドをデータベースから検索
@@ -114,7 +113,6 @@ class ItemsController < ApplicationController
       # brand-categoryの受け渡しがうまくいったら、アイテムを生成
         final_params = session[:final_params]
         session[:final_params] = nil
-        binding.pry
         if @item.user.id == current_user.id
           if @item.update(final_params)
             render "items/myitem-detail"

@@ -32,15 +32,15 @@
                   %tr
                     %th カテゴリー
                     %td
-                      =link_to @item.category.ancestors[0].name, "#"
+                      =link_to @item.category.ancestors[0].name, "#" if @item.category.ancestors[0].present?
                       %br
-                      =link_to @item.category.ancestors[1].name, "#"
+                      =link_to @item.category.ancestors[1].name, "#" if @item.category.ancestors[1].present?
                       %br
                       =link_to @item.category.name, "#"
                   %tr
                     %th ブランド
                     %td
-                      =link_to @item.brand.name, "#"
+                      =link_to @item.brand.name, "#" if @item.brand.present?
                   %tr
                     %th 商品のサイズ
                     %td
@@ -86,15 +86,15 @@
                 %tr
                   %th カテゴリー
                   %td
-                    =link_to @item.category.ancestors[0].name, "#"
+                    =link_to @item.category.ancestors[0].name, "#" if @item.category.ancestors[0].present?
                     %br
-                    =link_to @item.category.ancestors[1].name, "#"
+                    =link_to @item.category.ancestors[1].name, "#" if @item.category.ancestors[1].present?
                     %br
                     =link_to @item.category.name, "#"
                 %tr
                   %th ブランド
                   %td
-                    =link_to @item.brand.name, "#"
+                    =link_to @item.brand.name, "#" if @item.brand.present?
                 %tr
                   %th 商品のサイズ
                   %td
