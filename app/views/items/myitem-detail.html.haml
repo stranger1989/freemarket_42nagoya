@@ -1,5 +1,22 @@
 = render "shared/header"
 
+- if flash.present?
+  :javascript
+    toastr.options = {
+      "progressBar": true,
+      "positionClass": "toast-top-full-width",
+      "onclick": null,
+      "showDuration": "300",
+      "hideDuration": "1000",
+      "timeOut": "5000",
+      "extendedTimeOut": "1000",
+      "showEasing": "swing",
+      "hideEasing": "linear",
+      "showMethod": "fadeIn",
+      "hideMethod": "fadeOut"
+    }
+    toastr.success("商品の情報を更新しました。")
+
 .main-container
   .mypage-container
     .main-column

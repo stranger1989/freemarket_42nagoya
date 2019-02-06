@@ -56,6 +56,7 @@ class ItemsController < ApplicationController
         @item = Item.new(session[:final_params])
         session[:final_params] = nil
         if @item.save
+          flash[:notice_exhibition_completed] = ""
           redirect_to root_path
         else
           render :new
@@ -115,6 +116,7 @@ class ItemsController < ApplicationController
         session[:final_params] = nil
         if @item.user.id == current_user.id
           if @item.update(final_params)
+            flash[:notice_updated] = ""
             render "items/myitem-detail"
           else
             render "items/edit"
@@ -133,7 +135,8 @@ class ItemsController < ApplicationController
 
   def destroy
     @item.destroy if @item.user_id == current_user.id
-    redirect_to action: :index
+    flash[:notice_deleted] = ""
+    redirect_to action: :index, locals: {user: current_user }
   end
 
   private
