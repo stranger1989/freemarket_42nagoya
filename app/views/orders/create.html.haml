@@ -10,7 +10,7 @@
               %th 商品
               %td
                 =image_tag(@item.image.url, class: "order-double__sub__photo")
-                =link_to @item.name, "#", class: "order-double__sub__item-name"
+                =link_to @item.name, item_path(@item.id), class: "order-double__sub__item-name"
             %tr
               %th 送料
               %td=@item.shipping_fee
@@ -55,7 +55,7 @@
               %th 商品
               %td
                 =image_tag(@item.image.url, class: "order-double__sub__photo")
-                =link_to @item.name, "#", class: "order-double__sub__item-name"
+                =link_to @item.name, item_path(@item.id), class: "order-double__sub__item-name"
             %tr
               %th 送料
               %td=@item.shipping_fee
