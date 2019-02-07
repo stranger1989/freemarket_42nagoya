@@ -1,4 +1,4 @@
--if item[:order_status] == "出品中"
+-if item[:order_status] == "売却済"
   %ul.mypage-item-list
     %li.mypage-item
       = link_to controller: "items", action: "edit", name: "myitem-detail", item_id: item.id do
@@ -8,4 +8,4 @@
           .mypage-item__body
             .mypage-item__body__text=item.name
             .mypage-item__body__status
-              .status-label--exhibit 出品中
+              .status-label--sold 売却済

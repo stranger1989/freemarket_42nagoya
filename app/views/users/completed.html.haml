@@ -15,8 +15,11 @@
           %li.active
             %h3
               =link_to "売却済み", {controller: "users", action: "edit", name: "completed"}
-        %ul
-          %li.mypage-item-not-found 売却済みの商品がありません
+        - if user.items.present? && user.items.map {|item| item[:order_status] == "売却済"}.any?
+          = render partial: "shared/soldout-items", collection: user.items, as: "item"
+        - else
+          %ul
+            %li.mypage-item-not-found 売却済みの商品がありません
 
 
     = render 'shared/side-bar'

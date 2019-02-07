@@ -169,3 +169,15 @@ $breakpoints: (
     }
   }
 }
+
+// 出品中・売却済のラベルのスタイル
+@mixin item-status-label($label-color: $main-blue) {
+  display: inline-block;
+  padding: 0 5px;
+  background-color: $label-color;
+  font-size: 12px;
+  font-weight: bold;
+  color: $shiro;
+  line-height: 1.5;
+  border-radius: 2px;
+}
