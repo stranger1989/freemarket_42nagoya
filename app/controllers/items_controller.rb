@@ -3,12 +3,9 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :update, :destroy]
   before_action :set_edit_item, only: [:edit]
   before_action :set_search_val, only: [:index, :show, :edit, :create, :update, :destroy, :search]
+  before_action :set_pickup_items, only: [:index, :create]
 
   def index
-    @pickup_category_items_1 = display_category("1")
-    @pickup_category_items_2 = display_category("2")
-    @pickup_brand_items_1 = display_brand("シャネル")
-    @pickup_brand_items_2 = display_brand("ナイキ")
   end
 
   def search
@@ -57,7 +54,7 @@ class ItemsController < ApplicationController
         session[:final_params] = nil
         if @item.save
           flash.now[:notice_exhibition_completed] = "出品が完了しました"
-          render :index
+          render "items/index"
         else
           render :new
         end
@@ -178,6 +175,13 @@ class ItemsController < ApplicationController
 
   def set_edit_item
     @item = Item.find(params[:item_id])
+  end
+
+  def set_pickup_items
+    @pickup_category_items_1 = display_category("1")
+    @pickup_category_items_2 = display_category("2")
+    @pickup_brand_items_1 = display_brand("シャネル")
+    @pickup_brand_items_2 = display_brand("ナイキ")
   end
 
 end
