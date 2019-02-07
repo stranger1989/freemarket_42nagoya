@@ -15,12 +15,14 @@
         %p.buy-buttons__cell 支払い金額
         %p.buy-buttons__item-price=converting_to_jpy(@item.price)
         %p.buy-buttons__has-error-text= flash[:notice_payment]
-        -if current_user.payment
+        -if current_user.payment.present?
           = form_for [@item, @order] do |f|
             = f.submit "購入する", class: "buy-buttons__btn-canbuy"
         -else
           %button.buy-buttons__btn-buy
-            購入しない
+            購入する
+          %p.attention-payment
+            配送先と支払い方法の入力を完了してください。
     .order__user-info.user-info
       .user-info__inner
         %h3.user-info__inner__deliver-to 配送先
@@ -32,7 +34,7 @@
           =current_user.block
           =current_user.building
           %br
-        =link_to "#", class: "user-info__inner__address-change" do
+        =link_to "/users/deliver_address", class: "user-info__inner__address-change" do
           変更する
           %i.fa.fa-chevron-right
     .order__pay-method.pay-method
@@ -40,7 +42,7 @@
         %h3.pay-method__inner__title 支払い方法
         \/
         %br
-        =link_to "#", class: "pay-method__inner__change" do
+        =link_to "/users/creditcard", class: "pay-method__inner__change" do
           変更する
           %i.fa.fa-chevron-right
 

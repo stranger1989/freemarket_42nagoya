@@ -83,6 +83,10 @@
         @include button-user-form(320px, 50px, $main-red,.8rem , #fff );
         cursor: pointer;
       }
+      .attention-payment{
+        font-size: 14px;
+        color: $main-red;
+      }
     }
   }
   &__user-info{

@@ -35,8 +35,11 @@ $(document).on('turbolinks:load',function() {
   var url = window.location.pathname;
   $('.side-nav__list > li > a[href="'+url+'"]').addClass('location');
 
-  // エラーメッセージを一定時間経過後消す
-  setTimeout("$('.success_update').fadeOut('slow')", 800);
-  setTimeout("$('.fail_update').fadeOut('slow')", 800);
+  // ユーザー登録プログレスバーに現在の位置を当てる
+  var registration_url = window.location.pathname;
+  var registration_dir = registration_url.split("/")
+  var registration_pathname = registration_dir[registration_dir.length-1]
+  $(`.progress-bar > ${ "." + registration_pathname + "_point"}`).addClass('is-active');
+  $(`.progress-bar > ${ "." + registration_pathname + "_point"}`).prevAll().addClass('is-active');
 });
 

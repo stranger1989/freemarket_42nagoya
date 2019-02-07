@@ -135,14 +135,6 @@
           width:23%;
           display:inline-block;
         }
-        .alert-danger{
-          margin:5px 0 0 0;
-          font-size: .85rem;
-          color:$main-red;
-          .classname:nth-child(1) {
-            color:red;
-          }
-        }
       }
     }
   }
@@ -181,6 +173,14 @@
   }
 }
 
+.alert-danger{
+  margin:5px 0 0 0;
+  font-size: .85rem;
+  color:$main-red;
+  .classname:nth-child(1) {
+    color:red;
+  }
+}
 .single-footer{
   width:100%;
   padding:50px 0;

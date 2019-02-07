@@ -11,6 +11,9 @@
           = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス"
         .field
           = f.password_field :password, autocomplete: "current-password", placeholder: "パスワード"
+        -if flash[:alert].present?
+          .alert-danger.error_field.alert
+            .error_msg= flash[:alert]
         .actions
           = f.submit "ログイン", class: "btn-summit"
-        =link_to "パスワードをお忘れの方", new_password_path(resource_name), class: "forget-password"
+        =link_to "パスワードをお忘れの方", "#", class: "forget-password"

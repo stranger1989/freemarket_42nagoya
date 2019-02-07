@@ -2,36 +2,36 @@ class Users::RegistrationsController < Devise::RegistrationsController
   prepend_before_action :require_no_authentication, only: [:create]
   protect_from_forgery except: [:update]
   layout 'layout_for_UserAdmin_SignUp'
-  # リダイレクト先のパスを格納
-  @@url = ""
 
   # 会員登録トップページ
   def index
+    # リダイレクト先のパスを格納
+    session[:url] = ""
   end
   # 基本情報作成
   def basic_information
     build_resource
     yield resource if block_given?
     respond_with resource
-    @@url = "residence"
+    session[:url] = "residence"
     # エラー処理のため、遷移前のページ格納
-    @@before_url = ""
+    session[:before_url] = ""
   end
   # SNSログイン用基本情報作成
   def sns_basic_information
     build_resource
     yield resource if block_given?
     respond_with resource
-    @@url = "residence"
+    session[:url] = "residence"
     # エラー処理のため、遷移前のページ格納
-    @@before_url = ""
+    session[:before_url] = ""
   end
   # 住所情報作成
   def residence
     build_resource
     yield resource if block_given?
     respond_with resource
-    @@url = "payment"
+    session[:url] = "payment"
   end
   # payjpの情報受け渡し、フォームはpayjpにて作成
   def payment
@@ -65,18 +65,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def create
-    session[:user_information] = User::DEFAULT_USERPARAMS if @@before_url == ""
+    session[:user_information] = User::DEFAULT_USERPARAMS if session[:before_url] == ""
     total_signup_params(sign_up_params)
     build_resource(total_signup_params)
     if URI(request.referer).path == "/users"
-      path = @@before_url
+      path = session[:before_url]
     else
-      @@before_url = Rails.application.routes.recognize_path(request.referer)[:action]
-      path = @@before_url
+      session[:before_url] = Rails.application.routes.recognize_path(request.referer)[:action]
+      path = session[:before_url]
     end
     if path != "payment"
       if resource.valid? == true
-        redirect_to action: @@url
+        redirect_to action: session[:url]
       else
         error_message(path)
       end
