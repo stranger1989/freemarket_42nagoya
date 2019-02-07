@@ -1,21 +1,6 @@
 = render "shared/header"
 
-- if flash.present?
-  :javascript
-    toastr.options = {
-      "progressBar": true,
-      "positionClass": "toast-top-full-width",
-      "onclick": null,
-      "showDuration": "300",
-      "hideDuration": "1000",
-      "timeOut": "5000",
-      "extendedTimeOut": "1000",
-      "showEasing": "swing",
-      "hideEasing": "linear",
-      "showMethod": "fadeIn",
-      "hideMethod": "fadeOut"
-    }
-    toastr.info("商品を削除しました。")
+= render "shared/flash_deleted"
 
 .main-container
   .mypage-container
@@ -32,7 +17,7 @@
           %li
             %h3
               =link_to "売却済み", {controller: "users", action: "edit", name: "completed"}
-        - if user.items.present?
+        - if user.items.present? && user.items.map {|item| item[:order_status] == "出品中"}.any?
           = render partial: "shared/mypage-items", collection: user.items, as: "item"
         - else
           %ul

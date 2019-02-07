@@ -1,22 +1,7 @@
 / ヘッダー
 = render "shared/header"
 
-- if flash.present?
-  :javascript
-    toastr.options = {
-      "progressBar": true,
-      "positionClass": "toast-top-full-width",
-      "onclick": null,
-      "showDuration": "300",
-      "hideDuration": "1000",
-      "timeOut": "5000",
-      "extendedTimeOut": "1000",
-      "showEasing": "swing",
-      "hideEasing": "linear",
-      "showMethod": "fadeIn",
-      "hideMethod": "fadeOut"
-    }
-    toastr.success("あなたが出品した商品は「出品した商品一覧」からいつでも見ることができます。", "出品が完了しました")
+= render "shared/flash_exhibition_completed"
 
 / スライド
 %ul.bxslider
