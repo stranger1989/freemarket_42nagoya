@@ -308,17 +308,5 @@
     &:before{
       background-color: $main-red;
     }
-    // &:not(:last){
-    //   &:after{
-    //     content: "";
-    //     width: 100%;
-    //     display: block;
-    //     border-bottom: 2px solid #ea352d !important;
-    //     position: absolute;
-    //     left: calc(50% - 7px);
-    //     bottom: -3.5px;
-    //     z-index: 3;
-    //   }
-    // }
   }
 }
