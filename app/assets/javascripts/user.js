@@ -40,6 +40,6 @@ $(document).on('turbolinks:load',function() {
   var registration_dir = registration_url.split("/")
   var registration_pathname = registration_dir[registration_dir.length-1]
   $(`.progress-bar > ${ "." + registration_pathname + "_point"}`).addClass('is-active');
-  $(`.progress-bar > ${ "." + registration_pathname + "_point"}`).prevAll().addClass('is-active');
+  $(`.progress-bar > ${ "." + registration_pathname + "_point"}`).prevAll().addClass('prev-active');
 });
 
