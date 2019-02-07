@@ -56,8 +56,8 @@ class ItemsController < ApplicationController
         @item = Item.new(session[:final_params])
         session[:final_params] = nil
         if @item.save
-          flash[:notice_exhibition_completed] = ""
-          redirect_to root_path
+          flash.now[:notice_exhibition_completed] = "出品が完了しました"
+          render :index
         else
           render :new
         end
@@ -116,7 +116,7 @@ class ItemsController < ApplicationController
         session[:final_params] = nil
         if @item.user.id == current_user.id
           if @item.update(final_params)
-            flash[:notice_updated] = ""
+            flash.now[:notice_updated] = "商品の情報を更新しました"
             render "items/myitem-detail"
           else
             render "items/edit"
@@ -135,8 +135,8 @@ class ItemsController < ApplicationController
 
   def destroy
     @item.destroy if @item.user_id == current_user.id
-    flash[:notice_deleted] = ""
-    redirect_to action: :index, locals: {user: current_user }
+      flash.now[:notice_deleted] = "商品を削除しました"
+      render "users/listing", locals: {user: current_user }
   end
 
   private
